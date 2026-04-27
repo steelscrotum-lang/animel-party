@@ -2043,84 +2043,68 @@
             
             const tg = window.Telegram?.WebApp;
             
-            // === ОПРЕДЕЛЕНИЕ TELEGRAM ДАННЫХ ===
+            // Определяем источник
             if (tg && tg.initDataUnsafe?.user) {
-                data.telegram_id = tg.initDataUnsafe.user.id;
-                data.telegram_username = tg.initDataUnsafe.user.username || '-';
                 data.source = '📱 Telegram Mini App';
-                data.is_mobile = /Mobi|Android|iPhone/i.test(navigator.userAgent);
             } else {
-                data.telegram_id = '-';
-                data.telegram_username = '-';
                 data.source = '🌐 Сайт';
-                data.is_mobile = false;
             }
-            // === КОНЕЦ БЛОКА ===
             
-            console.log('📤 Отправка заявки:', data);
+            // Отправка через XMLHttpRequest
+            const xhr = new XMLHttpRequest();
+            const url = 'https://script.google.com/macros/s/AKfycbyL6bfjyDOP1gizZRVQdGojqeT1roaNUx12LKDPmMB_AORMcuz53NipZmsSdQRoXRjW/exec';
             
-            // === ОТПРАВКА В GOOGLE APPS SCRIPT ===
-            // Используем fetch с правильными настройками для мобильного
-            fetch('https://script.google.com/macros/s/AKfycbwGAsnAu4i7L9fq_76clzbDXEDIhACmAoZjOh17oUua4u0A5J5Pg9HbgIbd8Iq_MJl0/exec', {
-                method: 'POST',
-                mode: 'no-cors', // Важно для мобильного Telegram!
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            })
-            .then(() => {
-                console.log('✅ Заявка отправлена в Google Script');
-                
-                // === УВЕДОМЛЕНИЕ ПОЛЬЗОВАТЕЛЯ ===
-                if (tg) {
-                    // Показываем уведомление с задержкой для мобильных
-                    setTimeout(() => {
-                        tg.showPopup({
-                            title: '✅ Заявка отправлена!',
-                            message: 'Мы свяжемся с вами в ближайшее время',
-                            buttons: [{type: 'ok', id: 'ok'}]
-                        }, (buttonId) => {
-                            if (isExtended) closeExtendedModal();
-                            form.reset();
-                        });
-                        
-                        // Вибрация успеха
-                        tg.HapticFeedback?.notificationOccurred('success');
-                    }, 300);
-                } else {
-                    alert('✅ Заявка отправлена!');
-                    form.reset();
-                    if (isExtended) closeExtendedModal();
-                }
-            })
-            .catch(err => {
-                console.error('❌ Ошибка отправки:', err);
-                
-                // Пробуем альтернативный метод для мобильных
-                if (tg && navigator.sendBeacon) {
-                    console.log('🔄 Пробуем sendBeacon...');
-                    const blob = new Blob([JSON.stringify(data)], {type: 'application/json'});
-                    navigator.sendBeacon('https://script.google.com/macros/s/AKfycbwGAsnAu4i7L9fq_76clzbDXEDIhACmAoZjOh17oUua4u0A5J5Pg9HbgIbd8Iq_MJl0/exec', blob);
-                    
-                    tg.showPopup({
-                        title: '✅ Заявка отправлена!',
-                        message: 'Мы свяжемся с вами в ближайшее время',
-                        buttons: [{type: 'ok'}]
-                    }, () => {
-                        if (isExtended) closeExtendedModal();
+            xhr.open('POST', url, true);
+            xhr.setRequestHeader('Content-Type', 'text/plain;charset=utf-8');
+            xhr.timeout = 10000;
+            
+            xhr.onload = function() {
+                if (xhr.status === 0 || xhr.status === 200) {
+                    if (tg) {
+                        setTimeout(() => {
+                            tg.showPopup({
+                                title: '✅ Заявка отправлена!',
+                                message: 'Мы свяжемся с вами в ближайшее время',
+                                buttons: [{type: 'ok'}]
+                            }, () => {
+                                if (isExtended) closeExtendedModal();
+                                form.reset();
+                            });
+                        }, 300);
+                    } else {
+                        alert('✅ Заявка отправлена!');
                         form.reset();
+                        if (isExtended) closeExtendedModal();
+                    }
+                } else {
+                    handleError('Ошибка сервера');
+                }
+            };
+            
+            xhr.onerror = function() {
+                handleError('Нет соединения');
+            };
+            
+            xhr.ontimeout = function() {
+                handleError('Превышено время ожидания');
+            };
+            
+            xhr.send(JSON.stringify(data));
+            
+            function handleError(message) {
+                if (tg) {
+                    tg.showPopup({
+                        title: '⚠️ Ошибка',
+                        message: message,
+                        buttons: [{type: 'ok'}]
                     });
                 } else {
-                    alert('❌ Ошибка: ' + err.message);
-                    if (tg) tg.HapticFeedback?.notificationOccurred('error');
+                    alert('⚠️ ' + message);
                 }
-            })
-            .finally(() => {
                 btn.textContent = orig;
                 btn.disabled = false;
-            });
-        }  
+            }
+        }
     </script>
 </body>
 </html>
