@@ -2041,28 +2041,45 @@
             btn.textContent = '⏳ Отправка...';
             btn.disabled = true;
             
-            // === ОПРЕДЕЛЕНИЕ ИСТОЧНИКА ===
+            // === ОПРЕДЕЛЕНИЕ ИСТОЧНИКА (ИСПРАВЛЕНО) ===
             const tg = window.Telegram?.WebApp;
             
-            if (tg && tg.initDataUnsafe && tg.initDataUnsafe.user) {
+            // Логирование для отладки
+            console.log('Telegram WebApp:', tg);
+            console.log('initDataUnsafe:', tg?.initDataUnsafe);
+            console.log('User:', tg?.initDataUnsafe?.user);
+            
+            // Проверяем несколькими способами
+            const isTelegramApp = tg && (
+                (tg.initDataUnsafe && tg.initDataUnsafe.user) ||  // Способ 1: есть пользователь
+                tg.initData ||                                     // Способ 2: есть initData
+                window.location.href.includes('t.me')             // Способ 3: URL содержит t.me
+            );
+            
+            if (isTelegramApp) {
                 // Заявка из Telegram Mini App
-                data.telegram_id = tg.initDataUnsafe.user.id;
-                data.telegram_username = tg.initDataUnsafe.user.username || '-';
+                if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
+                    data.telegram_id = tg.initDataUnsafe.user.id;
+                    data.telegram_username = tg.initDataUnsafe.user.username || '-';
+                } else {
+                    data.telegram_id = 'pending';  // Временно, если пользователь ещё не доступен
+                    data.telegram_username = '-';
+                }
                 data.source = '📱 Telegram Mini App';
+                console.log('✅ Источник: Telegram Mini App');
             } else {
                 // Заявка с обычного сайта
                 data.telegram_id = '-';
                 data.telegram_username = '-';
                 data.source = '🌐 Сайт';
+                console.log('✅ Источник: Сайт');
             }
             // === КОНЕЦ БЛОКА ===
             
             // Если открыто в Telegram, отправляем данные боту
             if (tg && tg.initDataUnsafe?.user) {
-                // Отправляем данные через Telegram
                 tg.sendData(JSON.stringify(data));
                 
-                // Показываем уведомление
                 tg.showPopup({
                     title: '✅ Заявка отправлена!',
                     message: 'Мы свяжемся с вами в ближайшее время',
@@ -2090,9 +2107,20 @@
                 try {
                     const res = JSON.parse(t);
                     if(res.success) {
-                        alert('✅ Заявка отправлена!');
-                        form.reset();
-                        if (isExtended) closeExtendedModal();
+                        if (tg) {
+                            tg.showPopup({
+                                title: '✅ Заявка отправлена!',
+                                message: 'Мы свяжемся с вами в ближайшее время',
+                                buttons: [{type: 'ok'}]
+                            }, () => {
+                                if (isExtended) closeExtendedModal();
+                                form.reset();
+                            });
+                        } else {
+                            alert('✅ Заявка отправлена!');
+                            form.reset();
+                            if (isExtended) closeExtendedModal();
+                        }
                     } else {
                         alert('⚠️ ' + (res.error || 'Ошибка'));
                     }
@@ -2105,7 +2133,7 @@
                 btn.textContent = orig;
                 btn.disabled = false;
             });
-        }
+        }        
     </script>
 </body>
 </html>
