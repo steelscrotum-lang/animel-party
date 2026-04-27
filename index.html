@@ -2,8 +2,13 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#d4145a">
     <title>АнимЭль - Агентство детских праздников в Москве</title>
+    
+    <!-- Telegram WebApp SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -14,6 +19,9 @@
             overflow-x: hidden;
             font-size: 16px;
             scroll-behavior: smooth;
+            /* Адаптация под тему Telegram */
+            background: var(--tg-theme-bg-color, #f8f9fa);
+            color: var(--tg-theme-text-color, #2d3748);
         }
         img, video { max-width: 100%; height: auto; }
 
@@ -24,7 +32,7 @@
 
         /* Header */
         .header {
-            background: rgba(255, 255, 255, 0.95);
+            background: var(--tg-theme-secondary-bg-color, rgba(255, 255, 255, 0.95));
             backdrop-filter: blur(10px);
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
             position: sticky; top: 0; z-index: 1000;
@@ -55,7 +63,7 @@
         .logo-subtitle { font-size: 12px; color: #718096; }
         .nav { display: flex; gap: 28px; }
         .nav a {
-            text-decoration: none; color: #4a5568; font-weight: 700;
+            text-decoration: none; color: var(--tg-theme-text-color, #4a5568); font-weight: 700;
             transition: all 0.3s; position: relative; font-size: 15px;
         }
         .nav a:hover { color: #d4145a; }
@@ -66,11 +74,11 @@
             transition: width 0.3s;
         }
         .nav a:hover::after { width: 100%; }
-        .header-phone { font-weight: 800; color: #2d3748; font-size: 17px; }
+        .header-phone { font-weight: 800; color: var(--tg-theme-text-color, #2d3748); font-size: 17px; }
 
         /* Hero Section */
         .hero {
-            background: #f8f9fa;
+            background: var(--tg-theme-bg-color, #f8f9fa);
             padding: 55px 0 10px;
             position: relative;
             overflow: hidden;
@@ -89,7 +97,7 @@
         }
         .hero-content { position: relative; z-index: 1; text-align: center; }
         .hero-badge {
-            display: inline-block; background: white; color: #d4145a;
+            display: inline-block; background: var(--tg-theme-secondary-bg-color, white); color: #d4145a;
             padding: 10px 24px; border-radius: 28px;
             font-weight: 800; font-size: 15px;
             margin-bottom: 28px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -107,7 +115,7 @@
         }
         
         .formula-item {
-            background: white;
+            background: var(--tg-theme-secondary-bg-color, white);
             padding: 14px 24px;
             border-radius: 24px;
             font-weight: 700;
@@ -129,14 +137,14 @@
         
         .hero-title {
             font-size: 58px; font-weight: 900; line-height: 1.15;
-            margin-bottom: 22px; color: #1a202c; letter-spacing: -1px;
+            margin-bottom: 22px; color: var(--tg-theme-text-color, #1a202c); letter-spacing: -1px;
         }
         .hero-title .highlight {
             background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
         .hero-subtitle {
-            font-size: 22px; color: #4a5568; margin-bottom: 40px;
+            font-size: 22px; color: var(--tg-theme-hint-color, #4a5568); margin-bottom: 40px;
             max-width: 750px; margin-left: auto; margin-right: auto;
             font-weight: 600; line-height: 1.5;
         }
@@ -155,7 +163,7 @@
         }
         .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(212, 20, 90, 0.5); }
         .btn-secondary {
-            background: white; color: #d4145a; border: 2.5px solid #d4145a;
+            background: var(--tg-theme-secondary-bg-color, white); color: #d4145a; border: 2.5px solid #d4145a;
             font-weight: 800;
         }
         .btn-secondary:hover { background: #d4145a; color: white; }
@@ -164,20 +172,20 @@
         .hero-buttons .btn-secondary { padding: 20px 48px; font-size: 20px; font-weight: 800; border-width: 3px; }
 
         .hero-features { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-bottom: 0; }
-        .feature { display: flex; align-items: center; gap: 10px; font-weight: 700; color: #4a5568; font-size: 17px; }
+        .feature { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--tg-theme-text-color, #4a5568); font-size: 17px; }
         .feature-icon { font-size: 30px; }
         .rating-link { color: inherit; text-decoration: none; cursor: pointer; transition: all 0.3s; font-weight: 800; color: #d4145a; }
         .rating-link:hover { text-decoration: underline; }
 
         /* Programs Section */
-        .programs { padding: 35px 0 45px; background: #fff5f9; }
-        .section-title { font-size: 46px; font-weight: 900; text-align: center; margin-bottom: 16px; color: #1a202c; }
-        .section-subtitle { text-align: center; color: #4a5568; font-size: 20px; margin-bottom: 45px; font-weight: 500; max-width: 700px; margin-left: auto; margin-right: auto; }
+        .programs { padding: 35px 0 45px; background: var(--tg-theme-bg-color, #fff5f9); }
+        .section-title { font-size: 46px; font-weight: 900; text-align: center; margin-bottom: 16px; color: var(--tg-theme-text-color, #1a202c); }
+        .section-subtitle { text-align: center; color: var(--tg-theme-hint-color, #4a5568); font-size: 20px; margin-bottom: 45px; font-weight: 500; max-width: 700px; margin-left: auto; margin-right: auto; }
         .programs-container { position: relative; max-width: 1800px; margin: 0 auto; padding: 0 70px; }
         .programs-wrapper { overflow-x: auto; overflow-y: hidden; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; }
         .programs-wrapper::-webkit-scrollbar { display: none; }
         .programs-grid { display: flex; gap: 24px; width: max-content; }
-        .program-card { flex: 0 0 310px; background: white; border-radius: 18px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: all 0.3s; }
+        .program-card { flex: 0 0 310px; background: var(--tg-theme-secondary-bg-color, white); border-radius: 18px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: all 0.3s; }
         .program-card:hover { transform: translateY(-8px); box-shadow: 0 18px 40px rgba(0,0,0,0.12); }
         .program-image { height: 180px; display: flex; align-items: center; justify-content: center; font-size: 70px; position: relative; overflow: hidden; cursor: pointer; }
         .program-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
@@ -194,12 +202,12 @@
         .scroll-btn.prev { left: 0; }
         .scroll-btn.next { right: 0; }
         .program-content { padding: 18px; }
-        .program-content h3 { font-size: 22px; margin-bottom: 8px; color: #1a202c; font-weight: 800; }
-        .program-content p { color: #4a5568; margin-bottom: 12px; font-size: 14px; line-height: 1.5; }
+        .program-content h3 { font-size: 22px; margin-bottom: 8px; color: var(--tg-theme-text-color, #1a202c); font-weight: 800; }
+        .program-content p { color: var(--tg-theme-hint-color, #4a5568); margin-bottom: 12px; font-size: 14px; line-height: 1.5; }
         .program-features, .pricing-features { list-style: none; margin-bottom: 14px; }
-        .program-features li, .pricing-features li { padding: 4px 0; color: #4a5568; font-size: 14px; display: flex; align-items: flex-start; font-weight: 600; }
+        .program-features li, .pricing-features li { padding: 4px 0; color: var(--tg-theme-hint-color, #4a5568); font-size: 14px; display: flex; align-items: flex-start; font-weight: 600; }
         .program-features li::before, .pricing-features li::before { content: '✓ '; color: #38a169; font-weight: 800; margin-right: 5px; flex-shrink: 0; }
-        .pricing-features li { padding: 6px 0; border-bottom: 1px solid #f0f4f8; line-height: 1.35; }
+        .pricing-features li { padding: 6px 0; border-bottom: 1px solid var(--tg-theme-bg-color, #f0f4f8); line-height: 1.35; }
         .pricing-features li:last-child { border-bottom: none; }
         .program-price { font-size: 26px; font-weight: 900; color: #d4145a; margin-bottom: 12px; }
 
@@ -217,9 +225,9 @@
         .gradient-11 { background: linear-gradient(135deg, #f5af19 0%, #f12711 100%); }
 
         /* About Section */
-        .about { padding: 55px 0; background: #ffffff; }
+        .about { padding: 55px 0; background: var(--tg-theme-secondary-bg-color, #ffffff); }
         .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 45px; align-items: center; }
-        .about-text { font-size: 19px; color: #4a5568; margin-bottom: 24px; line-height: 1.75; }
+        .about-text { font-size: 19px; color: var(--tg-theme-hint-color, #4a5568); margin-bottom: 24px; line-height: 1.75; }
         .about-features { display: grid; gap: 18px; }
         .about-feature { display: flex; gap: 14px; align-items: flex-start; }
         .about-feature-icon { width: 28px; height: 28px; background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 800; font-size: 16px; }
@@ -231,13 +239,13 @@
         /* Pricing Section */
         .pricing { 
             padding: 25px 0 20px; 
-            background: linear-gradient(180deg, #fef6fb 0%, #fff5f9 100%); 
+            background: linear-gradient(180deg, var(--tg-theme-bg-color, #fef6fb) 0%, var(--tg-theme-bg-color, #fff5f9) 100%); 
             position: relative; 
             overflow: visible !important;
         }
         .pricing .container { max-width: 1600px; margin: 0 auto; padding: 0 20px; }
-        .pricing .section-title { font-size: 46px; font-weight: 900; text-align: center; margin-bottom: 10px; color: #1a202c; }
-        .pricing .section-subtitle { text-align: center; color: #4a5568; font-size: 20px; margin-bottom: 25px; max-width: 750px; margin-left: auto; margin-right: auto; }
+        .pricing .section-title { font-size: 46px; font-weight: 900; text-align: center; margin-bottom: 10px; color: var(--tg-theme-text-color, #1a202c); }
+        .pricing .section-subtitle { text-align: center; color: var(--tg-theme-hint-color, #4a5568); font-size: 20px; margin-bottom: 25px; max-width: 750px; margin-left: auto; margin-right: auto; }
         .pricing-wrapper { 
             overflow-x: auto; 
             overflow-y: visible !important; 
@@ -253,7 +261,7 @@
         .pricing-card { 
             flex: 0 0 265px; 
             width: 265px; 
-            background: white; 
+            background: var(--tg-theme-secondary-bg-color, white); 
             border-radius: 18px; 
             padding: 26px 18px; 
             box-shadow: 0 10px 28px rgba(0,0,0,0.07); 
@@ -287,49 +295,49 @@
             white-space: nowrap; 
             z-index: 10; 
         }
-        .pricing-header { text-align: center; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 2px solid #f7fafc; }
-        .pricing-header h3 { font-size: 22px; font-weight: 800; color: #1a202c; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .pricing-header { text-align: center; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 2px solid var(--tg-theme-bg-color, #f7fafc); }
+        .pricing-header h3 { font-size: 22px; font-weight: 800; color: var(--tg-theme-text-color, #1a202c); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
         .pricing-price { font-size: 38px; font-weight: 900; background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 5px; line-height: 1; }
-        .pricing-header .price-note { color: #718096; font-size: 14px; font-weight: 500; }
+        .pricing-header .price-note { color: var(--tg-theme-hint-color, #718096); font-size: 14px; font-weight: 500; }
         .pricing-features { margin: 0 0 18px 0; padding: 0; flex: 1; }
         .pricing-card .btn { width: 100%; padding: 14px 22px; border: none; border-radius: 24px; font-weight: 800; font-size: 15px; cursor: pointer; transition: all 0.3s ease; text-align: center; text-decoration: none; display: inline-block; }
         .pricing-card .btn-primary { background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%); color: white; box-shadow: 0 4px 15px rgba(212, 20, 90, 0.3); }
         .pricing-card .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(212, 20, 90, 0.45); }
-        .pricing-card .btn-secondary { background: white; color: #d4145a; border: 2.5px solid #d4145a; }
+        .pricing-card .btn-secondary { background: var(--tg-theme-secondary-bg-color, white); color: #d4145a; border: 2.5px solid #d4145a; }
         .pricing-card .btn-secondary:hover { background: #d4145a; color: white; transform: translateY(-2px); }
 
         /* Gallery Section */
-        .gallery { padding: 55px 0; background: #fafbfc; }
+        .gallery { padding: 55px 0; background: var(--tg-theme-bg-color, #fafbfc); }
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
         .gallery-item { height: 270px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 70px; transition: transform 0.3s; cursor: pointer; background-size: cover; background-position: center; }
         .gallery-item:hover { transform: scale(1.04); }
 
         /* Reviews Section */
-        .reviews { padding: 55px 0; background: linear-gradient(180deg, #f9f7ff 0%, #fcf9ff 100%); }
+        .reviews { padding: 55px 0; background: linear-gradient(180deg, var(--tg-theme-bg-color, #f9f7ff) 0%, var(--tg-theme-bg-color, #fcf9ff) 100%); }
         .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; }
-        .review-card { background: white; padding: 28px; border-radius: 18px; box-shadow: 0 10px 28px rgba(0,0,0,0.09); }
+        .review-card { background: var(--tg-theme-secondary-bg-color, white); padding: 28px; border-radius: 18px; box-shadow: 0 10px 28px rgba(0,0,0,0.09); }
         .review-header { display: flex; align-items: center; gap: 14px; margin-bottom: 15px; }
         .review-avatar { width: 48px; height: 48px; background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 17px; }
         .review-rating { color: #fbbf24; font-size: 18px; }
-        .review-text { color: #4a5568; font-style: italic; line-height: 1.7; font-size: 16px; }
+        .review-text { color: var(--tg-theme-hint-color, #4a5568); font-style: italic; line-height: 1.7; font-size: 16px; }
 
         /* Contacts Section */
-        .contacts { padding: 55px 0; background: #ffffff; }
+        .contacts { padding: 55px 0; background: var(--tg-theme-secondary-bg-color, #ffffff); }
         .contacts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
         .contact-item { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 24px; }
         .contact-icon { font-size: 28px; }
-        .contact-label { font-weight: 800; margin-bottom: 5px; font-size: 17px; color: #1a202c; }
-        .contact-value { color: #4a5568; font-size: 17px; font-weight: 600; }
+        .contact-label { font-weight: 800; margin-bottom: 5px; font-size: 17px; color: var(--tg-theme-text-color, #1a202c); }
+        .contact-value { color: var(--tg-theme-hint-color, #4a5568); font-size: 17px; font-weight: 600; }
         .social-links { display: flex; gap: 15px; margin-top: 28px; }
         .social-link { padding: 12px 24px; background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%); color: white; text-decoration: none; border-radius: 24px; font-weight: 700; transition: transform 0.3s; font-size: 15px; }
         .social-link:hover { transform: translateY(-3px); }
-        .contact-form { background: white; padding: 35px; border-radius: 18px; box-shadow: 0 10px 28px rgba(0,0,0,0.09); }
-        .contact-form h3 { margin-bottom: 22px; font-size: 24px; color: #1a202c; font-weight: 800; }
+        .contact-form { background: var(--tg-theme-secondary-bg-color, white); padding: 35px; border-radius: 18px; box-shadow: 0 10px 28px rgba(0,0,0,0.09); }
+        .contact-form h3 { margin-bottom: 22px; font-size: 24px; color: var(--tg-theme-text-color, #1a202c); font-weight: 800; }
         .form-group { margin-bottom: 16px; }
-        .form-input { width: 100%; padding: 12px 14px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 15px; font-family: inherit; transition: border-color 0.3s; }
+        .form-input { width: 100%; padding: 12px 14px; border: 2px solid var(--tg-theme-bg-color, #e2e8f0); border-radius: 10px; font-size: 15px; font-family: inherit; transition: border-color 0.3s; background: var(--tg-theme-secondary-bg-color, white); color: var(--tg-theme-text-color, #2d3748); }
         .form-input:focus { outline: none; border-color: #d4145a; }
         .form-input.error { border-color: #e53e3e; background: #fff5f5; }
-        .form-label { display: block; margin-bottom: 5px; font-weight: 600; color: #2d3748; font-size: 13px; }
+        .form-label { display: block; margin-bottom: 5px; font-weight: 600; color: var(--tg-theme-text-color, #2d3748); font-size: 13px; }
         .form-label .required { color: #d4145a; margin-left: 2px; }
         .form-label .optional { color: #a0aec0; font-weight: 400; margin-left: 4px; }
         
@@ -354,7 +362,7 @@
         .modal { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 2000; align-items: center; justify-content: center; background: rgba(0,0,0,0.75); }
         .modal.active { display: flex; }
         .modal-content { 
-            background: white; 
+            background: var(--tg-theme-secondary-bg-color, white); 
             padding: 30px; 
             border-radius: 20px; 
             max-width: 550px; 
@@ -364,10 +372,10 @@
             animation: slideIn 0.35s; 
         }
         @keyframes slideIn { from { opacity: 0; transform: translateY(-30px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
-        .modal-close { float: right; font-size: 28px; cursor: pointer; color: #718096; transition: all 0.3s; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 300; }
-        .modal-close:hover { background: #f7fafc; transform: rotate(90deg); color: #d4145a; }
-        .modal-title { font-size: 24px; margin-bottom: 8px; text-align: center; font-weight: 800; }
-        .modal-subtitle { text-align: center; color: #718096; margin-bottom: 24px; font-size: 14px; }
+        .modal-close { float: right; font-size: 28px; cursor: pointer; color: var(--tg-theme-hint-color, #718096); transition: all 0.3s; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 300; }
+        .modal-close:hover { background: var(--tg-theme-bg-color, #f7fafc); transform: rotate(90deg); color: #d4145a; }
+        .modal-title { font-size: 24px; margin-bottom: 8px; text-align: center; font-weight: 800; color: var(--tg-theme-text-color, #1a202c); }
+        .modal-subtitle { text-align: center; color: var(--tg-theme-hint-color, #718096); margin-bottom: 24px; font-size: 14px; }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
         /* Lightbox */
@@ -441,12 +449,12 @@
             
             .mobile-nav-btn.secondary {
                 background: transparent;
-                color: #4a5568;
-                border: 1px solid #e2e8f0;
+                color: var(--tg-theme-text-color, #4a5568);
+                border: 1px solid var(--tg-theme-bg-color, #e2e8f0);
             }
             
             .mobile-nav-btn.secondary:hover {
-                background: #f7fafc;
+                background: var(--tg-theme-bg-color, #f7fafc);
                 color: #d4145a;
             }
             
@@ -465,7 +473,7 @@
             .mobile-nav-phone {
                 font-size: 10px;
                 font-weight: 800;
-                color: #2d3748;
+                color: var(--tg-theme-text-color, #2d3748);
             }
             
             .header {
@@ -1633,14 +1641,95 @@
         </video>
     </div>
 
+    <!-- Telegram Mini App Integration Script -->
     <script>
+        // Инициализация Telegram WebApp
+        const tg = window.Telegram?.WebApp;
+        
         document.addEventListener('DOMContentLoaded', function() {
+            // Установка минимальной даты для input type="date"
             const today = new Date().toISOString().split('T')[0];
             document.querySelectorAll('input[type="date"]').forEach(input => {
                 input.min = today;
             });
+            
+            // Инициализация масок для телефонов
             initPhoneMasks();
+            
+            // Инициализация Telegram WebApp
+            if (tg) {
+                // Разворачиваем на весь экран
+                tg.expand();
+                
+                // Применяем тему Telegram
+                applyTelegramTheme();
+                
+                // Настраиваем главную кнопку
+                setupMainButton();
+                
+                // Сообщаем о готовности
+                tg.ready();
+                
+                // Включаем подтверждение закрытия
+                tg.enableClosingConfirmation();
+                
+                console.log('✅ Telegram Mini App initialized');
+            }
         });
+        
+        // Применение темы Telegram
+        function applyTelegramTheme() {
+            if (!tg) return;
+            
+            const theme = tg.themeParams;
+            
+            // Применяем цвета темы
+            document.documentElement.style.setProperty('--tg-theme-bg-color', theme.bg_color || '#f8f9fa');
+            document.documentElement.style.setProperty('--tg-theme-text-color', theme.text_color || '#2d3748');
+            document.documentElement.style.setProperty('--tg-theme-hint-color', theme.hint_color || '#4a5568');
+            document.documentElement.style.setProperty('--tg-theme-secondary-bg-color', theme.secondary_bg_color || '#ffffff');
+            
+            // Применяем к body
+            document.body.style.background = 'var(--tg-theme-bg-color)';
+            document.body.style.color = 'var(--tg-theme-text-color)';
+        }
+        
+        // Настройка главной кнопки Telegram
+        function setupMainButton() {
+            if (!tg?.MainButton) return;
+            
+            const modal = document.getElementById('extendedModal');
+            
+            // Сохраняем оригинальную функцию
+            window.originalOpenExtendedModal = window.openExtendedModal;
+            
+            window.openExtendedModal = function(program = '') {
+                modal.classList.add('active');
+                if (program) document.getElementById('ext-program').value = program;
+                
+                // Показываем MainButton
+                tg.MainButton.text = '🎉 Заказать праздник';
+                tg.MainButton.color = tg.themeParams.button_color || '#d4145a';
+                tg.MainButton.textColor = tg.themeParams.button_text_color || '#ffffff';
+                tg.MainButton.show();
+                
+                // Обработчик нажатия на MainButton
+                tg.MainButton.onClick(handleMainButtonClick);
+                
+                // Haptic feedback
+                tg.HapticFeedback?.impactOccurred('light');
+            };
+            
+            window.closeExtendedModal = function() {
+                modal.classList.remove('active');
+                tg.MainButton.hide();
+                tg.MainButton.offClick(handleMainButtonClick);
+            };
+            
+            function handleMainButtonClick() {
+                document.querySelector('#extendedModal form').requestSubmit();
+            }
+        }
         
         function initPhoneMasks() {
             const phoneInputs = document.querySelectorAll('.phone-mask');
@@ -1653,6 +1742,9 @@
                     if (!value.startsWith('7')) value = '7' + value;
                     if (value.length > 11) {
                         value = value.slice(0, 11);
+                        if (tg) {
+                            tg.HapticFeedback?.notificationOccurred('error');
+                        }
                         alert('⚠️ Номер телефона должен содержать 10 цифр после +7');
                         this.classList.add('error');
                         setTimeout(() => this.classList.remove('error'), 2000);
@@ -1677,6 +1769,22 @@
         }
         
         function openExtendedModal(program = '') {
+            // Если Telegram WebApp активен, используем его версию
+            if (tg) {
+                const modal = document.getElementById('extendedModal');
+                modal.classList.add('active');
+                if (program) document.getElementById('ext-program').value = program;
+                
+                tg.MainButton.text = '🎉 Заказать праздник';
+                tg.MainButton.color = tg.themeParams.button_color || '#d4145a';
+                tg.MainButton.textColor = tg.themeParams.button_text_color || '#ffffff';
+                tg.MainButton.show();
+                
+                tg.HapticFeedback?.impactOccurred('light');
+                return;
+            }
+            
+            // Иначе используем стандартную модалку
             document.getElementById('extendedModal').classList.add('active');
             if (program) document.getElementById('ext-program').value = program;
             setTimeout(initPhoneMasks, 100);
@@ -1688,6 +1796,9 @@
         
         function closeExtendedModal() {
             document.getElementById('extendedModal').classList.remove('active');
+            if (tg?.MainButton) {
+                tg.MainButton.hide();
+            }
         }
         
         document.getElementById('extendedModal').addEventListener('click', e => {
@@ -1734,6 +1845,7 @@
             document.getElementById('lightbox-img').src = programImages[p][i];
             document.getElementById('lightbox').classList.add('active');
             document.body.style.overflow = 'hidden';
+            if (tg) tg.HapticFeedback?.impactOccurred('light');
         }
         
         function closeLightbox() {
@@ -1747,6 +1859,7 @@
             const el = document.querySelector(`.program-image[data-program="${p}"]`);
             el.querySelector('img').src = im[currentImageIndex];
             el.querySelector('.gallery-counter').textContent = `${currentImageIndex + 1}/${im.length}`;
+            if (tg) tg.HapticFeedback?.impactOccurred('light');
         }
         
         function changeLightboxImage(d) {
@@ -1754,6 +1867,7 @@
             const im = programImages[currentProgram];
             currentImageIndex = (currentImageIndex + d + im.length) % im.length;
             document.getElementById('lightbox-img').src = im[currentImageIndex];
+            if (tg) tg.HapticFeedback?.impactOccurred('light');
         }
         
         function openVideo(p) {
@@ -1764,6 +1878,7 @@
             vm.classList.add('active');
             document.body.style.overflow = 'hidden';
             vp.play();
+            if (tg) tg.HapticFeedback?.impactOccurred('medium');
         }
         
         function closeVideo() {
@@ -1800,6 +1915,7 @@
                 e.preventDefault();
                 const t = document.querySelector(a.getAttribute('href'));
                 if(t) t.scrollIntoView({behavior: 'smooth', block: 'start'});
+                if (tg) tg.HapticFeedback?.impactOccurred('light');
             })
         );
         
@@ -1817,6 +1933,7 @@
                 alert('⚠️ Заполните ваше имя');
                 document.getElementById('quick-name').classList.add('error');
                 setTimeout(() => document.getElementById('quick-name').classList.remove('error'), 2000);
+                if (tg) tg.HapticFeedback?.notificationOccurred('error');
                 return;
             }
             
@@ -1824,6 +1941,7 @@
                 alert('⚠️ Пожалуйста, введите корректный номер телефона (10 цифр после +7)');
                 phoneInput.classList.add('error');
                 setTimeout(() => phoneInput.classList.remove('error'), 2000);
+                if (tg) tg.HapticFeedback?.notificationOccurred('error');
                 return;
             }
             
@@ -1831,6 +1949,7 @@
                 alert('⚠️ Заполните город');
                 document.getElementById('quick-city').classList.add('error');
                 setTimeout(() => document.getElementById('quick-city').classList.remove('error'), 2000);
+                if (tg) tg.HapticFeedback?.notificationOccurred('error');
                 return;
             }
             
@@ -1838,6 +1957,7 @@
                 alert('⚠️ Выберите дату праздника');
                 document.getElementById('quick-date').classList.add('error');
                 setTimeout(() => document.getElementById('quick-date').classList.remove('error'), 2000);
+                if (tg) tg.HapticFeedback?.notificationOccurred('error');
                 return;
             }
             
@@ -1873,6 +1993,7 @@
                 alert('⚠️ Заполните ваше имя');
                 document.getElementById('ext-name').classList.add('error');
                 setTimeout(() => document.getElementById('ext-name').classList.remove('error'), 2000);
+                if (tg) tg.HapticFeedback?.notificationOccurred('error');
                 return;
             }
             
@@ -1880,6 +2001,7 @@
                 alert('⚠️ Пожалуйста, введите корректный номер телефона (10 цифр после +7)');
                 phoneInput.classList.add('error');
                 setTimeout(() => phoneInput.classList.remove('error'), 2000);
+                if (tg) tg.HapticFeedback?.notificationOccurred('error');
                 return;
             }
             
@@ -1887,6 +2009,7 @@
                 alert('⚠️ Заполните город');
                 document.getElementById('ext-city').classList.add('error');
                 setTimeout(() => document.getElementById('ext-city').classList.remove('error'), 2000);
+                if (tg) tg.HapticFeedback?.notificationOccurred('error');
                 return;
             }
             
@@ -1894,6 +2017,7 @@
                 alert('⚠️ Выберите дату праздника');
                 document.getElementById('ext-date').classList.add('error');
                 setTimeout(() => document.getElementById('ext-date').classList.remove('error'), 2000);
+                if (tg) tg.HapticFeedback?.notificationOccurred('error');
                 return;
             }
             
@@ -1917,6 +2041,29 @@
             btn.textContent = '⏳ Отправка...';
             btn.disabled = true;
             
+            // Если открыто в Telegram, отправляем данные боту
+            if (tg && tg.initDataUnsafe?.user) {
+                // Отправляем данные через Telegram
+                tg.sendData(JSON.stringify(data));
+                
+                // Показываем уведомление
+                tg.showPopup({
+                    title: '✅ Заявка отправлена!',
+                    message: 'Мы свяжемся с вами в ближайшее время',
+                    buttons: [{type: 'ok'}]
+                }, () => {
+                    if (isExtended) {
+                        closeExtendedModal();
+                        form.reset();
+                    }
+                });
+                
+                btn.textContent = orig;
+                btn.disabled = false;
+                return;
+            }
+            
+            // Иначе используем Google Apps Script
             fetch('https://script.google.com/macros/s/AKfycbznwbfDyBer26J0yxh6egQFOS__38fp8k4YEQp1hUiSIB0ZvzhofnQJFGKn_g4Li_WS/exec', {
                 method: 'POST',
                 headers: {'Content-Type': 'text/plain'},
@@ -1927,17 +2074,33 @@
                 try {
                     const res = JSON.parse(t);
                     if(res.success) {
-                        alert('✅ Заявка отправлена!');
-                        form.reset();
-                        if(isExtended) closeExtendedModal();
+                        if (tg) {
+                            tg.showPopup({
+                                title: '✅ Заявка отправлена!',
+                                message: 'Мы свяжемся с вами в ближайшее время',
+                                buttons: [{type: 'ok'}]
+                            }, () => {
+                                if (isExtended) closeExtendedModal();
+                                form.reset();
+                            });
+                        } else {
+                            alert('✅ Заявка отправлена!');
+                            form.reset();
+                            if (isExtended) closeExtendedModal();
+                        }
                     } else {
                         alert('⚠️ ' + (res.error || 'Ошибка'));
+                        if (tg) tg.HapticFeedback?.notificationOccurred('error');
                     }
                 } catch {
                     alert('❌ Ошибка: ' + t);
+                    if (tg) tg.HapticFeedback?.notificationOccurred('error');
                 }
             })
-            .catch(err => alert('❌ ' + err.message))
+            .catch(err => {
+                alert('❌ ' + err.message);
+                if (tg) tg.HapticFeedback?.notificationOccurred('error');
+            })
             .finally(() => {
                 btn.textContent = orig;
                 btn.disabled = false;
