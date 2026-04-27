@@ -2041,6 +2041,22 @@
             btn.textContent = '⏳ Отправка...';
             btn.disabled = true;
             
+            // === ОПРЕДЕЛЕНИЕ ИСТОЧНИКА ===
+            const tg = window.Telegram?.WebApp;
+            
+            if (tg && tg.initDataUnsafe && tg.initDataUnsafe.user) {
+                // Заявка из Telegram Mini App
+                data.telegram_id = tg.initDataUnsafe.user.id;
+                data.telegram_username = tg.initDataUnsafe.user.username || '-';
+                data.source = '📱 Telegram Mini App';
+            } else {
+                // Заявка с обычного сайта
+                data.telegram_id = '-';
+                data.telegram_username = '-';
+                data.source = '🌐 Сайт';
+            }
+            // === КОНЕЦ БЛОКА ===
+            
             // Если открыто в Telegram, отправляем данные боту
             if (tg && tg.initDataUnsafe?.user) {
                 // Отправляем данные через Telegram
@@ -2074,33 +2090,17 @@
                 try {
                     const res = JSON.parse(t);
                     if(res.success) {
-                        if (tg) {
-                            tg.showPopup({
-                                title: '✅ Заявка отправлена!',
-                                message: 'Мы свяжемся с вами в ближайшее время',
-                                buttons: [{type: 'ok'}]
-                            }, () => {
-                                if (isExtended) closeExtendedModal();
-                                form.reset();
-                            });
-                        } else {
-                            alert('✅ Заявка отправлена!');
-                            form.reset();
-                            if (isExtended) closeExtendedModal();
-                        }
+                        alert('✅ Заявка отправлена!');
+                        form.reset();
+                        if (isExtended) closeExtendedModal();
                     } else {
                         alert('⚠️ ' + (res.error || 'Ошибка'));
-                        if (tg) tg.HapticFeedback?.notificationOccurred('error');
                     }
                 } catch {
                     alert('❌ Ошибка: ' + t);
-                    if (tg) tg.HapticFeedback?.notificationOccurred('error');
                 }
             })
-            .catch(err => {
-                alert('❌ ' + err.message);
-                if (tg) tg.HapticFeedback?.notificationOccurred('error');
-            })
+            .catch(err => alert('❌ ' + err.message))
             .finally(() => {
                 btn.textContent = orig;
                 btn.disabled = false;
