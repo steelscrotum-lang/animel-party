@@ -2041,63 +2041,22 @@
             btn.textContent = '⏳ Отправка...';
             btn.disabled = true;
             
-            // === ОПРЕДЕЛЕНИЕ ИСТОЧНИКА (ИСПРАВЛЕНО) ===
             const tg = window.Telegram?.WebApp;
             
-            // Логирование для отладки
-            console.log('Telegram WebApp:', tg);
-            console.log('initDataUnsafe:', tg?.initDataUnsafe);
-            console.log('User:', tg?.initDataUnsafe?.user);
-            
-            // Проверяем несколькими способами
-            const isTelegramApp = tg && (
-                (tg.initDataUnsafe && tg.initDataUnsafe.user) ||  // Способ 1: есть пользователь
-                tg.initData ||                                     // Способ 2: есть initData
-                window.location.href.includes('t.me')             // Способ 3: URL содержит t.me
-            );
-            
-            if (isTelegramApp) {
-                // Заявка из Telegram Mini App
-                if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
-                    data.telegram_id = tg.initDataUnsafe.user.id;
-                    data.telegram_username = tg.initDataUnsafe.user.username || '-';
-                } else {
-                    data.telegram_id = 'pending';  // Временно, если пользователь ещё не доступен
-                    data.telegram_username = '-';
-                }
+            // === ОПРЕДЕЛЕНИЕ TELEGRAM ДАННЫХ ===
+            if (tg && tg.initDataUnsafe?.user) {
+                data.telegram_id = tg.initDataUnsafe.user.id;
+                data.telegram_username = tg.initDataUnsafe.user.username || '-';
                 data.source = '📱 Telegram Mini App';
-                console.log('✅ Источник: Telegram Mini App');
             } else {
-                // Заявка с обычного сайта
                 data.telegram_id = '-';
                 data.telegram_username = '-';
                 data.source = '🌐 Сайт';
-                console.log('✅ Источник: Сайт');
             }
             // === КОНЕЦ БЛОКА ===
             
-            // Если открыто в Telegram, отправляем данные боту
-            if (tg && tg.initDataUnsafe?.user) {
-                tg.sendData(JSON.stringify(data));
-                
-                tg.showPopup({
-                    title: '✅ Заявка отправлена!',
-                    message: 'Мы свяжемся с вами в ближайшее время',
-                    buttons: [{type: 'ok'}]
-                }, () => {
-                    if (isExtended) {
-                        closeExtendedModal();
-                        form.reset();
-                    }
-                });
-                
-                btn.textContent = orig;
-                btn.disabled = false;
-                return;
-            }
-            
-            // Иначе используем Google Apps Script
-            fetch('https://script.google.com/macros/s/AKfycbwGAsnAu4i7L9fq_76clzbDXEDIhACmAoZjOh17oUua4u0A5J5Pg9HbgIbd8Iq_MJl0/exec', {
+            // === ОТПРАВКА В GOOGLE APPS SCRIPT (ВСЕГДА!) ===
+            fetch('https://script.google.com/macros/s/AKfycbznwbfDyBer26J0yxh6egQFOS__38fp8k4YEQp1hUiSIB0ZvzhofnQJFGKn_g4Li_WS/exec', {
                 method: 'POST',
                 headers: {'Content-Type': 'text/plain'},
                 body: JSON.stringify(data)
@@ -2107,7 +2066,9 @@
                 try {
                     const res = JSON.parse(t);
                     if(res.success) {
+                        // === УВЕДОМЛЕНИЕ ===
                         if (tg) {
+                            // В Telegram показываем popup
                             tg.showPopup({
                                 title: '✅ Заявка отправлена!',
                                 message: 'Мы свяжемся с вами в ближайшее время',
@@ -2117,23 +2078,29 @@
                                 form.reset();
                             });
                         } else {
+                            // На сайте показываем alert
                             alert('✅ Заявка отправлена!');
                             form.reset();
                             if (isExtended) closeExtendedModal();
                         }
                     } else {
                         alert('⚠️ ' + (res.error || 'Ошибка'));
+                        if (tg) tg.HapticFeedback?.notificationOccurred('error');
                     }
                 } catch {
                     alert('❌ Ошибка: ' + t);
+                    if (tg) tg.HapticFeedback?.notificationOccurred('error');
                 }
             })
-            .catch(err => alert('❌ ' + err.message))
+            .catch(err => {
+                alert('❌ ' + err.message);
+                if (tg) tg.HapticFeedback?.notificationOccurred('error');
+            })
             .finally(() => {
                 btn.textContent = orig;
                 btn.disabled = false;
             });
-        }        
+        }    
     </script>
 </body>
 </html>
