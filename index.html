@@ -1,0 +1,1948 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>АнимЭль - Агентство детских праздников в Москве</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Nunito', sans-serif;
+            color: #2d3748;
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+        img, video { max-width: 100%; height: auto; }
+
+        /* Исправление прокрутки к секциям */
+        section[id] {
+            scroll-margin-top: 100px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: sticky; top: 0; z-index: 1000;
+            padding: 12px 0;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+        .logo:hover .logo-title {
+            opacity: 0.8;
+        }
+        .logo-icon {
+            width: 48px; height: 48px;
+            background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 26px; font-weight: 800;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        .logo-text { display: flex; flex-direction: column; }
+        .logo-title {
+            font-size: 24px; font-weight: 800;
+            background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            transition: opacity 0.3s;
+        }
+        .logo-subtitle { font-size: 12px; color: #718096; }
+        .nav { display: flex; gap: 28px; }
+        .nav a {
+            text-decoration: none; color: #4a5568; font-weight: 700;
+            transition: all 0.3s; position: relative; font-size: 15px;
+        }
+        .nav a:hover { color: #d4145a; }
+        .nav a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 3px;
+            background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%);
+            transition: width 0.3s;
+        }
+        .nav a:hover::after { width: 100%; }
+        .header-phone { font-weight: 800; color: #2d3748; font-size: 17px; }
+
+        /* Hero Section */
+        .hero {
+            background: #f8f9fa;
+            padding: 55px 0 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: -40%; right: -15%;
+            width: 650px; height: 650px;
+            background: radial-gradient(circle, rgba(212, 20, 90, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero::after {
+            content: ''; position: absolute; bottom: -40%; left: -15%;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(245, 87, 108, 0.04) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero-content { position: relative; z-index: 1; text-align: center; }
+        .hero-badge {
+            display: inline-block; background: white; color: #d4145a;
+            padding: 10px 24px; border-radius: 28px;
+            font-weight: 800; font-size: 15px;
+            margin-bottom: 28px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            letter-spacing: 0.5px; text-transform: uppercase;
+        }
+        
+        /* Hero Formula */
+        .hero-formula {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: nowrap;
+            margin-bottom: 35px;
+        }
+        
+        .formula-item {
+            background: white;
+            padding: 14px 24px;
+            border-radius: 24px;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            font-size: 16px;
+            white-space: nowrap;
+        }
+        .formula-item:hover { transform: translateY(-3px); }
+        .formula-item.happy {
+            background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%);
+            color: white;
+        }
+        .formula-plus, .formula-equals { 
+            font-size: 26px; 
+            font-weight: 800; 
+            color: #d4145a;
+        }
+        
+        .hero-title {
+            font-size: 58px; font-weight: 900; line-height: 1.15;
+            margin-bottom: 22px; color: #1a202c; letter-spacing: -1px;
+        }
+        .hero-title .highlight {
+            background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero-subtitle {
+            font-size: 22px; color: #4a5568; margin-bottom: 40px;
+            max-width: 750px; margin-left: auto; margin-right: auto;
+            font-weight: 600; line-height: 1.5;
+        }
+        .hero-buttons {
+            display: flex; gap: 24px; justify-content: center;
+            margin-bottom: 35px; flex-wrap: wrap;
+        }
+        .btn {
+            padding: 16px 34px; border: none; border-radius: 28px;
+            font-weight: 700; font-size: 16px; cursor: pointer;
+            transition: all 0.3s; text-decoration: none; display: inline-block;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%);
+            color: white; box-shadow: 0 6px 20px rgba(212, 20, 90, 0.4);
+        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(212, 20, 90, 0.5); }
+        .btn-secondary {
+            background: white; color: #d4145a; border: 2.5px solid #d4145a;
+            font-weight: 800;
+        }
+        .btn-secondary:hover { background: #d4145a; color: white; }
+        
+        .hero-buttons .btn-primary { padding: 22px 55px; font-size: 22px; font-weight: 800; letter-spacing: 0.5px; }
+        .hero-buttons .btn-secondary { padding: 20px 48px; font-size: 20px; font-weight: 800; border-width: 3px; }
+
+        .hero-features { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-bottom: 0; }
+        .feature { display: flex; align-items: center; gap: 10px; font-weight: 700; color: #4a5568; font-size: 17px; }
+        .feature-icon { font-size: 30px; }
+        .rating-link { color: inherit; text-decoration: none; cursor: pointer; transition: all 0.3s; font-weight: 800; color: #d4145a; }
+        .rating-link:hover { text-decoration: underline; }
+
+        /* Programs Section */
+        .programs { padding: 35px 0 45px; background: #fff5f9; }
+        .section-title { font-size: 46px; font-weight: 900; text-align: center; margin-bottom: 16px; color: #1a202c; }
+        .section-subtitle { text-align: center; color: #4a5568; font-size: 20px; margin-bottom: 45px; font-weight: 500; max-width: 700px; margin-left: auto; margin-right: auto; }
+        .programs-container { position: relative; max-width: 1800px; margin: 0 auto; padding: 0 70px; }
+        .programs-wrapper { overflow-x: auto; overflow-y: hidden; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; }
+        .programs-wrapper::-webkit-scrollbar { display: none; }
+        .programs-grid { display: flex; gap: 24px; width: max-content; }
+        .program-card { flex: 0 0 310px; background: white; border-radius: 18px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: all 0.3s; }
+        .program-card:hover { transform: translateY(-8px); box-shadow: 0 18px 40px rgba(0,0,0,0.12); }
+        .program-image { height: 180px; display: flex; align-items: center; justify-content: center; font-size: 70px; position: relative; overflow: hidden; cursor: pointer; }
+        .program-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+        .program-image:hover img { transform: scale(1.04); }
+        .gallery-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.95); border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; transition: all 0.3s; box-shadow: 0 2px 8px rgba(0,0,0,0.15); z-index: 2; }
+        .gallery-nav:hover { background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.25); }
+        .gallery-nav.prev { left: 8px; }
+        .gallery-nav.next { right: 8px; }
+        .gallery-counter { position: absolute; bottom: 8px; right: 8px; background: rgba(0, 0, 0, 0.7); color: white; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+        .video-btn { position: absolute; bottom: 8px; left: 8px; background: rgba(212, 20, 90, 0.95); color: white; border: none; padding: 7px 14px; border-radius: 18px; cursor: pointer; font-weight: 700; font-size: 13px; display: flex; align-items: center; gap: 5px; transition: all 0.3s; z-index: 2; }
+        .video-btn:hover { background: #d4145a; transform: scale(1.05); }
+        .scroll-btn { position: absolute; top: 50%; transform: translateY(-50%); background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; font-size: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(212, 20, 90, 0.4); z-index: 10; transition: all 0.3s; }
+        .scroll-btn:hover { transform: translateY(-50%) scale(1.1); box-shadow: 0 6px 20px rgba(212, 20, 90, 0.6); }
+        .scroll-btn.prev { left: 0; }
+        .scroll-btn.next { right: 0; }
+        .program-content { padding: 18px; }
+        .program-content h3 { font-size: 22px; margin-bottom: 8px; color: #1a202c; font-weight: 800; }
+        .program-content p { color: #4a5568; margin-bottom: 12px; font-size: 14px; line-height: 1.5; }
+        .program-features, .pricing-features { list-style: none; margin-bottom: 14px; }
+        .program-features li, .pricing-features li { padding: 4px 0; color: #4a5568; font-size: 14px; display: flex; align-items: flex-start; font-weight: 600; }
+        .program-features li::before, .pricing-features li::before { content: '✓ '; color: #38a169; font-weight: 800; margin-right: 5px; flex-shrink: 0; }
+        .pricing-features li { padding: 6px 0; border-bottom: 1px solid #f0f4f8; line-height: 1.35; }
+        .pricing-features li:last-child { border-bottom: none; }
+        .program-price { font-size: 26px; font-weight: 900; color: #d4145a; margin-bottom: 12px; }
+
+        /* Gradient backgrounds */
+        .gradient-1 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .gradient-2 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .gradient-3 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .gradient-4 { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .gradient-5 { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+        .gradient-6 { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); }
+        .gradient-7 { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); }
+        .gradient-8 { background: linear-gradient(135deg, #a8c0ff 0%, #3f2b96 100%); }
+        .gradient-9 { background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%); }
+        .gradient-10 { background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%); }
+        .gradient-11 { background: linear-gradient(135deg, #f5af19 0%, #f12711 100%); }
+
+        /* About Section */
+        .about { padding: 55px 0; background: #ffffff; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 45px; align-items: center; }
+        .about-text { font-size: 19px; color: #4a5568; margin-bottom: 24px; line-height: 1.75; }
+        .about-features { display: grid; gap: 18px; }
+        .about-feature { display: flex; gap: 14px; align-items: flex-start; }
+        .about-feature-icon { width: 28px; height: 28px; background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 800; font-size: 16px; }
+        .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+        .stat-card { background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%); color: white; padding: 30px 22px; border-radius: 18px; text-align: center; box-shadow: 0 10px 28px rgba(212, 20, 90, 0.3); }
+        .stat-number { font-size: 44px; font-weight: 900; margin-bottom: 8px; }
+        .stat-card div:last-child { font-weight: 700; font-size: 15px; }
+
+        /* Pricing Section */
+        .pricing { 
+            padding: 25px 0 20px; 
+            background: linear-gradient(180deg, #fef6fb 0%, #fff5f9 100%); 
+            position: relative; 
+            overflow: visible !important;
+        }
+        .pricing .container { max-width: 1600px; margin: 0 auto; padding: 0 20px; }
+        .pricing .section-title { font-size: 46px; font-weight: 900; text-align: center; margin-bottom: 10px; color: #1a202c; }
+        .pricing .section-subtitle { text-align: center; color: #4a5568; font-size: 20px; margin-bottom: 25px; max-width: 750px; margin-left: auto; margin-right: auto; }
+        .pricing-wrapper { 
+            overflow-x: auto; 
+            overflow-y: visible !important; 
+            -webkit-overflow-scrolling: touch; 
+            scrollbar-width: thin; 
+            scrollbar-color: #d4145a rgba(0,0,0,0.1); 
+            padding: 35px 0 10px;
+        }
+        .pricing-wrapper::-webkit-scrollbar { height: 8px; }
+        .pricing-wrapper::-webkit-scrollbar-track { background: rgba(0,0,0,0.08); border-radius: 10px; margin: 0 35px; }
+        .pricing-wrapper::-webkit-scrollbar-thumb { background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%); border-radius: 10px; }
+        .pricing-grid { display: flex; flex-direction: row; gap: 22px; padding: 0 35px 18px; min-width: max-content; width: fit-content; margin: 0 auto; }
+        .pricing-card { 
+            flex: 0 0 265px; 
+            width: 265px; 
+            background: white; 
+            border-radius: 18px; 
+            padding: 26px 18px; 
+            box-shadow: 0 10px 28px rgba(0,0,0,0.07); 
+            position: relative; 
+            transition: all 0.3s ease; 
+            display: flex; 
+            flex-direction: column; 
+            overflow: visible !important;
+        }
+        .pricing-card:hover { transform: translateY(-6px); box-shadow: 0 18px 35px rgba(0,0,0,0.1); }
+        .pricing-card.popular { 
+            border: 3px solid #d4145a; 
+            transform: scale(1.04); 
+            padding-top: 35px;
+        }
+        .pricing-card.popular:hover { transform: scale(1.04) translateY(-6px); }
+        .popular-badge { 
+            position: absolute; 
+            top: -14px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%); 
+            color: white; 
+            padding: 6px 22px; 
+            border-radius: 18px; 
+            font-weight: 800; 
+            font-size: 12px; 
+            text-transform: uppercase; 
+            letter-spacing: 0.6px; 
+            box-shadow: 0 4px 15px rgba(212, 20, 90, 0.4); 
+            white-space: nowrap; 
+            z-index: 10; 
+        }
+        .pricing-header { text-align: center; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 2px solid #f7fafc; }
+        .pricing-header h3 { font-size: 22px; font-weight: 800; color: #1a202c; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .pricing-price { font-size: 38px; font-weight: 900; background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 5px; line-height: 1; }
+        .pricing-header .price-note { color: #718096; font-size: 14px; font-weight: 500; }
+        .pricing-features { margin: 0 0 18px 0; padding: 0; flex: 1; }
+        .pricing-card .btn { width: 100%; padding: 14px 22px; border: none; border-radius: 24px; font-weight: 800; font-size: 15px; cursor: pointer; transition: all 0.3s ease; text-align: center; text-decoration: none; display: inline-block; }
+        .pricing-card .btn-primary { background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%); color: white; box-shadow: 0 4px 15px rgba(212, 20, 90, 0.3); }
+        .pricing-card .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(212, 20, 90, 0.45); }
+        .pricing-card .btn-secondary { background: white; color: #d4145a; border: 2.5px solid #d4145a; }
+        .pricing-card .btn-secondary:hover { background: #d4145a; color: white; transform: translateY(-2px); }
+
+        /* Gallery Section */
+        .gallery { padding: 55px 0; background: #fafbfc; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .gallery-item { height: 270px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 70px; transition: transform 0.3s; cursor: pointer; background-size: cover; background-position: center; }
+        .gallery-item:hover { transform: scale(1.04); }
+
+        /* Reviews Section */
+        .reviews { padding: 55px 0; background: linear-gradient(180deg, #f9f7ff 0%, #fcf9ff 100%); }
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; }
+        .review-card { background: white; padding: 28px; border-radius: 18px; box-shadow: 0 10px 28px rgba(0,0,0,0.09); }
+        .review-header { display: flex; align-items: center; gap: 14px; margin-bottom: 15px; }
+        .review-avatar { width: 48px; height: 48px; background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 17px; }
+        .review-rating { color: #fbbf24; font-size: 18px; }
+        .review-text { color: #4a5568; font-style: italic; line-height: 1.7; font-size: 16px; }
+
+        /* Contacts Section */
+        .contacts { padding: 55px 0; background: #ffffff; }
+        .contacts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+        .contact-item { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 24px; }
+        .contact-icon { font-size: 28px; }
+        .contact-label { font-weight: 800; margin-bottom: 5px; font-size: 17px; color: #1a202c; }
+        .contact-value { color: #4a5568; font-size: 17px; font-weight: 600; }
+        .social-links { display: flex; gap: 15px; margin-top: 28px; }
+        .social-link { padding: 12px 24px; background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%); color: white; text-decoration: none; border-radius: 24px; font-weight: 700; transition: transform 0.3s; font-size: 15px; }
+        .social-link:hover { transform: translateY(-3px); }
+        .contact-form { background: white; padding: 35px; border-radius: 18px; box-shadow: 0 10px 28px rgba(0,0,0,0.09); }
+        .contact-form h3 { margin-bottom: 22px; font-size: 24px; color: #1a202c; font-weight: 800; }
+        .form-group { margin-bottom: 16px; }
+        .form-input { width: 100%; padding: 12px 14px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 15px; font-family: inherit; transition: border-color 0.3s; }
+        .form-input:focus { outline: none; border-color: #d4145a; }
+        .form-input.error { border-color: #e53e3e; background: #fff5f5; }
+        .form-label { display: block; margin-bottom: 5px; font-weight: 600; color: #2d3748; font-size: 13px; }
+        .form-label .required { color: #d4145a; margin-left: 2px; }
+        .form-label .optional { color: #a0aec0; font-weight: 400; margin-left: 4px; }
+        
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        /* Footer */
+        .footer { background: #2d3748; color: white; padding: 50px 0 25px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 45px; margin-bottom: 30px; }
+        .footer-logo { display: flex; align-items: center; gap: 12px; }
+        .footer-links a { display: block; color: #a0aec0; text-decoration: none; margin-bottom: 10px; transition: color 0.3s; font-size: 15px; font-weight: 600; }
+        .footer-links a:hover { color: white; }
+        .footer-bottom { text-align: center; padding-top: 25px; border-top: 1px solid #4a5568; color: #a0aec0; font-size: 14px; }
+
+        /* Modal */
+        .modal { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 2000; align-items: center; justify-content: center; background: rgba(0,0,0,0.75); }
+        .modal.active { display: flex; }
+        .modal-content { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 20px; 
+            max-width: 550px; 
+            width: 92%; 
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideIn 0.35s; 
+        }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(-30px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        .modal-close { float: right; font-size: 28px; cursor: pointer; color: #718096; transition: all 0.3s; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 300; }
+        .modal-close:hover { background: #f7fafc; transform: rotate(90deg); color: #d4145a; }
+        .modal-title { font-size: 24px; margin-bottom: 8px; text-align: center; font-weight: 800; }
+        .modal-subtitle { text-align: center; color: #718096; margin-bottom: 24px; font-size: 14px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+        /* Lightbox */
+        .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); z-index: 3000; align-items: center; justify-content: center; }
+        .lightbox.active { display: flex; }
+        .lightbox-img, .lightbox-video { max-width: 92%; max-height: 92%; border-radius: 12px; object-fit: contain; }
+        .lightbox-close { position: absolute; top: 20px; right: 35px; color: white; font-size: 38px; cursor: pointer; background: none; border: none; transition: transform 0.3s; }
+        .lightbox-close:hover { transform: rotate(90deg) scale(1.1); }
+        .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.2); border: 2px solid rgba(255,255,255,0.3); width: 48px; height: 48px; border-radius: 50%; cursor: pointer; font-size: 22px; color: white; transition: all 0.3s; display: flex; align-items: center; justify-content: center; }
+        .lightbox-nav:hover { background: rgba(255, 255, 255, 0.4); transform: translateY(-50%) scale(1.1); }
+        .lightbox-nav.prev { left: 20px; }
+        .lightbox-nav.next { right: 20px; }
+
+        /* ========================================
+           МОБИЛЬНАЯ АДАПТАЦИЯ
+           ======================================== */
+        @media (max-width: 768px) {
+            section[id] {
+                scroll-margin-top: 80px;
+            }
+            
+            .nav { display: none !important; }
+            .header-phone { display: none !important; }
+            
+            .logo-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 19px;
+            }
+            .logo-title {
+                font-size: 16px;
+            }
+            .logo-subtitle {
+                font-size: 9px;
+            }
+            
+            .mobile-nav {
+                display: flex !important;
+                flex-direction: column;
+                gap: 4px;
+                margin-left: 8px;
+            }
+            
+            .mobile-nav-row {
+                display: flex;
+                gap: 4px;
+            }
+            
+            .mobile-nav-row.top {
+                justify-content: flex-end;
+            }
+            
+            .mobile-nav-btn {
+                padding: 5px 10px;
+                border-radius: 16px;
+                font-size: 10px;
+                font-weight: 700;
+                text-decoration: none;
+                text-align: center;
+                transition: all 0.3s;
+                white-space: nowrap;
+            }
+            
+            .mobile-nav-btn.primary {
+                background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%);
+                color: white;
+                box-shadow: 0 2px 6px rgba(212, 20, 90, 0.3);
+                padding: 6px 12px;
+                font-size: 11px;
+            }
+            
+            .mobile-nav-btn.secondary {
+                background: transparent;
+                color: #4a5568;
+                border: 1px solid #e2e8f0;
+            }
+            
+            .mobile-nav-btn.secondary:hover {
+                background: #f7fafc;
+                color: #d4145a;
+            }
+            
+            .mobile-nav-row.bottom {
+                justify-content: flex-end;
+                align-items: center;
+                gap: 3px;
+            }
+            
+            .mobile-nav-phone-row {
+                width: 100%;
+                text-align: right;
+                margin-top: 2px;
+            }
+            
+            .mobile-nav-phone {
+                font-size: 10px;
+                font-weight: 800;
+                color: #2d3748;
+            }
+            
+            .header {
+                padding: 8px 0;
+            }
+            
+            .hero { 
+                padding: 20px 0 15px; 
+            }
+            .hero-badge {
+                padding: 6px 12px;
+                font-size: 10px;
+                margin-bottom: 10px;
+            }
+            
+            /* Формула - ИСПРАВЛЕНО ДЛЯ МОБИЛЬНОГО */
+            .hero-formula {
+                display: grid;
+                grid-template-columns: 1fr auto 1fr auto 1fr;
+                gap: 3px;
+                margin-bottom: 15px;
+                padding: 0 5px;
+            }
+
+            .formula-item:not(.happy) {
+                font-size: 10px;
+                padding: 5px 6px;
+                min-width: 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            .formula-plus {
+                font-size: 14px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* Вторая строка - центрированная */
+            .formula-equals {
+                grid-column: 1 / -1;
+                grid-row: 2;
+                font-size: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                margin-top: 10px;
+            }
+
+            .formula-item.happy {
+                grid-column: 1 / -1;
+                grid-row: 2;
+                font-size: 11px;
+                padding: 7px 12px;
+                margin-top: 10px;
+                justify-self: center;
+                min-width: 0;
+            }
+            
+            .hero-title { 
+                font-size: 24px;
+                margin-bottom: 8px;
+            }
+            .hero-subtitle { 
+                font-size: 13px;
+                margin-bottom: 12px;
+                padding: 0 6px;
+            }
+            
+            .hero-buttons {
+                flex-direction: row;
+                gap: 8px;
+                margin-bottom: 12px;
+                padding: 0 10px;
+                justify-content: center;
+            }
+            .hero-buttons .btn-primary,
+            .hero-buttons .btn-secondary { 
+                flex: 1;
+                min-width: 0;
+                padding: 10px 12px; 
+                font-size: 13px;
+                white-space: nowrap;
+            }
+            
+            .hero-features { 
+                flex-direction: row;
+                justify-content: center;
+                gap: 10px; 
+                margin-top: 10px;
+                flex-wrap: wrap;
+            }
+            .feature {
+                font-size: 11px;
+                gap: 5px;
+            }
+            .feature-icon {
+                font-size: 18px;
+            }
+            
+            /* Programs */
+            .programs { 
+                padding: 20px 0; 
+            }
+            .section-title { 
+                font-size: 22px;
+                margin-bottom: 6px;
+            }
+            .section-subtitle { 
+                font-size: 12px;
+                margin-bottom: 14px;
+                padding: 0 10px;
+            }
+            .programs-container { 
+                padding: 0 6px; 
+            }
+            .programs-wrapper {
+                overflow-x: scroll;
+                overflow-y: hidden;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                padding: 6px 0;
+            }
+            .programs-wrapper::-webkit-scrollbar { 
+                display: none; 
+            }
+            .programs-grid { 
+                display: flex;
+                flex-direction: row;
+                gap: 8px;
+                width: max-content;
+                padding: 0 6px;
+            }
+            .program-card { 
+                flex: 0 0 145px;
+                width: 145px;
+                border-radius: 12px;
+            }
+            .program-image { 
+                height: 90px;
+                font-size: 40px;
+            }
+            .program-content { 
+                padding: 7px; 
+            }
+            .program-content h3 { 
+                font-size: 12px;
+                margin-bottom: 3px;
+            }
+            .program-content p { 
+                font-size: 9px;
+                margin-bottom: 5px;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+            .program-features { 
+                margin-bottom: 5px;
+            }
+            .program-features li { 
+                font-size: 8px;
+                padding: 1px 0;
+            }
+            .program-price { 
+                font-size: 14px;
+                margin-bottom: 5px;
+            }
+            .program-card .btn {
+                padding: 6px 8px;
+                font-size: 10px;
+                border-radius: 14px;
+            }
+            .scroll-btn { 
+                display: none; 
+            }
+            .gallery-nav {
+                width: 22px;
+                height: 22px;
+                font-size: 11px;
+            }
+            .gallery-counter {
+                font-size: 8px;
+                padding: 2px 5px;
+            }
+            .video-btn {
+                padding: 3px 7px;
+                font-size: 9px;
+            }
+            
+            /* Pricing */
+            .pricing { 
+                padding: 20px 0 15px;
+                overflow: visible !important;
+            }
+            .pricing .section-title {
+                font-size: 22px;
+                margin-bottom: 5px;
+            }
+            .pricing .section-subtitle {
+                font-size: 12px;
+                padding: 0 10px;
+                margin-bottom: 15px;
+            }
+            .pricing-wrapper {
+                overflow-x: scroll;
+                overflow-y: visible !important;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                padding: 30px 0 5px;
+            }
+            .pricing-wrapper::-webkit-scrollbar {
+                display: none;
+            }
+            .pricing-grid { 
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+                padding: 0 6px;
+                width: max-content;
+            }
+            .pricing-card { 
+                flex: 0 0 145px;
+                width: 145px;
+                padding: 10px 7px;
+                border-radius: 12px;
+                overflow: visible !important;
+            }
+            .pricing-card.popular {
+                transform: scale(1);
+                border: 2px solid #d4145a;
+                padding-top: 30px;
+            }
+            .popular-badge {
+                padding: 4px 12px;
+                font-size: 9px;
+                top: -12px;
+            }
+            .pricing-header {
+                margin-bottom: 7px;
+                padding-bottom: 5px;
+            }
+            .pricing-header h3 {
+                font-size: 11px;
+                margin-bottom: 4px;
+            }
+            .pricing-price {
+                font-size: 18px;
+            }
+            .pricing-header .price-note {
+                font-size: 8px;
+            }
+            .pricing-features {
+                margin-bottom: 7px;
+            }
+            .pricing-features li {
+                font-size: 8px;
+                padding: 2px 0;
+            }
+            .pricing-card .btn {
+                padding: 6px 8px;
+                font-size: 10px;
+                border-radius: 14px;
+            }
+            
+            /* Gallery */
+            .gallery { 
+                padding: 20px 0; 
+            }
+            .gallery-grid {
+                display: flex;
+                flex-direction: row;
+                gap: 6px;
+                overflow-x: scroll;
+                overflow-y: hidden;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                padding: 6px;
+            }
+            .gallery-grid::-webkit-scrollbar {
+                display: none;
+            }
+            .gallery-item {
+                flex: 0 0 135px;
+                width: 135px;
+                height: 135px;
+                border-radius: 12px;
+            }
+            
+            /* Reviews */
+            .reviews { 
+                padding: 20px 0; 
+            }
+            .reviews .section-title {
+                font-size: 22px;
+            }
+            .reviews .section-subtitle {
+                font-size: 12px;
+                padding: 0 10px;
+            }
+            .reviews-wrapper {
+                overflow-x: scroll;
+                overflow-y: hidden;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                padding: 6px 0;
+            }
+            .reviews-wrapper::-webkit-scrollbar {
+                display: none;
+            }
+            .reviews-grid {
+                display: flex;
+                flex-direction: row;
+                gap: 8px;
+                padding: 0 6px;
+                width: max-content;
+            }
+            .review-card {
+                flex: 0 0 240px;
+                width: 240px;
+                padding: 13px;
+                border-radius: 12px;
+            }
+            .review-header {
+                margin-bottom: 7px;
+            }
+            .review-avatar {
+                width: 30px;
+                height: 30px;
+                font-size: 12px;
+            }
+            .review-header div div:first-child {
+                font-size: 12px;
+            }
+            .review-rating {
+                font-size: 12px;
+            }
+            .review-text {
+                font-size: 10px;
+                line-height: 1.35;
+            }
+            
+            /* About */
+            .about { 
+                padding: 20px 0; 
+            }
+            .about-grid { 
+                grid-template-columns: 1fr; 
+                gap: 18px; 
+            }
+            .about-stats {
+                grid-template-columns: 1fr 1fr;
+                gap: 7px;
+            }
+            .stat-card {
+                padding: 13px 9px;
+            }
+            .stat-number {
+                font-size: 26px;
+            }
+            .stat-card div:last-child {
+                font-size: 10px;
+            }
+            .about-text {
+                font-size: 12px;
+            }
+            .about-feature p {
+                font-size: 10px;
+            }
+            
+            /* Contacts */
+            .contacts { 
+                padding: 20px 0; 
+            }
+            .contacts .section-title {
+                font-size: 22px;
+                margin-bottom: 5px;
+            }
+            .contacts .section-subtitle {
+                font-size: 12px;
+                margin-bottom: 12px;
+            }
+            .contacts-grid { 
+                grid-template-columns: 1fr; 
+                gap: 15px; 
+            }
+            .contact-item {
+                margin-bottom: 12px;
+                gap: 10px;
+            }
+            .contact-icon {
+                font-size: 22px;
+            }
+            .contact-label {
+                font-size: 14px;
+                margin-bottom: 3px;
+            }
+            .contact-value {
+                font-size: 14px;
+            }
+            .social-links {
+                margin-top: 15px;
+                gap: 6px;
+            }
+            .social-link {
+                padding: 8px 13px;
+                font-size: 11px;
+            }
+            .contact-form {
+                padding: 15px 10px;
+            }
+            .contact-form h3 {
+                font-size: 18px;
+                margin-bottom: 14px;
+            }
+            .form-group {
+                margin-bottom: 10px;
+            }
+            .form-input {
+                padding: 10px 12px;
+                font-size: 13px;
+            }
+            .form-label {
+                font-size: 11px;
+            }
+            
+            /* Footer */
+            .footer { 
+                padding: 20px 0 10px; 
+            }
+            .footer-grid { 
+                grid-template-columns: 1fr; 
+                text-align: center; 
+                gap: 12px; 
+            }
+            .footer-logo {
+                justify-content: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .footer-links {
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .footer-links a {
+                text-align: center;
+            }
+            
+            /* Modal */
+            .modal-content { 
+                padding: 16px 10px;
+                width: 95%;
+            }
+            .modal-title {
+                font-size: 17px;
+            }
+            .form-row { 
+                grid-template-columns: 1fr; 
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container { 
+                padding: 0 6px; 
+            }
+            .hero { 
+                padding: 12px 0 6px; 
+            }
+            .hero-title { 
+                font-size: 20px; 
+            }
+            .hero-subtitle { 
+                font-size: 12px; 
+            }
+            .section-title { 
+                font-size: 19px; 
+            }
+            .section-subtitle { 
+                font-size: 11px; 
+            }
+            .program-card {
+                flex: 0 0 135px;
+                width: 135px;
+            }
+            .program-image { 
+                height: 80px; 
+            }
+            .program-content h3 { 
+                font-size: 11px; 
+            }
+            .program-price { 
+                font-size: 13px; 
+            }
+            .pricing-card {
+                flex: 0 0 135px;
+                width: 135px;
+            }
+            .pricing-price {
+                font-size: 16px;
+            }
+            .gallery-item { 
+                flex: 0 0 125px;
+                width: 125px;
+                height: 125px;
+            }
+            .review-card {
+                flex: 0 0 220px;
+                width: 220px;
+            }
+            .logo-icon {
+                width: 32px;
+                height: 32px;
+                font-size: 17px;
+            }
+            .logo-title {
+                font-size: 14px;
+            }
+            .mobile-nav-btn {
+                padding: 3px 6px;
+                font-size: 8px;
+            }
+            .mobile-nav-btn.primary {
+                padding: 5px 10px;
+                font-size: 9px;
+            }
+            .mobile-nav-phone {
+                font-size: 9px;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .mobile-nav {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Логотип с кликом наверх -->
+                <div class="logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                    <div class="logo-icon">А</div>
+                    <div class="logo-text">
+                        <span class="logo-title">АнимЭль</span>
+                        <span class="logo-subtitle">агентство праздников</span>
+                    </div>
+                </div>
+                
+                <!-- Мобильная навигация -->
+                <nav class="mobile-nav">
+                    <div class="mobile-nav-row top">
+                        <a href="#programs" class="mobile-nav-btn primary">Программы вечеринок</a>
+                        <a href="#pricing" class="mobile-nav-btn primary">Программы анимации</a>
+                    </div>
+                    <div class="mobile-nav-row bottom">
+                        <a href="#about" class="mobile-nav-btn secondary">О нас</a>
+                        <a href="#gallery" class="mobile-nav-btn secondary">Галерея</a>
+                        <a href="#contacts" class="mobile-nav-btn secondary">Контакты</a>
+                    </div>
+                    <div class="mobile-nav-phone-row">
+                        <span class="mobile-nav-phone">+7 (906) 710-22-27</span>
+                    </div>
+                </nav>
+                
+                <!-- Десктопная навигация -->
+                <nav class="nav">
+                    <a href="#programs">Программы вечеринок</a>
+                    <a href="#pricing">Программы анимации</a>
+                    <a href="#about">О нас</a>
+                    <a href="#gallery">Галерея</a>
+                    <a href="#contacts">Контакты</a>
+                </nav>
+                <span class="header-phone">+7 (906) 710-22-27</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">АГЕНТСТВО ПРАЗДНИКОВ АНИМЭЛЬ</div>
+                
+                <!-- Формула - В ОДНУ СТРОКУ НА ПК -->
+                <div class="hero-formula">
+                    <div class="formula-item">яркие программы</div>
+                    <div class="formula-plus">+</div>
+                    <div class="formula-item">опытные аниматоры</div>
+                    <div class="formula-plus">+</div>
+                    <div class="formula-item">креативный подход</div>
+                    <div class="formula-equals">=</div>
+                    <div class="formula-item happy">счастливый ребёнок 😊</div>
+                </div>
+                
+                <h1 class="hero-title">Дети в восторге,<br><span class="highlight">родители спокойны</span></h1>
+                <p class="hero-subtitle">Организация и проведение детских дней рождения, праздников и мероприятий в Москве и Московской области</p>
+                
+                <div class="hero-buttons">
+                    <a href="#programs" class="btn btn-primary">Наши программы</a>
+                    <button class="btn btn-secondary" onclick="openExtendedModal()">Заказать праздник</button>
+                </div>
+                
+                <div class="hero-features">
+                    <div class="feature"><span class="feature-icon">🎭</span><span>50+ программ</span></div>
+                    <div class="feature"><span class="feature-icon">⭐</span><a href="https://www.avito.ru/brands/i322493885/all?ysclid=mnbhzgi2mi180410002&sellerId=795ea9ffbc132d84af751c9fc4f32757" target="_blank" class="rating-link">5.0 рейтинг Авито</a></div>
+                    <div class="feature"><span class="feature-icon">🎉</span><span>5000+ праздников</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="programs" id="programs">
+        <div class="container">
+            <h2 class="section-title">Программы вечеринок</h2>
+            <p class="section-subtitle">Выберите идеальную программу для вашего праздника</p>
+        </div>
+        <div class="programs-container">
+            <button class="scroll-btn prev" onclick="scrollPrograms(-1)">❮</button>
+            <div class="programs-wrapper" id="programsWrapper">
+                <div class="programs-grid">
+                    <!-- 1. Дино Парк -->
+                    <div class="program-card">
+                        <div class="program-image gradient-1" onclick="openLightbox('dino', 0)" data-program="dino">
+                            <img src="photos/dino_park_photo.jpg" alt="Дино Парк" onerror="this.style.display='none'; this.parentElement.innerHTML='🦕'">
+                            <button class="video-btn" onclick="event.stopPropagation(); openVideo('dino')">🎥 Видео</button>
+                            <button class="gallery-nav prev" onclick="event.stopPropagation(); changeImage('dino', -1)">❮</button>
+                            <button class="gallery-nav next" onclick="event.stopPropagation(); changeImage('dino', 1)">❯</button>
+                            <span class="gallery-counter">1/2</span>
+                        </div>
+                        <div class="program-content">
+                            <h3>Дино Парк</h3>
+                            <p>Интерактивная программа для детей 5-7 лет</p>
+                            <ul class="program-features">
+                                <li>Два артиста</li><li>Сюжетная линия</li><li>Ростовой динозавр</li><li>От 1.5 часов</li>
+                            </ul>
+                            <div class="program-price">от 8 000 ₽</div>
+                            <button class="btn btn-primary" onclick="openExtendedModal('Дино Парк')">Выбрать</button>
+                        </div>
+                    </div>
+                    <!-- 2. Страна Единорогов -->
+                    <div class="program-card">
+                        <div class="program-image gradient-2" onclick="openLightbox('unicorn', 0)" data-program="unicorn">
+                            <img src="photos/edinorog_state_photo.jpg" alt="Страна Единорогов" onerror="this.style.display='none'; this.parentElement.innerHTML='🦄'">
+                            <button class="video-btn" onclick="event.stopPropagation(); openVideo('unicorn')">🎥 Видео</button>
+                            <button class="gallery-nav prev" onclick="event.stopPropagation(); changeImage('unicorn', -1)">❮</button>
+                            <button class="gallery-nav next" onclick="event.stopPropagation(); changeImage('unicorn', 1)">❯</button>
+                            <span class="gallery-counter">1/2</span>
+                        </div>
+                        <div class="program-content">
+                            <h3>Страна Единорогов</h3>
+                            <p>Волшебное путешествие в сказочную страну</p>
+                            <ul class="program-features">
+                                <li>Магическое шоу</li><li>Аквагрим</li><li>Игры и танцы</li><li>От 1 часа</li>
+                            </ul>
+                            <div class="program-price">от 5 500 ₽</div>
+                            <button class="btn btn-primary" onclick="openExtendedModal('Страна Единорогов')">Выбрать</button>
+                        </div>
+                    </div>
+                    <!-- 3. Подарок Эльзы -->
+                    <div class="program-card">
+                        <div class="program-image gradient-3" onclick="openLightbox('elza', 0)" data-program="elza">
+                            <img src="photos/Elza_gift_photo.jpg" alt="Подарок Эльзы" onerror="this.style.display='none'; this.parentElement.innerHTML='❄️'">
+                            <button class="video-btn" onclick="event.stopPropagation(); openVideo('elza')">🎥 Видео</button>
+                            <button class="gallery-nav prev" onclick="event.stopPropagation(); changeImage('elza', -1)">❮</button>
+                            <button class="gallery-nav next" onclick="event.stopPropagation(); changeImage('elza', 1)">❯</button>
+                            <span class="gallery-counter">1/2</span>
+                        </div>
+                        <div class="program-content">
+                            <h3>Подарок Эльзы</h3>
+                            <p>Зимняя сказка с Эльзой и Олафом</p>
+                            <ul class="program-features">
+                                <li>Ледяные фокусы</li><li>Снежное шоу</li><li>Песни из мультфильма</li><li>От 1 часа</li>
+                            </ul>
+                            <div class="program-price">от 6 000 ₽</div>
+                            <button class="btn btn-primary" onclick="openExtendedModal('Подарок Эльзы')">Выбрать</button>
+                        </div>
+                    </div>
+                    <!-- 4. Майнкрафт -->
+                    <div class="program-card">
+                        <div class="program-image gradient-4" onclick="openLightbox('minecraft', 0)" data-program="minecraft">
+                            <img src="photos/minecraft_photo.jpg" alt="Майнкрафт" onerror="this.style.display='none'; this.parentElement.innerHTML='⛏️'">
+                            <button class="video-btn" onclick="event.stopPropagation(); openVideo('minecraft')">🎥 Видео</button>
+                            <button class="gallery-nav prev" onclick="event.stopPropagation(); changeImage('minecraft', -1)">❮</button>
+                            <button class="gallery-nav next" onclick="event.stopPropagation(); changeImage('minecraft', 1)">❯</button>
+                            <span class="gallery-counter">1/2</span>
+                        </div>
+                        <div class="program-content">
+                            <h3>Майнкрафт</h3>
+                            <p>Приключение в мире Minecraft</p>
+                            <ul class="program-features">
+                                <li>Квест-игра</li><li>Строительство</li><li>Битвы с монстрами</li><li>От 1.5 часов</li>
+                            </ul>
+                            <div class="program-price">от 7 000 ₽</div>
+                            <button class="btn btn-primary" onclick="openExtendedModal('Майнкрафт')">Выбрать</button>
+                        </div>
+                    </div>
+                    <!-- 5. Сокровища пиратов -->
+                    <div class="program-card">
+                        <div class="program-image gradient-5" onclick="openLightbox('pirates', 0)" data-program="pirates">
+                            <img src="photos/socrovisha_piratov_photo.jpg" alt="Сокровища пиратов" onerror="this.style.display='none'; this.parentElement.innerHTML='🏴☠️'">
+                            <button class="video-btn" onclick="event.stopPropagation(); openVideo('pirates')">🎥 Видео</button>
+                            <button class="gallery-nav prev" onclick="event.stopPropagation(); changeImage('pirates', -1)">❮</button>
+                            <button class="gallery-nav next" onclick="event.stopPropagation(); changeImage('pirates', 1)">❯</button>
+                            <span class="gallery-counter">1/2</span>
+                        </div>
+                        <div class="program-content">
+                            <h3>Сокровища пиратов</h3>
+                            <p>Морское приключение с поиском клада</p>
+                            <ul class="program-features">
+                                <li>Пиратский квест</li><li>Морские игры</li><li>Поиск клада</li><li>От 1.5 часов</li>
+                            </ul>
+                            <div class="program-price">от 7 000 ₽</div>
+                            <button class="btn btn-primary" onclick="openExtendedModal('Сокровища пиратов')">Выбрать</button>
+                        </div>
+                    </div>
+                    <!-- 6. Супергеройская Вечеринка -->
+                    <div class="program-card">
+                        <div class="program-image gradient-6" onclick="openLightbox('superhero', 0)" data-program="superhero">
+                            <img src="photos/superhero_party_photo.jpg" alt="Супергеройская Вечеринка" onerror="this.style.display='none'; this.parentElement.innerHTML='🦸'">
+                            <button class="video-btn" onclick="event.stopPropagation(); openVideo('superhero')">🎥 Видео</button>
+                            <button class="gallery-nav prev" onclick="event.stopPropagation(); changeImage('superhero', -1)">❮</button>
+                            <button class="gallery-nav next" onclick="event.stopPropagation(); changeImage('superhero', 1)">❯</button>
+                            <span class="gallery-counter">1/2</span>
+                        </div>
+                        <div class="program-content">
+                            <h3>Супергеройская Вечеринка</h3>
+                            <p>Человек-паук, Бэтмен и другие герои</p>
+                            <ul class="program-features">
+                                <li>Интерактивные игры</li><li>Суперспособности</li><li>Битва со злом</li><li>От 1 часа</li>
+                            </ul>
+                            <div class="program-price">от 5 000 ₽</div>
+                            <button class="btn btn-primary" onclick="openExtendedModal('Супергеройская Вечеринка')">Выбрать</button>
+                        </div>
+                    </div>
+                    <!-- 7. Футбольная вечеринка -->
+                    <div class="program-card">
+                        <div class="program-image gradient-7" onclick="openLightbox('football', 0)" data-program="football">
+                            <img src="photos/football_party_photo.jpg" alt="Футбольная вечеринка" onerror="this.style.display='none'; this.parentElement.innerHTML='⚽'">
+                            <button class="video-btn" onclick="event.stopPropagation(); openVideo('football')">🎥 Видео</button>
+                            <button class="gallery-nav prev" onclick="event.stopPropagation(); changeImage('football', -1)">❮</button>
+                            <button class="gallery-nav next" onclick="event.stopPropagation(); changeImage('football', 1)">❯</button>
+                            <span class="gallery-counter">1/2</span>
+                        </div>
+                        <div class="program-content">
+                            <h3>Футбольная вечеринка</h3>
+                            <p>Спортивный праздник для чемпионов</p>
+                            <ul class="program-features">
+                                <li>Футбольные эстафеты</li><li>Тренировка с тренером</li><li>Награждение кубком</li><li>От 1.5 часов</li>
+                            </ul>
+                            <div class="program-price">от 7 500 ₽</div>
+                            <button class="btn btn-primary" onclick="openExtendedModal('Футбольная вечеринка')">Выбрать</button>
+                        </div>
+                    </div>
+                    <!-- 8. Game Party -->
+                    <div class="program-card">
+                        <div class="program-image gradient-8" onclick="openLightbox('game', 0)" data-program="game">
+                            <img src="photos/game_party_photo.jpg" alt="Game Party" onerror="this.style.display='none'; this.parentElement.innerHTML='🎮'">
+                            <button class="video-btn" onclick="event.stopPropagation(); openVideo('game')">🎥 Видео</button>
+                            <button class="gallery-nav prev" onclick="event.stopPropagation(); changeImage('game', -1)">❮</button>
+                            <button class="gallery-nav next" onclick="event.stopPropagation(); changeImage('game', 1)">❯</button>
+                            <span class="gallery-counter">1/2</span>
+                        </div>
+                        <div class="program-content">
+                            <h3>Game Party</h3>
+                            <p>Игровая вечеринка с приставками</p>
+                            <ul class="program-features">
+                                <li>Игровые приставки</li><li>Настольные игры</li><li>Киберспортивные турниры</li><li>От 2 часов</li>
+                            </ul>
+                            <div class="program-price">от 8 500 ₽</div>
+                            <button class="btn btn-primary" onclick="openExtendedModal('Game Party')">Выбрать</button>
+                        </div>
+                    </div>
+                    <!-- 9. неДЕТское время -->
+                    <div class="program-card">
+                        <div class="program-image gradient-9" onclick="openLightbox('nokids', 0)" data-program="nokids">
+                            <img src="photos/no_kids_time_photo.jpg" alt="неДЕТское время" onerror="this.style.display='none'; this.parentElement.innerHTML='🎉'">
+                            <button class="video-btn" onclick="event.stopPropagation(); openVideo('nokids')">🎥 Видео</button>
+                            <button class="gallery-nav prev" onclick="event.stopPropagation(); changeImage('nokids', -1)">❮</button>
+                            <button class="gallery-nav next" onclick="event.stopPropagation(); changeImage('nokids', 1)">❯</button>
+                            <span class="gallery-counter">1/2</span>
+                        </div>
+                        <div class="program-content">
+                            <h3>неДЕТское время</h3>
+                            <p>Вечеринка для подростков</p>
+                            <ul class="program-features">
+                                <li>Современная музыка</li><li>Челленджи и флешмобы</li><li>Фотозона</li><li>От 2 часов</li>
+                            </ul>
+                            <div class="program-price">от 9 000 ₽</div>
+                            <button class="btn btn-primary" onclick="openExtendedModal('неДЕТское время')">Выбрать</button>
+                        </div>
+                    </div>
+                    <!-- 10. Пижамная вечеринка -->
+                    <div class="program-card">
+                        <div class="program-image gradient-10" onclick="openLightbox('pajamas', 0)" data-program="pajamas">
+                            <img src="photos/pajamas_party_photo.jpg" alt="Пижамная вечеринка" onerror="this.style.display='none'; this.parentElement.innerHTML='🌙'">
+                            <button class="video-btn" onclick="event.stopPropagation(); openVideo('pajamas')">🎥 Видео</button>
+                            <button class="gallery-nav prev" onclick="event.stopPropagation(); changeImage('pajamas', -1)">❮</button>
+                            <button class="gallery-nav next" onclick="event.stopPropagation(); changeImage('pajamas', 1)">❯</button>
+                            <span class="gallery-counter">1/2</span>
+                        </div>
+                        <div class="program-content">
+                            <h3>Пижамная вечеринка</h3>
+                            <p>Ночная вечеринка в пижамах</p>
+                            <ul class="program-features">
+                                <li>Ночные игры</li><li>Просмотр фильмов</li><li>Пицца-пати</li><li>От 3 часов</li>
+                            </ul>
+                            <div class="program-price">от 10 000 ₽</div>
+                            <button class="btn btn-primary" onclick="openExtendedModal('Пижамная вечеринка')">Выбрать</button>
+                        </div>
+                    </div>
+                    <!-- 11. Доставка с сюрпризом -->
+                    <div class="program-card">
+                        <div class="program-image gradient-11" onclick="openLightbox('surprise', 0)" data-program="surprise">
+                            <img src="photos/surprise_delivery_photo.jpg" alt="Доставка с сюрпризом" onerror="this.style.display='none'; this.parentElement.innerHTML='🎁'">
+                            <button class="video-btn" onclick="event.stopPropagation(); openVideo('surprise')">🎥 Видео</button>
+                            <button class="gallery-nav prev" onclick="event.stopPropagation(); changeImage('surprise', -1)">❮</button>
+                            <button class="gallery-nav next" onclick="event.stopPropagation(); changeImage('surprise', 1)">❯</button>
+                            <span class="gallery-counter">1/2</span>
+                        </div>
+                        <div class="program-content">
+                            <h3>Доставка с сюрпризом</h3>
+                            <p>Неожиданный подарок от персонажа</p>
+                            <ul class="program-features">
+                                <li>Яркий персонаж</li><li>Поздравление</li><li>Небольшое шоу</li><li>От 15 минут</li>
+                            </ul>
+                            <div class="program-price">от 3 500 ₽</div>
+                            <button class="btn btn-primary" onclick="openExtendedModal('Доставка с сюрпризом')">Выбрать</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="scroll-btn next" onclick="scrollPrograms(1)">❯</button>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Программы анимации</h2>
+            <p class="section-subtitle">Классическая анимация с дополнениями для весёлого праздника</p>
+        </div>
+        <div class="pricing-wrapper">
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>МИНИ</h3><div class="pricing-price">3 900 ₽</div>
+                        <div style="color:#718096;font-size:14px">за программу</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>1 час программы</li><li>1 аниматор</li><li>Игры с реквизитом</li>
+                        <li>Вынос торта</li><li>Игротанцы</li><li>Фото с героем</li>
+                        <li>Фокусы</li><li>Шоу пузырей</li><li>Переводные тату</li>
+                    </ul>
+                    <button class="btn btn-secondary" style="width:100%" onclick="openExtendedModal('Мини')">Выбрать</button>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>СТАНДАРТ</h3><div class="pricing-price">5 600 ₽</div>
+                        <div style="color:#718096;font-size:14px">за программу</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>1.5 часа программы</li><li>1 аниматор</li><li>Игры с реквизитом</li>
+                        <li>Вынос торта</li><li>Игротанцы</li><li>Фото с героем</li>
+                        <li>Фокусы</li><li>Шоу пузырей</li><li>Переводные тату</li>
+                        <li>Мини шар-сюрприз</li><li>Сладкая дискотека</li><li>Элементы квеста</li>
+                    </ul>
+                    <button class="btn btn-secondary" style="width:100%" onclick="openExtendedModal('Стандарт')">Выбрать</button>
+                </div>
+                <div class="pricing-card popular">
+                    <div class="popular-badge">ПОПУЛЯРНЫЙ</div>
+                    <div class="pricing-header">
+                        <h3>ХИТ</h3><div class="pricing-price">7 600 ₽</div>
+                        <div style="color:#718096;font-size:14px">за программу</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>2 часа программы</li><li>1 аниматор</li><li>Игры с реквизитом</li>
+                        <li>Вынос торта</li><li>Игротанцы</li><li>Фото с героем</li>
+                        <li>Фокусы</li><li>Шоу пузырей</li><li>Переводные тату</li>
+                        <li>Мини шар-сюрприз</li><li>Сладкая дискотека</li><li>Элементы квеста</li>
+                        <li>Шоу "Нащупай"</li><li>Мгновенные фото</li><li>Песня про именинника</li>
+                    </ul>
+                    <button class="btn btn-primary" style="width:100%" onclick="openExtendedModal('Хит')">Выбрать</button>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>ПРЕМИУМ</h3><div class="pricing-price">14 900 ₽</div>
+                        <div style="color:#718096;font-size:14px">за программу</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>2 часа программы</li><li>2 аниматора</li><li>Игры с реквизитом</li>
+                        <li>Вынос торта</li><li>Игротанцы</li><li>Фото с героем</li>
+                        <li>Фокусы</li><li>Шоу пузырей</li><li>Переводные тату</li>
+                        <li>Мини шар-сюрприз</li><li>Сладкая дискотека</li><li>Элементы квеста</li>
+                        <li>Шоу "Нащупай"</li><li>Мгновенные фото</li><li>Песня про именинника</li>
+                        <li>БЬЮТИ-СТАНЦИЯ</li><li>Видео от аниматоров</li>
+                    </ul>
+                    <button class="btn btn-secondary" style="width:100%" onclick="openExtendedModal('Премиум')">Выбрать</button>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>ВИП</h3><div class="pricing-price">21 900 ₽</div>
+                        <div style="color:#718096;font-size:14px">за программу</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>3 часа программы</li><li>2 аниматора</li><li>Игры с реквизитом</li>
+                        <li>Вынос торта</li><li>Игротанцы</li><li>Фото с героем</li>
+                        <li>Фокусы</li><li>Шоу пузырей</li><li>Переводные тату</li>
+                        <li>Мини шар-сюрприз</li><li>Сладкая дискотека</li><li>Элементы квеста</li>
+                        <li>Шоу "Нащупай"</li><li>Мгновенные фото</li><li>Песня про именинника</li>
+                        <li>БЬЮТИ-СТАНЦИЯ</li><li>Видео от аниматоров</li><li>Мастер-класс</li><li>ШОУ на выбор</li>
+                    </ul>
+                    <button class="btn btn-secondary" style="width:100%" onclick="openExtendedModal('ВИП')">Выбрать</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div>
+                    <h2 class="section-title" style="text-align:left;margin-bottom:18px">Почему выбирают АнимЭль</h2>
+                    <p class="about-text">Мы создаем незабываемые детские праздники с 2018 года. Наша команда — это профессиональные аниматоры, режиссеры и художники, которые любят свою работу.</p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <div class="about-feature-icon">✓</div>
+                            <div><strong>Профессиональные аниматоры</strong><p style="color:#718096;font-size:14px;margin-top:4px">Актерское образование и опыт работы с детьми</p></div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">✓</div>
+                            <div><strong>Индивидуальный подход</strong><p style="color:#718096;font-size:14px;margin-top:4px">Разрабатываем программу под возраст и интересы ребенка</p></div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">✓</div>
+                            <div><strong>Безопасность</strong><p style="color:#718096;font-size:14px;margin-top:4px">Все материалы сертифицированы и безопасны</p></div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">✓</div>
+                            <div><strong>Пунктуальность</strong><p style="color:#718096;font-size:14px;margin-top:4px">Приезжаем за 30 минут до начала праздника</p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-card"><div class="stat-number">5000+</div><div>Проведенных праздников</div></div>
+                    <div class="stat-card"><div class="stat-number">5.0</div><div>Рейтинг на Авито</div></div>
+                    <div class="stat-card"><div class="stat-number">50+</div><div>Уникальных программ</div></div>
+                    <div class="stat-card"><div class="stat-number">8</div><div>Лет опыта</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title">Галерея</h2>
+            <p class="section-subtitle">Моменты счастья и радости</p>
+            <div class="gallery-grid">
+                <div class="gallery-item" style="background-image:url('gallery_photos/gallery1.jpg')"></div>
+                <div class="gallery-item" style="background-image:url('gallery_photos/gallery2.jpg')"></div>
+                <div class="gallery-item" style="background-image:url('gallery_photos/gallery3.jpg')"></div>
+                <div class="gallery-item" style="background-image:url('gallery_photos/gallery4.jpg')"></div>
+                <div class="gallery-item" style="background-image:url('gallery_photos/gallery5.jpg')"></div>
+                <div class="gallery-item" style="background-image:url('gallery_photos/gallery6.jpg')"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <h2 class="section-title">Отзывы наших клиентов</h2>
+            <p class="section-subtitle">Что говорят родители о наших праздниках</p>
+            <div class="reviews-wrapper">
+                <div class="reviews-grid">
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-avatar">АК</div>
+                            <div><div style="font-weight:700;font-size:16px">Анна К.</div><div class="review-rating">★★★★★</div></div>
+                        </div>
+                        <p class="review-text">"Заказывали праздник на 5-летие дочки. Программа 'Принцессы' привела всех детей в восторг! Аниматоры профессиональные, внимательные к каждому ребенку. Обязательно обратимся еще!"</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-avatar">ДМ</div>
+                            <div><div style="font-weight:700;font-size:16px">Дмитрий М.</div><div class="review-rating">★★★★★</div></div>
+                        </div>
+                        <p class="review-text">"Научное шоу — это что-то! Сын и его друзья были под впечатлением целую неделю. Все безопасно, познавательно и очень зрелищно. Рекомендую!"</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-avatar">ОП</div>
+                            <div><div style="font-weight:700;font-size:16px">Ольга П.</div><div class="review-rating">★★★★★</div></div>
+                        </div>
+                        <p class="review-text">"Уже третий год подряд проводим дни рождения детей с АнимЭль. Всегда на высоте! Знают подход к детям, программы разнообразные. Спасибо за праздник!"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacts Section -->
+    <section class="contacts" id="contacts">
+        <div class="container">
+            <h2 class="section-title">Контакты</h2>
+            <p class="section-subtitle">Свяжитесь с нами удобным способом</p>
+            <div class="contacts-grid">
+                <div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📞</span>
+                        <div><div class="contact-label">Телефон</div><span class="contact-value">+7 (906) 710-22-27</span></div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">✉️</span>
+                        <div><div class="contact-label">Email</div><a href="mailto:info@animel-party.ru" class="contact-value">info@animel-party.ru</a></div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">🕐</span>
+                        <div><div class="contact-label">Режим работы</div><div class="contact-value">Ежедневно с 9:00 до 21:00</div></div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <div><div class="contact-label">Работаем</div><div class="contact-value">Москва и Московская область</div></div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://t.me/anim_el" target="_blank" class="social-link">Telegram</a>
+                        <a href="https://vk.com/animel_prazdnik" target="_blank" class="social-link">ВКонтакте</a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Быстрая заявка</h3>
+                    <form onsubmit="handleSubmitQuick(event)">
+                        <div class="form-group">
+                            <label class="form-label">Ваше имя <span class="required">*</span></label>
+                            <input type="text" class="form-input" id="quick-name" placeholder="Ваше имя" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Номер телефона <span class="required">*</span></label>
+                            <input type="tel" class="form-input phone-mask" id="quick-phone" placeholder="+7 (___) ___-__-__" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Город <span class="required">*</span></label>
+                            <input type="text" class="form-input" id="quick-city" placeholder="Город" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Дата праздника <span class="required">*</span></label>
+                            <input type="date" class="form-input" id="quick-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Ваши пожелания <span class="optional">(необязательно)</span></label>
+                            <textarea class="form-input" id="quick-wishes" rows="3" placeholder="Ваши пожелания"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width:100%">Отправить заявку</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-logo">
+                    <div class="logo-icon">А</div>
+                    <div><div style="font-size:20px;font-weight:800">АнимЭль</div><div style="color:#a0aec0;font-size:14px">Агентство детских праздников</div></div>
+                </div>
+                <div class="footer-links">
+                    <a href="#programs">Программы вечеринок</a>
+                    <a href="#pricing">Программы анимации</a>
+                    <a href="#about">О нас</a>
+                    <a href="#contacts">Контакты</a>
+                </div>
+                <div>
+                    <span style="color:white;font-size:18px;font-weight:700">+7 (906) 710-22-27</span>
+                    <div style="margin-top:10px;color:#a0aec0;font-size:14px">info@animel-party.ru</div>
+                </div>
+            </div>
+            <div class="footer-bottom">© 2026 АнимЭль. Все права защищены.</div>
+        </div>
+    </footer>
+
+    <!-- Extended Modal -->
+    <div class="modal" id="extendedModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeExtendedModal()">&times;</span>
+            <h2 class="modal-title">Заказать праздник</h2>
+            <p class="modal-subtitle">Оставьте заявку, и мы свяжемся с вами в ближайшее время</p>
+            <form onsubmit="handleExtendedSubmit(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Ваше имя <span class="required">*</span></label>
+                        <input type="text" class="form-input" id="ext-name" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Номер телефона <span class="required">*</span></label>
+                        <input type="tel" class="form-input phone-mask" id="ext-phone" placeholder="+7 (___) ___-__-__" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Город <span class="required">*</span></label>
+                    <input type="text" class="form-input" id="ext-city" placeholder="Город" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Дата праздника <span class="required">*</span></label>
+                    <input type="date" class="form-input" id="ext-date" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Программа <span class="optional">(необязательно)</span></label>
+                    <input type="text" class="form-input" id="ext-program" placeholder="Программа (необязательно)">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Пол именинника <span class="optional">(необязательно)</span></label>
+                        <select class="form-input" id="ext-gender">
+                            <option value="">Не указано</option>
+                            <option value="М">М</option>
+                            <option value="Ж">Ж</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Возраст именинника <span class="optional">(необязательно)</span></label>
+                        <input type="number" class="form-input" id="ext-age" placeholder="Возраст" min="1" max="99">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Ожидаемое количество детей <span class="optional">(необязательно)</span></label>
+                    <input type="number" class="form-input" id="ext-children" placeholder="Количество детей" min="1" max="99">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Ваши пожелания <span class="optional">(необязательно)</span></label>
+                    <textarea class="form-input" id="ext-wishes" rows="3" placeholder="Ваши пожелания"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%">Отправить заявку</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <button class="lightbox-nav prev" onclick="changeLightboxImage(-1)">❮</button>
+        <img src="" alt="" class="lightbox-img" id="lightbox-img">
+        <button class="lightbox-nav next" onclick="changeLightboxImage(1)">❯</button>
+    </div>
+
+    <!-- Video Modal -->
+    <div class="lightbox" id="videoModal">
+        <button class="lightbox-close" onclick="closeVideo()">&times;</button>
+        <video class="lightbox-video" id="videoPlayer" controls>
+            <source src="" type="video/mp4">Ваш браузер не поддерживает видео.
+        </video>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            document.querySelectorAll('input[type="date"]').forEach(input => {
+                input.min = today;
+            });
+            initPhoneMasks();
+        });
+        
+        function initPhoneMasks() {
+            const phoneInputs = document.querySelectorAll('.phone-mask');
+            phoneInputs.forEach(input => {
+                if (!input.value) input.value = '+7';
+                
+                input.addEventListener('input', function(e) {
+                    let value = this.value.replace(/\D/g, '');
+                    if (value.startsWith('8')) value = '7' + value.slice(1);
+                    if (!value.startsWith('7')) value = '7' + value;
+                    if (value.length > 11) {
+                        value = value.slice(0, 11);
+                        alert('⚠️ Номер телефона должен содержать 10 цифр после +7');
+                        this.classList.add('error');
+                        setTimeout(() => this.classList.remove('error'), 2000);
+                    } else {
+                        this.classList.remove('error');
+                    }
+                    
+                    let formattedValue = '+7';
+                    if (value.length > 1) {
+                        const part1 = value.slice(1, 4);
+                        const part2 = value.slice(4, 7);
+                        const part3 = value.slice(7, 9);
+                        const part4 = value.slice(9, 11);
+                        if (part1) formattedValue += ' (' + part1;
+                        if (part2) formattedValue += ') ' + part2;
+                        if (part3) formattedValue += '-' + part3;
+                        if (part4) formattedValue += '-' + part4;
+                    }
+                    this.value = formattedValue;
+                });
+            });
+        }
+        
+        function openExtendedModal(program = '') {
+            document.getElementById('extendedModal').classList.add('active');
+            if (program) document.getElementById('ext-program').value = program;
+            setTimeout(initPhoneMasks, 100);
+            
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('ext-date').min = today;
+            document.getElementById('quick-date').min = today;
+        }
+        
+        function closeExtendedModal() {
+            document.getElementById('extendedModal').classList.remove('active');
+        }
+        
+        document.getElementById('extendedModal').addEventListener('click', e => {
+            if(e.target === e.currentTarget) closeExtendedModal();
+        });
+        
+        function scrollPrograms(d) {
+            document.getElementById('programsWrapper').scrollBy({left: d * 330, behavior: 'smooth'});
+        }
+        
+        const programImages = {
+            dino: ['photos/dino_park_photo.jpg', 'photos/dino_park_main.jpg'],
+            unicorn: ['photos/edinorog_state_photo.jpg', 'photos/edinorog_state_main.jpg'],
+            elza: ['photos/Elza_gift_photo.jpg', 'photos/Elza_gift_main.jpg'],
+            minecraft: ['photos/minecraft_photo.jpg', 'photos/minecraft_main.jpg'],
+            pirates: ['photos/socrovisha_piratov_photo.jpg', 'photos/socrovisha_piratov_main.jpg'],
+            superhero: ['photos/superhero_party_photo.jpg', 'photos/superhero_party_main.jpg'],
+            football: ['photos/football_party_photo.jpg', 'photos/football_party_main.jpg'],
+            game: ['photos/game_party_photo.jpg', 'photos/game_party_main.jpg'],
+            nokids: ['photos/no_kids_time_photo.jpg', 'photos/no_kids_time_main.jpg'],
+            pajamas: ['photos/pajamas_party_photo.jpg', 'photos/pajamas_party_main.jpg'],
+            surprise: ['photos/surprise_delivery_photo.jpg', 'photos/surprise_delivery_main.jpg']
+        };
+        
+        const programVideos = {
+            dino: 'party_videos/dino_park_video.mp4',
+            unicorn: 'party_videos/edinorog_state_video.mp4',
+            elza: 'party_videos/Elza_gift_video.mp4',
+            minecraft: 'party_videos/minecraft_video.mp4',
+            pirates: 'party_videos/socrovisha_piratov_video.mp4',
+            superhero: 'party_videos/superhero_party_video.mp4',
+            football: 'party_videos/football_party_video.mp4',
+            game: 'party_videos/game_party_video.mp4',
+            nokids: 'party_videos/no_kids_time_video.mp4',
+            pajamas: 'party_videos/pajamas_party_video.mp4',
+            surprise: 'party_videos/surprise_delivery_video.mp4'
+        };
+        
+        let currentProgram = '', currentImageIndex = 0;
+        
+        function openLightbox(p, i) {
+            currentProgram = p;
+            currentImageIndex = i;
+            document.getElementById('lightbox-img').src = programImages[p][i];
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        function changeImage(p, d) {
+            const im = programImages[p];
+            currentImageIndex = (currentImageIndex + d + im.length) % im.length;
+            const el = document.querySelector(`.program-image[data-program="${p}"]`);
+            el.querySelector('img').src = im[currentImageIndex];
+            el.querySelector('.gallery-counter').textContent = `${currentImageIndex + 1}/${im.length}`;
+        }
+        
+        function changeLightboxImage(d) {
+            event.stopPropagation();
+            const im = programImages[currentProgram];
+            currentImageIndex = (currentImageIndex + d + im.length) % im.length;
+            document.getElementById('lightbox-img').src = im[currentImageIndex];
+        }
+        
+        function openVideo(p) {
+            currentProgram = p;
+            const vm = document.getElementById('videoModal');
+            const vp = document.getElementById('videoPlayer');
+            vp.src = programVideos[p];
+            vm.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            vp.play();
+        }
+        
+        function closeVideo() {
+            const vm = document.getElementById('videoModal');
+            const vp = document.getElementById('videoPlayer');
+            vp.pause();
+            vp.src = '';
+            vm.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        document.getElementById('lightbox').addEventListener('click', e => {
+            if(e.target === e.currentTarget) closeLightbox();
+        });
+        
+        document.getElementById('videoModal').addEventListener('click', e => {
+            if(e.target === e.currentTarget) closeVideo();
+        });
+        
+        document.addEventListener('keydown', e => {
+            if(e.key === 'Escape') {
+                closeExtendedModal();
+                closeLightbox();
+                closeVideo();
+            }
+            if(e.key === 'ArrowLeft' && document.getElementById('lightbox').classList.contains('active')) 
+                changeLightboxImage(-1);
+            if(e.key === 'ArrowRight' && document.getElementById('lightbox').classList.contains('active')) 
+                changeLightboxImage(1);
+        });
+        
+        document.querySelectorAll('a[href^="#"]').forEach(a => 
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                const t = document.querySelector(a.getAttribute('href'));
+                if(t) t.scrollIntoView({behavior: 'smooth', block: 'start'});
+            })
+        );
+        
+        function handleSubmitQuick(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('quick-name').value.trim();
+            const phoneInput = document.getElementById('quick-phone');
+            const phone = phoneInput.value.replace(/\D/g, '');
+            const city = document.getElementById('quick-city').value.trim();
+            const date = document.getElementById('quick-date').value;
+            const wishes = document.getElementById('quick-wishes').value.trim();
+            
+            if (!name) {
+                alert('⚠️ Заполните ваше имя');
+                document.getElementById('quick-name').classList.add('error');
+                setTimeout(() => document.getElementById('quick-name').classList.remove('error'), 2000);
+                return;
+            }
+            
+            if (phone.length !== 11) {
+                alert('⚠️ Пожалуйста, введите корректный номер телефона (10 цифр после +7)');
+                phoneInput.classList.add('error');
+                setTimeout(() => phoneInput.classList.remove('error'), 2000);
+                return;
+            }
+            
+            if (!city) {
+                alert('⚠️ Заполните город');
+                document.getElementById('quick-city').classList.add('error');
+                setTimeout(() => document.getElementById('quick-city').classList.remove('error'), 2000);
+                return;
+            }
+            
+            if (!date) {
+                alert('⚠️ Выберите дату праздника');
+                document.getElementById('quick-date').classList.add('error');
+                setTimeout(() => document.getElementById('quick-date').classList.remove('error'), 2000);
+                return;
+            }
+            
+            sendToTelegram({
+                name: name,
+                phone: '+7' + phone.slice(1),
+                city: city,
+                date: date,
+                program: '-',
+                gender: '-',
+                age: '-',
+                children: '-',
+                wishes: wishes || '-',
+                formType: 'quick'
+            }, e.target);
+        }
+        
+        function handleExtendedSubmit(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('ext-name').value.trim();
+            const phoneInput = document.getElementById('ext-phone');
+            const phone = phoneInput.value.replace(/\D/g, '');
+            const city = document.getElementById('ext-city').value.trim();
+            const date = document.getElementById('ext-date').value;
+            const program = document.getElementById('ext-program').value.trim() || '-';
+            const gender = document.getElementById('ext-gender').value || '-';
+            const age = document.getElementById('ext-age').value || '-';
+            const children = document.getElementById('ext-children').value || '-';
+            const wishes = document.getElementById('ext-wishes').value.trim() || '-';
+            
+            if (!name) {
+                alert('⚠️ Заполните ваше имя');
+                document.getElementById('ext-name').classList.add('error');
+                setTimeout(() => document.getElementById('ext-name').classList.remove('error'), 2000);
+                return;
+            }
+            
+            if (phone.length !== 11) {
+                alert('⚠️ Пожалуйста, введите корректный номер телефона (10 цифр после +7)');
+                phoneInput.classList.add('error');
+                setTimeout(() => phoneInput.classList.remove('error'), 2000);
+                return;
+            }
+            
+            if (!city) {
+                alert('⚠️ Заполните город');
+                document.getElementById('ext-city').classList.add('error');
+                setTimeout(() => document.getElementById('ext-city').classList.remove('error'), 2000);
+                return;
+            }
+            
+            if (!date) {
+                alert('⚠️ Выберите дату праздника');
+                document.getElementById('ext-date').classList.add('error');
+                setTimeout(() => document.getElementById('ext-date').classList.remove('error'), 2000);
+                return;
+            }
+            
+            sendToTelegram({
+                name: name,
+                phone: '+7' + phone.slice(1),
+                city: city,
+                date: date,
+                program: program,
+                gender: gender,
+                age: age,
+                children: children,
+                wishes: wishes,
+                formType: 'extended'
+            }, e.target, true);
+        }
+        
+        function sendToTelegram(data, form, isExtended = false) {
+            const btn = form.querySelector('button[type="submit"]');
+            const orig = btn.textContent;
+            btn.textContent = '⏳ Отправка...';
+            btn.disabled = true;
+            
+            fetch('https://script.google.com/macros/s/AKfycbznwbfDyBer26J0yxh6egQFOS__38fp8k4YEQp1hUiSIB0ZvzhofnQJFGKn_g4Li_WS/exec', {
+                method: 'POST',
+                headers: {'Content-Type': 'text/plain'},
+                body: JSON.stringify(data)
+            })
+            .then(r => r.text())
+            .then(t => {
+                try {
+                    const res = JSON.parse(t);
+                    if(res.success) {
+                        alert('✅ Заявка отправлена!');
+                        form.reset();
+                        if(isExtended) closeExtendedModal();
+                    } else {
+                        alert('⚠️ ' + (res.error || 'Ошибка'));
+                    }
+                } catch {
+                    alert('❌ Ошибка: ' + t);
+                }
+            })
+            .catch(err => alert('❌ ' + err.message))
+            .finally(() => {
+                btn.textContent = orig;
+                btn.disabled = false;
+            });
+        }
+    </script>
+</body>
+</html>
