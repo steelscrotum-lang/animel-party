@@ -19,16 +19,12 @@
             overflow-x: hidden;
             font-size: 16px;
             scroll-behavior: smooth;
-            /* Адаптация под тему Telegram */
             background: var(--tg-theme-bg-color, #f8f9fa);
             color: var(--tg-theme-text-color, #2d3748);
         }
         img, video { max-width: 100%; height: auto; }
 
-        /* Исправление прокрутки к секциям */
-        section[id] {
-            scroll-margin-top: 100px;
-        }
+        section[id] { scroll-margin-top: 100px; }
 
         /* Header */
         .header {
@@ -41,9 +37,7 @@
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         .header-content { display: flex; justify-content: space-between; align-items: center; }
         .logo { display: flex; align-items: center; gap: 10px; cursor: pointer; }
-        .logo:hover .logo-title {
-            opacity: 0.8;
-        }
+        .logo:hover .logo-title { opacity: 0.8; }
         .logo-icon {
             width: 48px; height: 48px;
             background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%);
@@ -104,36 +98,22 @@
             letter-spacing: 0.5px; text-transform: uppercase;
         }
         
-        /* Hero Formula */
         .hero-formula {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: nowrap;
-            margin-bottom: 35px;
+            display: flex; align-items: center; justify-content: center;
+            gap: 15px; flex-wrap: nowrap; margin-bottom: 35px;
         }
-        
         .formula-item {
             background: var(--tg-theme-secondary-bg-color, white);
-            padding: 14px 24px;
-            border-radius: 24px;
-            font-weight: 700;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-            font-size: 16px;
-            white-space: nowrap;
+            padding: 14px 24px; border-radius: 24px;
+            font-weight: 700; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s; font-size: 16px; white-space: nowrap;
         }
         .formula-item:hover { transform: translateY(-3px); }
         .formula-item.happy {
             background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%);
             color: white;
         }
-        .formula-plus, .formula-equals { 
-            font-size: 26px; 
-            font-weight: 800; 
-            color: #d4145a;
-        }
+        .formula-plus, .formula-equals { font-size: 26px; font-weight: 800; color: #d4145a; }
         
         .hero-title {
             font-size: 58px; font-weight: 900; line-height: 1.15;
@@ -341,6 +321,47 @@
         .form-label .required { color: #d4145a; margin-left: 2px; }
         .form-label .optional { color: #a0aec0; font-weight: 400; margin-left: 4px; }
         
+        /* Стили для чекбокса согласия */
+        .consent-group {
+            margin: 18px 0 20px;
+            padding: 12px;
+            background: var(--tg-theme-bg-color, #f7fafc);
+            border-radius: 10px;
+            border: 1px solid var(--tg-theme-bg-color, #e2e8f0);
+        }
+        .consent-wrapper {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            cursor: pointer;
+        }
+        .consent-checkbox {
+            width: 18px;
+            height: 18px;
+            margin-top: 2px;
+            accent-color: #d4145a;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .consent-checkbox.error {
+            border: 2px solid #e53e3e;
+            box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.1);
+        }
+        .consent-label {
+            font-size: 13px;
+            color: var(--tg-theme-hint-color, #4a5568);
+            line-height: 1.4;
+            cursor: pointer;
+        }
+        .consent-label a {
+            color: #d4145a;
+            text-decoration: none;
+            font-weight: 700;
+        }
+        .consent-label a:hover {
+            text-decoration: underline;
+        }
+        
         input[type="number"]::-webkit-inner-spin-button,
         input[type="number"]::-webkit-outer-spin-button {
             -webkit-appearance: none;
@@ -393,628 +414,200 @@
            МОБИЛЬНАЯ АДАПТАЦИЯ
            ======================================== */
         @media (max-width: 768px) {
-            section[id] {
-                scroll-margin-top: 80px;
-            }
-            
+            section[id] { scroll-margin-top: 80px; }
             .nav { display: none !important; }
             .header-phone { display: none !important; }
-            
-            .logo-icon {
-                width: 36px;
-                height: 36px;
-                font-size: 19px;
-            }
-            .logo-title {
-                font-size: 16px;
-            }
-            .logo-subtitle {
-                font-size: 9px;
-            }
-            
-            .mobile-nav {
-                display: flex !important;
-                flex-direction: column;
-                gap: 4px;
-                margin-left: 8px;
-            }
-            
-            .mobile-nav-row {
-                display: flex;
-                gap: 4px;
-            }
-            
-            .mobile-nav-row.top {
-                justify-content: flex-end;
-            }
-            
+            .logo-icon { width: 36px; height: 36px; font-size: 19px; }
+            .logo-title { font-size: 16px; }
+            .logo-subtitle { font-size: 9px; }
+            .mobile-nav { display: flex !important; flex-direction: column; gap: 4px; margin-left: 8px; }
+            .mobile-nav-row { display: flex; gap: 4px; }
+            .mobile-nav-row.top { justify-content: flex-end; }
             .mobile-nav-btn {
-                padding: 5px 10px;
-                border-radius: 16px;
-                font-size: 10px;
-                font-weight: 700;
-                text-decoration: none;
-                text-align: center;
-                transition: all 0.3s;
-                white-space: nowrap;
+                padding: 5px 10px; border-radius: 16px; font-size: 10px;
+                font-weight: 700; text-decoration: none; text-align: center;
+                transition: all 0.3s; white-space: nowrap;
             }
-            
             .mobile-nav-btn.primary {
                 background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%);
-                color: white;
-                box-shadow: 0 2px 6px rgba(212, 20, 90, 0.3);
-                padding: 6px 12px;
-                font-size: 11px;
+                color: white; box-shadow: 0 2px 6px rgba(212, 20, 90, 0.3);
+                padding: 6px 12px; font-size: 11px;
             }
-            
             .mobile-nav-btn.secondary {
-                background: transparent;
-                color: var(--tg-theme-text-color, #4a5568);
+                background: transparent; color: var(--tg-theme-text-color, #4a5568);
                 border: 1px solid var(--tg-theme-bg-color, #e2e8f0);
             }
-            
             .mobile-nav-btn.secondary:hover {
-                background: var(--tg-theme-bg-color, #f7fafc);
-                color: #d4145a;
+                background: var(--tg-theme-bg-color, #f7fafc); color: #d4145a;
             }
-            
-            .mobile-nav-row.bottom {
-                justify-content: flex-end;
-                align-items: center;
-                gap: 3px;
-            }
-            
-            .mobile-nav-phone-row {
-                width: 100%;
-                text-align: right;
-                margin-top: 2px;
-            }
-            
-            .mobile-nav-phone {
-                font-size: 10px;
-                font-weight: 800;
-                color: var(--tg-theme-text-color, #2d3748);
-            }
-            
-            .header {
-                padding: 8px 0;
-            }
-            
-            .hero { 
-                padding: 20px 0 15px; 
-            }
-            .hero-badge {
-                padding: 6px 12px;
-                font-size: 10px;
-                margin-bottom: 10px;
-            }
-            
-            /* Формула - ИСПРАВЛЕНО ДЛЯ МОБИЛЬНОГО */
+            .mobile-nav-row.bottom { justify-content: flex-end; align-items: center; gap: 3px; }
+            .mobile-nav-phone-row { width: 100%; text-align: right; margin-top: 2px; }
+            .mobile-nav-phone { font-size: 10px; font-weight: 800; color: var(--tg-theme-text-color, #2d3748); }
+            .header { padding: 8px 0; }
+            .hero { padding: 20px 0 15px; }
+            .hero-badge { padding: 6px 12px; font-size: 10px; margin-bottom: 10px; }
             .hero-formula {
-                display: grid;
-                grid-template-columns: 1fr auto 1fr auto 1fr;
-                gap: 3px;
-                margin-bottom: 15px;
-                padding: 0 5px;
+                display: grid; grid-template-columns: 1fr auto 1fr auto 1fr;
+                gap: 3px; margin-bottom: 15px; padding: 0 5px;
             }
-
             .formula-item:not(.happy) {
-                font-size: 10px;
-                padding: 5px 6px;
-                min-width: 0;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
+                font-size: 10px; padding: 5px 6px; min-width: 0;
+                overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
             }
-
-            .formula-plus {
-                font-size: 14px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            /* Вторая строка - центрированная */
+            .formula-plus { font-size: 14px; display: flex; align-items: center; justify-content: center; }
             .formula-equals {
-                grid-column: 1 / -1;
-                grid-row: 2;
-                font-size: 16px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 10px;
-                margin-top: 10px;
+                grid-column: 1 / -1; grid-row: 2; font-size: 16px;
+                display: flex; align-items: center; justify-content: center;
+                gap: 10px; margin-top: 10px;
             }
-
             .formula-item.happy {
-                grid-column: 1 / -1;
-                grid-row: 2;
-                font-size: 11px;
-                padding: 7px 12px;
-                margin-top: 10px;
-                justify-self: center;
-                min-width: 0;
+                grid-column: 1 / -1; grid-row: 2; font-size: 11px;
+                padding: 7px 12px; margin-top: 10px; justify-self: center; min-width: 0;
             }
-            
-            .hero-title { 
-                font-size: 24px;
-                margin-bottom: 8px;
+            .hero-title { font-size: 24px; margin-bottom: 8px; }
+            .hero-subtitle { font-size: 13px; margin-bottom: 12px; padding: 0 6px; }
+            .hero-buttons { flex-direction: row; gap: 8px; margin-bottom: 12px; padding: 0 10px; justify-content: center; }
+            .hero-buttons .btn-primary, .hero-buttons .btn-secondary { 
+                flex: 1; min-width: 0; padding: 10px 12px; font-size: 13px; white-space: nowrap;
             }
-            .hero-subtitle { 
-                font-size: 13px;
-                margin-bottom: 12px;
-                padding: 0 6px;
-            }
-            
-            .hero-buttons {
-                flex-direction: row;
-                gap: 8px;
-                margin-bottom: 12px;
-                padding: 0 10px;
-                justify-content: center;
-            }
-            .hero-buttons .btn-primary,
-            .hero-buttons .btn-secondary { 
-                flex: 1;
-                min-width: 0;
-                padding: 10px 12px; 
-                font-size: 13px;
-                white-space: nowrap;
-            }
-            
-            .hero-features { 
-                flex-direction: row;
-                justify-content: center;
-                gap: 10px; 
-                margin-top: 10px;
-                flex-wrap: wrap;
-            }
-            .feature {
-                font-size: 11px;
-                gap: 5px;
-            }
-            .feature-icon {
-                font-size: 18px;
-            }
-            
-            /* Programs */
-            .programs { 
-                padding: 20px 0; 
-            }
-            .section-title { 
-                font-size: 22px;
-                margin-bottom: 6px;
-            }
-            .section-subtitle { 
-                font-size: 12px;
-                margin-bottom: 14px;
-                padding: 0 10px;
-            }
-            .programs-container { 
-                padding: 0 6px; 
-            }
+            .hero-features { flex-direction: row; justify-content: center; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+            .feature { font-size: 11px; gap: 5px; }
+            .feature-icon { font-size: 18px; }
+            .programs { padding: 20px 0; }
+            .section-title { font-size: 22px; margin-bottom: 6px; }
+            .section-subtitle { font-size: 12px; margin-bottom: 14px; padding: 0 10px; }
+            .programs-container { padding: 0 6px; }
             .programs-wrapper {
-                overflow-x: scroll;
-                overflow-y: hidden;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none;
-                -ms-overflow-style: none;
-                padding: 6px 0;
+                overflow-x: scroll; overflow-y: hidden; -webkit-overflow-scrolling: touch;
+                scrollbar-width: none; -ms-overflow-style: none; padding: 6px 0;
             }
-            .programs-wrapper::-webkit-scrollbar { 
-                display: none; 
+            .programs-wrapper::-webkit-scrollbar { display: none; }
+            .programs-grid { display: flex; flex-direction: row; gap: 8px; width: max-content; padding: 0 6px; }
+            .program-card { flex: 0 0 145px; width: 145px; border-radius: 12px; }
+            .program-image { height: 90px; font-size: 40px; }
+            .program-content { padding: 7px; }
+            .program-content h3 { font-size: 12px; margin-bottom: 3px; }
+            .program-content p {
+                font-size: 9px; margin-bottom: 5px;
+                display: -webkit-box; -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical; overflow: hidden;
             }
-            .programs-grid { 
-                display: flex;
-                flex-direction: row;
-                gap: 8px;
-                width: max-content;
-                padding: 0 6px;
-            }
-            .program-card { 
-                flex: 0 0 145px;
-                width: 145px;
-                border-radius: 12px;
-            }
-            .program-image { 
-                height: 90px;
-                font-size: 40px;
-            }
-            .program-content { 
-                padding: 7px; 
-            }
-            .program-content h3 { 
-                font-size: 12px;
-                margin-bottom: 3px;
-            }
-            .program-content p { 
-                font-size: 9px;
-                margin-bottom: 5px;
-                display: -webkit-box;
-                -webkit-line-clamp: 2;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-            }
-            .program-features { 
-                margin-bottom: 5px;
-            }
-            .program-features li { 
-                font-size: 8px;
-                padding: 1px 0;
-            }
-            .program-price { 
-                font-size: 14px;
-                margin-bottom: 5px;
-            }
-            .program-card .btn {
-                padding: 6px 8px;
-                font-size: 10px;
-                border-radius: 14px;
-            }
-            .scroll-btn { 
-                display: none; 
-            }
-            .gallery-nav {
-                width: 22px;
-                height: 22px;
-                font-size: 11px;
-            }
-            .gallery-counter {
-                font-size: 8px;
-                padding: 2px 5px;
-            }
-            .video-btn {
-                padding: 3px 7px;
-                font-size: 9px;
-            }
-            
-            /* Pricing */
-            .pricing { 
-                padding: 20px 0 15px;
-                overflow: visible !important;
-            }
-            .pricing .section-title {
-                font-size: 22px;
-                margin-bottom: 5px;
-            }
-            .pricing .section-subtitle {
-                font-size: 12px;
-                padding: 0 10px;
-                margin-bottom: 15px;
-            }
+            .program-features { margin-bottom: 5px; }
+            .program-features li { font-size: 8px; padding: 1px 0; }
+            .program-price { font-size: 14px; margin-bottom: 5px; }
+            .program-card .btn { padding: 6px 8px; font-size: 10px; border-radius: 14px; }
+            .scroll-btn { display: none; }
+            .gallery-nav { width: 22px; height: 22px; font-size: 11px; }
+            .gallery-counter { font-size: 8px; padding: 2px 5px; }
+            .video-btn { padding: 3px 7px; font-size: 9px; }
+            .pricing { padding: 20px 0 15px; overflow: visible !important; }
+            .pricing .section-title { font-size: 22px; margin-bottom: 5px; }
+            .pricing .section-subtitle { font-size: 12px; padding: 0 10px; margin-bottom: 15px; }
             .pricing-wrapper {
-                overflow-x: scroll;
-                overflow-y: visible !important;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none;
+                overflow-x: scroll; overflow-y: visible !important;
+                -webkit-overflow-scrolling: touch; scrollbar-width: none;
                 padding: 30px 0 5px;
             }
-            .pricing-wrapper::-webkit-scrollbar {
-                display: none;
-            }
-            .pricing-grid { 
-                display: flex;
-                flex-direction: row;
-                gap: 10px;
-                padding: 0 6px;
-                width: max-content;
-            }
-            .pricing-card { 
-                flex: 0 0 145px;
-                width: 145px;
-                padding: 10px 7px;
-                border-radius: 12px;
-                overflow: visible !important;
-            }
-            .pricing-card.popular {
-                transform: scale(1);
-                border: 2px solid #d4145a;
-                padding-top: 30px;
-            }
-            .popular-badge {
-                padding: 4px 12px;
-                font-size: 9px;
-                top: -12px;
-            }
-            .pricing-header {
-                margin-bottom: 7px;
-                padding-bottom: 5px;
-            }
-            .pricing-header h3 {
-                font-size: 11px;
-                margin-bottom: 4px;
-            }
-            .pricing-price {
-                font-size: 18px;
-            }
-            .pricing-header .price-note {
-                font-size: 8px;
-            }
-            .pricing-features {
-                margin-bottom: 7px;
-            }
-            .pricing-features li {
-                font-size: 8px;
-                padding: 2px 0;
-            }
-            .pricing-card .btn {
-                padding: 6px 8px;
-                font-size: 10px;
-                border-radius: 14px;
-            }
-            
-            /* Gallery */
-            .gallery { 
-                padding: 20px 0; 
-            }
+            .pricing-wrapper::-webkit-scrollbar { display: none; }
+            .pricing-grid { display: flex; flex-direction: row; gap: 10px; padding: 0 6px; width: max-content; }
+            .pricing-card { flex: 0 0 145px; width: 145px; padding: 10px 7px; border-radius: 12px; overflow: visible !important; }
+            .pricing-card.popular { transform: scale(1); border: 2px solid #d4145a; padding-top: 30px; }
+            .popular-badge { padding: 4px 12px; font-size: 9px; top: -12px; }
+            .pricing-header { margin-bottom: 7px; padding-bottom: 5px; }
+            .pricing-header h3 { font-size: 11px; margin-bottom: 4px; }
+            .pricing-price { font-size: 18px; }
+            .pricing-header .price-note { font-size: 8px; }
+            .pricing-features { margin-bottom: 7px; }
+            .pricing-features li { font-size: 8px; padding: 2px 0; }
+            .pricing-card .btn { padding: 6px 8px; font-size: 10px; border-radius: 14px; }
+            .gallery { padding: 20px 0; }
             .gallery-grid {
-                display: flex;
-                flex-direction: row;
-                gap: 6px;
-                overflow-x: scroll;
-                overflow-y: hidden;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none;
-                padding: 6px;
+                display: flex; flex-direction: row; gap: 6px;
+                overflow-x: scroll; overflow-y: hidden;
+                -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 6px;
             }
-            .gallery-grid::-webkit-scrollbar {
-                display: none;
-            }
-            .gallery-item {
-                flex: 0 0 135px;
-                width: 135px;
-                height: 135px;
-                border-radius: 12px;
-            }
-            
-            /* Reviews */
-            .reviews { 
-                padding: 20px 0; 
-            }
-            .reviews .section-title {
-                font-size: 22px;
-            }
-            .reviews .section-subtitle {
-                font-size: 12px;
-                padding: 0 10px;
-            }
+            .gallery-grid::-webkit-scrollbar { display: none; }
+            .gallery-item { flex: 0 0 135px; width: 135px; height: 135px; border-radius: 12px; }
+            .reviews { padding: 20px 0; }
+            .reviews .section-title { font-size: 22px; }
+            .reviews .section-subtitle { font-size: 12px; padding: 0 10px; }
             .reviews-wrapper {
-                overflow-x: scroll;
-                overflow-y: hidden;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none;
+                overflow-x: scroll; overflow-y: hidden;
+                -webkit-overflow-scrolling: touch; scrollbar-width: none;
                 padding: 6px 0;
             }
-            .reviews-wrapper::-webkit-scrollbar {
-                display: none;
-            }
-            .reviews-grid {
-                display: flex;
-                flex-direction: row;
-                gap: 8px;
-                padding: 0 6px;
-                width: max-content;
-            }
-            .review-card {
-                flex: 0 0 240px;
-                width: 240px;
-                padding: 13px;
-                border-radius: 12px;
-            }
-            .review-header {
-                margin-bottom: 7px;
-            }
-            .review-avatar {
-                width: 30px;
-                height: 30px;
-                font-size: 12px;
-            }
-            .review-header div div:first-child {
-                font-size: 12px;
-            }
-            .review-rating {
-                font-size: 12px;
-            }
-            .review-text {
-                font-size: 10px;
-                line-height: 1.35;
-            }
+            .reviews-wrapper::-webkit-scrollbar { display: none; }
+            .reviews-grid { display: flex; flex-direction: row; gap: 8px; padding: 0 6px; width: max-content; }
+            .review-card { flex: 0 0 240px; width: 240px; padding: 13px; border-radius: 12px; }
+            .review-header { margin-bottom: 7px; }
+            .review-avatar { width: 30px; height: 30px; font-size: 12px; }
+            .review-header div div:first-child { font-size: 12px; }
+            .review-rating { font-size: 12px; }
+            .review-text { font-size: 10px; line-height: 1.35; }
+            .about { padding: 20px 0; }
+            .about-grid { grid-template-columns: 1fr; gap: 18px; }
+            .about-stats { grid-template-columns: 1fr 1fr; gap: 7px; }
+            .stat-card { padding: 13px 9px; }
+            .stat-number { font-size: 26px; }
+            .stat-card div:last-child { font-size: 10px; }
+            .about-text { font-size: 12px; }
+            .about-feature p { font-size: 10px; }
+            .contacts { padding: 20px 0; }
+            .contacts .section-title { font-size: 22px; margin-bottom: 5px; }
+            .contacts .section-subtitle { font-size: 12px; margin-bottom: 12px; }
+            .contacts-grid { grid-template-columns: 1fr; gap: 15px; }
+            .contact-item { margin-bottom: 12px; gap: 10px; }
+            .contact-icon { font-size: 22px; }
+            .contact-label { font-size: 14px; margin-bottom: 3px; }
+            .contact-value { font-size: 14px; }
+            .social-links { margin-top: 15px; gap: 6px; }
+            .social-link { padding: 8px 13px; font-size: 11px; }
+            .contact-form { padding: 15px 10px; }
+            .contact-form h3 { font-size: 18px; margin-bottom: 14px; }
+            .form-group { margin-bottom: 10px; }
+            .form-input { padding: 10px 12px; font-size: 13px; }
+            .form-label { font-size: 11px; }
+            .footer { padding: 20px 0 10px; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 12px; }
+            .footer-logo { justify-content: center; display: flex; flex-direction: column; align-items: center; }
+            .footer-links { text-align: center; display: flex; flex-direction: column; align-items: center; }
+            .footer-links a { text-align: center; }
+            .modal-content { padding: 16px 10px; width: 95%; }
+            .modal-title { font-size: 17px; }
+            .form-row { grid-template-columns: 1fr; }
             
-            /* About */
-            .about { 
-                padding: 20px 0; 
-            }
-            .about-grid { 
-                grid-template-columns: 1fr; 
-                gap: 18px; 
-            }
-            .about-stats {
-                grid-template-columns: 1fr 1fr;
-                gap: 7px;
-            }
-            .stat-card {
-                padding: 13px 9px;
-            }
-            .stat-number {
-                font-size: 26px;
-            }
-            .stat-card div:last-child {
-                font-size: 10px;
-            }
-            .about-text {
-                font-size: 12px;
-            }
-            .about-feature p {
-                font-size: 10px;
-            }
-            
-            /* Contacts */
-            .contacts { 
-                padding: 20px 0; 
-            }
-            .contacts .section-title {
-                font-size: 22px;
-                margin-bottom: 5px;
-            }
-            .contacts .section-subtitle {
-                font-size: 12px;
-                margin-bottom: 12px;
-            }
-            .contacts-grid { 
-                grid-template-columns: 1fr; 
-                gap: 15px; 
-            }
-            .contact-item {
-                margin-bottom: 12px;
-                gap: 10px;
-            }
-            .contact-icon {
-                font-size: 22px;
-            }
-            .contact-label {
-                font-size: 14px;
-                margin-bottom: 3px;
-            }
-            .contact-value {
-                font-size: 14px;
-            }
-            .social-links {
-                margin-top: 15px;
-                gap: 6px;
-            }
-            .social-link {
-                padding: 8px 13px;
-                font-size: 11px;
-            }
-            .contact-form {
-                padding: 15px 10px;
-            }
-            .contact-form h3 {
-                font-size: 18px;
-                margin-bottom: 14px;
-            }
-            .form-group {
-                margin-bottom: 10px;
-            }
-            .form-input {
-                padding: 10px 12px;
-                font-size: 13px;
-            }
-            .form-label {
-                font-size: 11px;
-            }
-            
-            /* Footer */
-            .footer { 
-                padding: 20px 0 10px; 
-            }
-            .footer-grid { 
-                grid-template-columns: 1fr; 
-                text-align: center; 
-                gap: 12px; 
-            }
-            .footer-logo {
-                justify-content: center;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-            .footer-links {
-                text-align: center;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-            .footer-links a {
-                text-align: center;
-            }
-            
-            /* Modal */
-            .modal-content { 
-                padding: 16px 10px;
-                width: 95%;
-            }
-            .modal-title {
-                font-size: 17px;
-            }
-            .form-row { 
-                grid-template-columns: 1fr; 
-            }
+            /* Мобильные стили для чекбокса согласия */
+            .consent-group { margin: 14px 0 16px; padding: 10px; }
+            .consent-label { font-size: 11px; }
+            .consent-checkbox { width: 16px; height: 16px; }
         }
         
         @media (max-width: 480px) {
-            .container { 
-                padding: 0 6px; 
-            }
-            .hero { 
-                padding: 12px 0 6px; 
-            }
-            .hero-title { 
-                font-size: 20px; 
-            }
-            .hero-subtitle { 
-                font-size: 12px; 
-            }
-            .section-title { 
-                font-size: 19px; 
-            }
-            .section-subtitle { 
-                font-size: 11px; 
-            }
-            .program-card {
-                flex: 0 0 135px;
-                width: 135px;
-            }
-            .program-image { 
-                height: 80px; 
-            }
-            .program-content h3 { 
-                font-size: 11px; 
-            }
-            .program-price { 
-                font-size: 13px; 
-            }
-            .pricing-card {
-                flex: 0 0 135px;
-                width: 135px;
-            }
-            .pricing-price {
-                font-size: 16px;
-            }
-            .gallery-item { 
-                flex: 0 0 125px;
-                width: 125px;
-                height: 125px;
-            }
-            .review-card {
-                flex: 0 0 220px;
-                width: 220px;
-            }
-            .logo-icon {
-                width: 32px;
-                height: 32px;
-                font-size: 17px;
-            }
-            .logo-title {
-                font-size: 14px;
-            }
-            .mobile-nav-btn {
-                padding: 3px 6px;
-                font-size: 8px;
-            }
-            .mobile-nav-btn.primary {
-                padding: 5px 10px;
-                font-size: 9px;
-            }
-            .mobile-nav-phone {
-                font-size: 9px;
-            }
+            .container { padding: 0 6px; }
+            .hero { padding: 12px 0 6px; }
+            .hero-title { font-size: 20px; }
+            .hero-subtitle { font-size: 12px; }
+            .section-title { font-size: 19px; }
+            .section-subtitle { font-size: 11px; }
+            .program-card { flex: 0 0 135px; width: 135px; }
+            .program-image { height: 80px; }
+            .program-content h3 { font-size: 11px; }
+            .program-price { font-size: 13px; }
+            .pricing-card { flex: 0 0 135px; width: 135px; }
+            .pricing-price { font-size: 16px; }
+            .gallery-item { flex: 0 0 125px; width: 125px; height: 125px; }
+            .review-card { flex: 0 0 220px; width: 220px; }
+            .logo-icon { width: 32px; height: 32px; font-size: 17px; }
+            .logo-title { font-size: 14px; }
+            .mobile-nav-btn { padding: 3px 6px; font-size: 8px; }
+            .mobile-nav-btn.primary { padding: 5px 10px; font-size: 9px; }
+            .mobile-nav-phone { font-size: 9px; }
+            .consent-group { padding: 8px; }
+            .consent-label { font-size: 10px; }
         }
         
         @media (min-width: 769px) {
-            .mobile-nav {
-                display: none !important;
-            }
+            .mobile-nav { display: none !important; }
         }
     </style>
 </head>
@@ -1024,7 +617,6 @@
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <!-- Логотип с кликом наверх -->
                 <div class="logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
                     <div class="logo-icon">А</div>
                     <div class="logo-text">
@@ -1068,7 +660,6 @@
             <div class="hero-content">
                 <div class="hero-badge">АГЕНТСТВО ПРАЗДНИКОВ АНИМЭЛЬ</div>
                 
-                <!-- Формула - В ОДНУ СТРОКУ НА ПК -->
                 <div class="hero-formula">
                     <div class="formula-item">яркие программы</div>
                     <div class="formula-plus">+</div>
@@ -1539,6 +1130,15 @@
                             <label class="form-label">Ваши пожелания <span class="optional">(необязательно)</span></label>
                             <textarea class="form-input" id="quick-wishes" rows="3" placeholder="Ваши пожелания"></textarea>
                         </div>
+                        <!-- Галочка согласия для быстрой заявки -->
+                        <div class="consent-group">
+                            <label class="consent-wrapper">
+                                <input type="checkbox" class="consent-checkbox" id="quick-consent" required>
+                                <span class="consent-label">
+                                    Я даю <a href="#" onclick="event.preventDefault(); alert('Политика конфиденциальности будет доступна по ссылке');">согласие на обработку персональных данных</a> и принимаю условия <a href="#" onclick="event.preventDefault(); alert('Пользовательское соглашение будет доступно по ссылке');">пользовательского соглашения</a> *
+                                </span>
+                            </label>
+                        </div>
                         <button type="submit" class="btn btn-primary" style="width:100%">Отправить заявку</button>
                     </form>
                 </div>
@@ -1620,6 +1220,15 @@
                     <label class="form-label">Ваши пожелания <span class="optional">(необязательно)</span></label>
                     <textarea class="form-input" id="ext-wishes" rows="3" placeholder="Ваши пожелания"></textarea>
                 </div>
+                <!-- Галочка согласия для расширенной заявки -->
+                <div class="consent-group">
+                    <label class="consent-wrapper">
+                        <input type="checkbox" class="consent-checkbox" id="ext-consent" required>
+                        <span class="consent-label">
+                            Я даю <a href="#" onclick="event.preventDefault(); alert('Политика конфиденциальности будет доступна по ссылке');">согласие на обработку персональных данных</a> и принимаю условия <a href="#" onclick="event.preventDefault(); alert('Пользовательское соглашение будет доступно по ссылке');">пользовательского соглашения</a> *
+                        </span>
+                    </label>
+                </div>
                 <button type="submit" class="btn btn-primary" style="width:100%">Отправить заявку</button>
             </form>
         </div>
@@ -1643,80 +1252,49 @@
 
     <!-- Telegram Mini App Integration Script -->
     <script>
-        // Инициализация Telegram WebApp
         const tg = window.Telegram?.WebApp;
         
         document.addEventListener('DOMContentLoaded', function() {
-            // Установка минимальной даты для input type="date"
             const today = new Date().toISOString().split('T')[0];
             document.querySelectorAll('input[type="date"]').forEach(input => {
                 input.min = today;
             });
-            
-            // Инициализация масок для телефонов
             initPhoneMasks();
             
-            // Инициализация Telegram WebApp
             if (tg) {
-                // Разворачиваем на весь экран
                 tg.expand();
-                
-                // Применяем тему Telegram
                 applyTelegramTheme();
-                
-                // Настраиваем главную кнопку
                 setupMainButton();
-                
-                // Сообщаем о готовности
                 tg.ready();
-                
-                // Включаем подтверждение закрытия
                 tg.enableClosingConfirmation();
-                
                 console.log('✅ Telegram Mini App initialized');
             }
         });
         
-        // Применение темы Telegram
         function applyTelegramTheme() {
             if (!tg) return;
-            
             const theme = tg.themeParams;
-            
-            // Применяем цвета темы
             document.documentElement.style.setProperty('--tg-theme-bg-color', theme.bg_color || '#f8f9fa');
             document.documentElement.style.setProperty('--tg-theme-text-color', theme.text_color || '#2d3748');
             document.documentElement.style.setProperty('--tg-theme-hint-color', theme.hint_color || '#4a5568');
             document.documentElement.style.setProperty('--tg-theme-secondary-bg-color', theme.secondary_bg_color || '#ffffff');
-            
-            // Применяем к body
             document.body.style.background = 'var(--tg-theme-bg-color)';
             document.body.style.color = 'var(--tg-theme-text-color)';
         }
         
-        // Настройка главной кнопки Telegram
         function setupMainButton() {
             if (!tg?.MainButton) return;
-            
             const modal = document.getElementById('extendedModal');
-            
-            // Сохраняем оригинальную функцию
             window.originalOpenExtendedModal = window.openExtendedModal;
             
             window.openExtendedModal = function(program = '') {
                 modal.classList.add('active');
                 if (program) document.getElementById('ext-program').value = program;
-                
-                // Показываем MainButton
                 tg.MainButton.text = '🎉 Заказать праздник';
                 tg.MainButton.color = tg.themeParams.button_color || '#d4145a';
                 tg.MainButton.textColor = tg.themeParams.button_text_color || '#ffffff';
                 tg.MainButton.show();
-                
-                // Обработчик нажатия на MainButton
                 tg.MainButton.onClick(handleMainButtonClick);
-                
-                // Haptic feedback
                 tg.HapticFeedback?.impactOccurred('light');
             };
             
@@ -1735,23 +1313,19 @@
             const phoneInputs = document.querySelectorAll('.phone-mask');
             phoneInputs.forEach(input => {
                 if (!input.value) input.value = '+7';
-                
                 input.addEventListener('input', function(e) {
                     let value = this.value.replace(/\D/g, '');
                     if (value.startsWith('8')) value = '7' + value.slice(1);
                     if (!value.startsWith('7')) value = '7' + value;
                     if (value.length > 11) {
                         value = value.slice(0, 11);
-                        if (tg) {
-                            tg.HapticFeedback?.notificationOccurred('error');
-                        }
+                        if (tg) tg.HapticFeedback?.notificationOccurred('error');
                         alert('⚠️ Номер телефона должен содержать 10 цифр после +7');
                         this.classList.add('error');
                         setTimeout(() => this.classList.remove('error'), 2000);
                     } else {
                         this.classList.remove('error');
                     }
-                    
                     let formattedValue = '+7';
                     if (value.length > 1) {
                         const part1 = value.slice(1, 4);
@@ -1769,26 +1343,20 @@
         }
         
         function openExtendedModal(program = '') {
-            // Если Telegram WebApp активен, используем его версию
             if (tg) {
                 const modal = document.getElementById('extendedModal');
                 modal.classList.add('active');
                 if (program) document.getElementById('ext-program').value = program;
-                
                 tg.MainButton.text = '🎉 Заказать праздник';
                 tg.MainButton.color = tg.themeParams.button_color || '#d4145a';
                 tg.MainButton.textColor = tg.themeParams.button_text_color || '#ffffff';
                 tg.MainButton.show();
-                
                 tg.HapticFeedback?.impactOccurred('light');
                 return;
             }
-            
-            // Иначе используем стандартную модалку
             document.getElementById('extendedModal').classList.add('active');
             if (program) document.getElementById('ext-program').value = program;
             setTimeout(initPhoneMasks, 100);
-            
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('ext-date').min = today;
             document.getElementById('quick-date').min = today;
@@ -1796,9 +1364,7 @@
         
         function closeExtendedModal() {
             document.getElementById('extendedModal').classList.remove('active');
-            if (tg?.MainButton) {
-                tg.MainButton.hide();
-            }
+            if (tg?.MainButton) tg.MainButton.hide();
         }
         
         document.getElementById('extendedModal').addEventListener('click', e => {
@@ -1919,8 +1485,26 @@
             })
         );
         
+        // Валидация чекбокса согласия
+        function validateConsent(checkboxId, checkboxClass) {
+            const checkbox = document.getElementById(checkboxId);
+            if (!checkbox.checked) {
+                checkbox.classList.add('error');
+                setTimeout(() => checkbox.classList.remove('error'), 2000);
+                if (tg) tg.HapticFeedback?.notificationOccurred('error');
+                return false;
+            }
+            return true;
+        }
+        
         function handleSubmitQuick(e) {
             e.preventDefault();
+            
+            // Валидация согласия
+            if (!validateConsent('quick-consent', 'consent-checkbox')) {
+                alert('⚠️ Для отправки заявки необходимо дать согласие на обработку персональных данных');
+                return;
+            }
             
             const name = document.getElementById('quick-name').value.trim();
             const phoneInput = document.getElementById('quick-phone');
@@ -1977,6 +1561,12 @@
         
         function handleExtendedSubmit(e) {
             e.preventDefault();
+            
+            // Валидация согласия
+            if (!validateConsent('ext-consent', 'consent-checkbox')) {
+                alert('⚠️ Для отправки заявки необходимо дать согласие на обработку персональных данных');
+                return;
+            }
             
             const name = document.getElementById('ext-name').value.trim();
             const phoneInput = document.getElementById('ext-phone');
@@ -2043,14 +1633,12 @@
             
             const tg = window.Telegram?.WebApp;
             
-            // Определяем источник
             if (tg && tg.initDataUnsafe?.user) {
                 data.source = '📱 Telegram Mini App';
             } else {
                 data.source = '🌐 Сайт';
             }
             
-            // Отправка через XMLHttpRequest
             const xhr = new XMLHttpRequest();
             const url = 'https://script.google.com/macros/s/AKfycbyL6bfjyDOP1gizZRVQdGojqeT1roaNUx12LKDPmMB_AORMcuz53NipZmsSdQRoXRjW/exec';
             
