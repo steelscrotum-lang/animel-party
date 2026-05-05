@@ -369,65 +369,6 @@
         .rating-link { color: inherit; text-decoration: none; cursor: pointer; transition: all 0.3s; font-weight: 800; color: #d4145a; }
         .rating-link:hover { text-decoration: underline; }
 
-        /* Programs Section */
-        .programs { padding: 35px 0 45px; background: var(--tg-theme-bg-color, #fff5f9); }
-        .section-title { font-size: 46px; font-weight: 900; text-align: center; margin-bottom: 16px; color: var(--tg-theme-text-color, #1a202c); }
-        .section-subtitle { text-align: center; color: var(--tg-theme-hint-color, #4a5568); font-size: 20px; margin-bottom: 45px; font-weight: 500; max-width: 700px; margin-left: auto; margin-right: auto; }
-        .programs-container { position: relative; max-width: 1800px; margin: 0 auto; padding: 0 70px; }
-        .programs-wrapper { overflow-x: auto; overflow-y: hidden; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; }
-        .programs-wrapper::-webkit-scrollbar { display: none; }
-        .programs-grid { display: flex; gap: 24px; width: max-content; }
-        .program-card { flex: 0 0 310px; background: var(--tg-theme-secondary-bg-color, white); border-radius: 18px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: all 0.3s; }
-        .program-card:hover { transform: translateY(-8px); box-shadow: 0 18px 40px rgba(0,0,0,0.12); }
-        .program-image { height: 180px; display: flex; align-items: center; justify-content: center; font-size: 70px; position: relative; overflow: hidden; cursor: pointer; }
-        .program-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
-        .program-image:hover img { transform: scale(1.04); }
-        .gallery-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.95); border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; transition: all 0.3s; box-shadow: 0 2px 8px rgba(0,0,0,0.15); z-index: 2; }
-        .gallery-nav:hover { background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.25); }
-        .gallery-nav.prev { left: 8px; }
-        .gallery-nav.next { right: 8px; }
-        .gallery-counter { position: absolute; bottom: 8px; right: 8px; background: rgba(0, 0, 0, 0.7); color: white; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
-        .video-btn { position: absolute; bottom: 8px; left: 8px; background: rgba(212, 20, 90, 0.95); color: white; border: none; padding: 7px 14px; border-radius: 18px; cursor: pointer; font-weight: 700; font-size: 13px; display: flex; align-items: center; gap: 5px; transition: all 0.3s; z-index: 2; }
-        .video-btn:hover { background: #d4145a; transform: scale(1.05); }
-        .scroll-btn { position: absolute; top: 50%; transform: translateY(-50%); background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; font-size: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(212, 20, 90, 0.4); z-index: 10; transition: all 0.3s; }
-        .scroll-btn:hover { transform: translateY(-50%) scale(1.1); box-shadow: 0 6px 20px rgba(212, 20, 90, 0.6); }
-        .scroll-btn.prev { left: 0; }
-        .scroll-btn.next { right: 0; }
-        .program-content { padding: 18px; }
-        .program-content h3 { font-size: 22px; margin-bottom: 8px; color: var(--tg-theme-text-color, #1a202c); font-weight: 800; }
-        .program-content p { color: var(--tg-theme-hint-color, #4a5568); margin-bottom: 12px; font-size: 14px; line-height: 1.5; }
-        .program-features, .pricing-features { list-style: none; margin-bottom: 14px; }
-        .program-features li, .pricing-features li { padding: 4px 0; color: var(--tg-theme-hint-color, #4a5568); font-size: 14px; display: flex; align-items: flex-start; font-weight: 600; }
-        .program-features li::before, .pricing-features li::before { content: '✓ '; color: #38a169; font-weight: 800; margin-right: 5px; flex-shrink: 0; }
-        .pricing-features li { padding: 6px 0; border-bottom: 1px solid var(--tg-theme-bg-color, #f0f4f8); line-height: 1.35; }
-        .pricing-features li:last-child { border-bottom: none; }
-        .program-price { font-size: 26px; font-weight: 900; color: #d4145a; margin-bottom: 12px; }
-
-        /* Gradient backgrounds */
-        .gradient-1 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-        .gradient-2 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
-        .gradient-3 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
-        .gradient-4 { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
-        .gradient-5 { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
-        .gradient-6 { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); }
-        .gradient-7 { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); }
-        .gradient-8 { background: linear-gradient(135deg, #a8c0ff 0%, #3f2b96 100%); }
-        .gradient-9 { background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%); }
-        .gradient-10 { background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%); }
-        .gradient-11 { background: linear-gradient(135deg, #f5af19 0%, #f12711 100%); }
-
-        /* About Section */
-        .about { padding: 55px 0; background: var(--tg-theme-secondary-bg-color, #ffffff); }
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 45px; align-items: center; }
-        .about-text { font-size: 19px; color: var(--tg-theme-hint-color, #4a5568); margin-bottom: 24px; line-height: 1.75; }
-        .about-features { display: grid; gap: 18px; }
-        .about-feature { display: flex; gap: 14px; align-items: flex-start; }
-        .about-feature-icon { width: 28px; height: 28px; background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 800; font-size: 16px; }
-        .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-        .stat-card { background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%); color: white; padding: 30px 22px; border-radius: 18px; text-align: center; box-shadow: 0 10px 28px rgba(212, 20, 90, 0.3); }
-        .stat-number { font-size: 44px; font-weight: 900; margin-bottom: 8px; }
-        .stat-card div:last-child { font-weight: 700; font-size: 15px; }
-
         /* Pricing Section */
         .pricing { 
             padding: 25px 0 20px; 
@@ -497,6 +438,65 @@
         .pricing-card .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(212, 20, 90, 0.45); }
         .pricing-card .btn-secondary { background: var(--tg-theme-secondary-bg-color, white); color: #d4145a; border: 2.5px solid #d4145a; }
         .pricing-card .btn-secondary:hover { background: #d4145a; color: white; transform: translateY(-2px); }
+
+        /* Programs Section */
+        .programs { padding: 35px 0 45px; background: var(--tg-theme-bg-color, #fff5f9); }
+        .section-title { font-size: 46px; font-weight: 900; text-align: center; margin-bottom: 16px; color: var(--tg-theme-text-color, #1a202c); }
+        .section-subtitle { text-align: center; color: var(--tg-theme-hint-color, #4a5568); font-size: 20px; margin-bottom: 45px; font-weight: 500; max-width: 700px; margin-left: auto; margin-right: auto; }
+        .programs-container { position: relative; max-width: 1800px; margin: 0 auto; padding: 0 70px; }
+        .programs-wrapper { overflow-x: auto; overflow-y: hidden; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; }
+        .programs-wrapper::-webkit-scrollbar { display: none; }
+        .programs-grid { display: flex; gap: 24px; width: max-content; }
+        .program-card { flex: 0 0 310px; background: var(--tg-theme-secondary-bg-color, white); border-radius: 18px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: all 0.3s; }
+        .program-card:hover { transform: translateY(-8px); box-shadow: 0 18px 40px rgba(0,0,0,0.12); }
+        .program-image { height: 180px; display: flex; align-items: center; justify-content: center; font-size: 70px; position: relative; overflow: hidden; cursor: pointer; }
+        .program-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+        .program-image:hover img { transform: scale(1.04); }
+        .gallery-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.95); border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; transition: all 0.3s; box-shadow: 0 2px 8px rgba(0,0,0,0.15); z-index: 2; }
+        .gallery-nav:hover { background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.25); }
+        .gallery-nav.prev { left: 8px; }
+        .gallery-nav.next { right: 8px; }
+        .gallery-counter { position: absolute; bottom: 8px; right: 8px; background: rgba(0, 0, 0, 0.7); color: white; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+        .video-btn { position: absolute; bottom: 8px; left: 8px; background: rgba(212, 20, 90, 0.95); color: white; border: none; padding: 7px 14px; border-radius: 18px; cursor: pointer; font-weight: 700; font-size: 13px; display: flex; align-items: center; gap: 5px; transition: all 0.3s; z-index: 2; }
+        .video-btn:hover { background: #d4145a; transform: scale(1.05); }
+        .scroll-btn { position: absolute; top: 50%; transform: translateY(-50%); background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; font-size: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(212, 20, 90, 0.4); z-index: 10; transition: all 0.3s; }
+        .scroll-btn:hover { transform: translateY(-50%) scale(1.1); box-shadow: 0 6px 20px rgba(212, 20, 90, 0.6); }
+        .scroll-btn.prev { left: 0; }
+        .scroll-btn.next { right: 0; }
+        .program-content { padding: 18px; }
+        .program-content h3 { font-size: 22px; margin-bottom: 8px; color: var(--tg-theme-text-color, #1a202c); font-weight: 800; }
+        .program-content p { color: var(--tg-theme-hint-color, #4a5568); margin-bottom: 12px; font-size: 14px; line-height: 1.5; }
+        .program-features, .pricing-features { list-style: none; margin-bottom: 14px; }
+        .program-features li, .pricing-features li { padding: 4px 0; color: var(--tg-theme-hint-color, #4a5568); font-size: 14px; display: flex; align-items: flex-start; font-weight: 600; }
+        .program-features li::before, .pricing-features li::before { content: '✓ '; color: #38a169; font-weight: 800; margin-right: 5px; flex-shrink: 0; }
+        .pricing-features li { padding: 6px 0; border-bottom: 1px solid var(--tg-theme-bg-color, #f0f4f8); line-height: 1.35; }
+        .pricing-features li:last-child { border-bottom: none; }
+        .program-price { font-size: 26px; font-weight: 900; color: #d4145a; margin-bottom: 12px; }
+
+        /* Gradient backgrounds */
+        .gradient-1 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .gradient-2 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .gradient-3 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .gradient-4 { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .gradient-5 { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+        .gradient-6 { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); }
+        .gradient-7 { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); }
+        .gradient-8 { background: linear-gradient(135deg, #a8c0ff 0%, #3f2b96 100%); }
+        .gradient-9 { background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%); }
+        .gradient-10 { background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%); }
+        .gradient-11 { background: linear-gradient(135deg, #f5af19 0%, #f12711 100%); }
+
+        /* About Section */
+        .about { padding: 55px 0; background: var(--tg-theme-secondary-bg-color, #ffffff); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 45px; align-items: center; }
+        .about-text { font-size: 19px; color: var(--tg-theme-hint-color, #4a5568); margin-bottom: 24px; line-height: 1.75; }
+        .about-features { display: grid; gap: 18px; }
+        .about-feature { display: flex; gap: 14px; align-items: flex-start; }
+        .about-feature-icon { width: 28px; height: 28px; background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 800; font-size: 16px; }
+        .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+        .stat-card { background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%); color: white; padding: 30px 22px; border-radius: 18px; text-align: center; box-shadow: 0 10px 28px rgba(212, 20, 90, 0.3); }
+        .stat-number { font-size: 44px; font-weight: 900; margin-bottom: 8px; }
+        .stat-card div:last-child { font-weight: 700; font-size: 15px; }
 
         /* Reviews Section */
         .reviews { padding: 55px 0; background: linear-gradient(180deg, var(--tg-theme-bg-color, #f9f7ff) 0%, var(--tg-theme-bg-color, #fcf9ff) 100%); }
@@ -879,8 +879,8 @@
                 <!-- Мобильная навигация -->
                 <nav class="mobile-nav">
                     <div class="mobile-nav-row top">
-                        <a href="#programs" class="mobile-nav-btn primary">Программы вечеринок</a>
                         <a href="#pricing" class="mobile-nav-btn primary">Программы анимации</a>
+                        <a href="#programs" class="mobile-nav-btn primary">Тематические вечеринки</a>
                     </div>
                     <div class="mobile-nav-row bottom">
                         <a href="#about" class="mobile-nav-btn secondary">О нас</a>
@@ -893,8 +893,8 @@
                 
                 <!-- Десктопная навигация -->
                 <nav class="nav">
-                    <a href="#programs">Программы вечеринок</a>
                     <a href="#pricing">Программы анимации</a>
+                    <a href="#programs">Тематические вечеринки</a>
                     <a href="#about">О нас</a>
                     <a href="#contacts">Контакты</a>
                 </nav>
@@ -986,7 +986,7 @@
                 </div>
 
                 <div class="hero-buttons">
-                    <a href="#programs" class="btn btn-primary">Наши программы</a>
+                    <a href="#programs" class="btn btn-primary">Популярные программы</a>
                     <button class="btn btn-secondary" onclick="openExtendedModal()">Заказать праздник</button>
                 </div>
                 
@@ -999,10 +999,92 @@
         </div>
     </section>
 
-    <!-- Programs Section -->
+    <!-- Pricing Section (Теперь идет первой) -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Программы анимации</h2>
+            <p class="section-subtitle">Классическая анимация с дополнениями для весёлого праздника</p>
+        </div>
+        <div class="pricing-wrapper">
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>МИНИ</h3><div class="pricing-price">3 900 ₽</div>
+                        <div style="color:#718096;font-size:14px">за программу</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>1 час программы</li><li>1 аниматор</li><li>Игры с реквизитом</li>
+                        <li>Вынос торта</li><li>Игротанцы</li><li>Фото с героем</li>
+                        <li>Фокусы</li><li>Шоу пузырей</li><li>Переводные тату</li>
+                    </ul>
+                    <button class="btn btn-secondary" style="width:100%" onclick="openExtendedModal('Мини')">Выбрать</button>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>СТАНДАРТ</h3><div class="pricing-price">5 600 ₽</div>
+                        <div style="color:#718096;font-size:14px">за программу</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>1.5 часа программы</li><li>1 аниматор</li><li>Игры с реквизитом</li>
+                        <li>Вынос торта</li><li>Игротанцы</li><li>Фото с героем</li>
+                        <li>Фокусы</li><li>Шоу пузырей</li><li>Переводные тату</li>
+                        <li>Мини шар-сюрприз</li><li>Сладкая дискотека</li><li>Элементы квеста</li>
+                    </ul>
+                    <button class="btn btn-secondary" style="width:100%" onclick="openExtendedModal('Стандарт')">Выбрать</button>
+                </div>
+                <div class="pricing-card popular">
+                    <div class="popular-badge">ПОПУЛЯРНЫЙ</div>
+                    <div class="pricing-header">
+                        <h3>ХИТ</h3><div class="pricing-price">7 600 ₽</div>
+                        <div style="color:#718096;font-size:14px">за программу</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>2 часа программы</li><li>1 аниматор</li><li>Игры с реквизитом</li>
+                        <li>Вынос торта</li><li>Игротанцы</li><li>Фото с героем</li>
+                        <li>Фокусы</li><li>Шоу пузырей</li><li>Переводные тату</li>
+                        <li>Мини шар-сюрприз</li><li>Сладкая дискотека</li><li>Элементы квеста</li>
+                        <li>Шоу "Нащупай"</li><li>Мгновенные фото</li><li>Песня про именинника</li>
+                    </ul>
+                    <button class="btn btn-primary" style="width:100%" onclick="openExtendedModal('Хит')">Выбрать</button>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>ПРЕМИУМ</h3><div class="pricing-price">14 900 ₽</div>
+                        <div style="color:#718096;font-size:14px">за программу</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>2 часа программы</li><li>2 аниматора</li><li>Игры с реквизитом</li>
+                        <li>Вынос торта</li><li>Игротанцы</li><li>Фото с героем</li>
+                        <li>Фокусы</li><li>Шоу пузырей</li><li>Переводные тату</li>
+                        <li>Мини шар-сюрприз</li><li>Сладкая дискотека</li><li>Элементы квеста</li>
+                        <li>Шоу "Нащупай"</li><li>Мгновенные фото</li><li>Песня про именинника</li>
+                        <li>БЬЮТИ-СТАНЦИЯ</li><li>Видео от аниматоров</li>
+                    </ul>
+                    <button class="btn btn-secondary" style="width:100%" onclick="openExtendedModal('Премиум')">Выбрать</button>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>ВИП</h3><div class="pricing-price">21 900 ₽</div>
+                        <div style="color:#718096;font-size:14px">за программу</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>3 часа программы</li><li>2 аниматора</li><li>Игры с реквизитом</li>
+                        <li>Вынос торта</li><li>Игротанцы</li><li>Фото с героем</li>
+                        <li>Фокусы</li><li>Шоу пузырей</li><li>Переводные тату</li>
+                        <li>Мини шар-сюрприз</li><li>Сладкая дискотека</li><li>Элементы квеста</li>
+                        <li>Шоу "Нащупай"</li><li>Мгновенные фото</li><li>Песня про именинника</li>
+                        <li>БЬЮТИ-СТАНЦИЯ</li><li>Видео от аниматоров</li><li>Мастер-класс</li><li>ШОУ на выбор</li>
+                    </ul>
+                    <button class="btn btn-secondary" style="width:100%" onclick="openExtendedModal('ВИП')">Выбрать</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section (Теперь идет второй, название изменено) -->
     <section class="programs" id="programs">
         <div class="container">
-            <h2 class="section-title">Программы вечеринок</h2>
+            <h2 class="section-title">Тематические вечеринки</h2>
             <p class="section-subtitle">Выберите идеальную программу для вашего праздника</p>
         </div>
         <div class="programs-container">
@@ -1224,88 +1306,6 @@
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section class="pricing" id="pricing">
-        <div class="container">
-            <h2 class="section-title">Программы анимации</h2>
-            <p class="section-subtitle">Классическая анимация с дополнениями для весёлого праздника</p>
-        </div>
-        <div class="pricing-wrapper">
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>МИНИ</h3><div class="pricing-price">3 900 ₽</div>
-                        <div style="color:#718096;font-size:14px">за программу</div>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>1 час программы</li><li>1 аниматор</li><li>Игры с реквизитом</li>
-                        <li>Вынос торта</li><li>Игротанцы</li><li>Фото с героем</li>
-                        <li>Фокусы</li><li>Шоу пузырей</li><li>Переводные тату</li>
-                    </ul>
-                    <button class="btn btn-secondary" style="width:100%" onclick="openExtendedModal('Мини')">Выбрать</button>
-                </div>
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>СТАНДАРТ</h3><div class="pricing-price">5 600 ₽</div>
-                        <div style="color:#718096;font-size:14px">за программу</div>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>1.5 часа программы</li><li>1 аниматор</li><li>Игры с реквизитом</li>
-                        <li>Вынос торта</li><li>Игротанцы</li><li>Фото с героем</li>
-                        <li>Фокусы</li><li>Шоу пузырей</li><li>Переводные тату</li>
-                        <li>Мини шар-сюрприз</li><li>Сладкая дискотека</li><li>Элементы квеста</li>
-                    </ul>
-                    <button class="btn btn-secondary" style="width:100%" onclick="openExtendedModal('Стандарт')">Выбрать</button>
-                </div>
-                <div class="pricing-card popular">
-                    <div class="popular-badge">ПОПУЛЯРНЫЙ</div>
-                    <div class="pricing-header">
-                        <h3>ХИТ</h3><div class="pricing-price">7 600 ₽</div>
-                        <div style="color:#718096;font-size:14px">за программу</div>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>2 часа программы</li><li>1 аниматор</li><li>Игры с реквизитом</li>
-                        <li>Вынос торта</li><li>Игротанцы</li><li>Фото с героем</li>
-                        <li>Фокусы</li><li>Шоу пузырей</li><li>Переводные тату</li>
-                        <li>Мини шар-сюрприз</li><li>Сладкая дискотека</li><li>Элементы квеста</li>
-                        <li>Шоу "Нащупай"</li><li>Мгновенные фото</li><li>Песня про именинника</li>
-                    </ul>
-                    <button class="btn btn-primary" style="width:100%" onclick="openExtendedModal('Хит')">Выбрать</button>
-                </div>
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>ПРЕМИУМ</h3><div class="pricing-price">14 900 ₽</div>
-                        <div style="color:#718096;font-size:14px">за программу</div>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>2 часа программы</li><li>2 аниматора</li><li>Игры с реквизитом</li>
-                        <li>Вынос торта</li><li>Игротанцы</li><li>Фото с героем</li>
-                        <li>Фокусы</li><li>Шоу пузырей</li><li>Переводные тату</li>
-                        <li>Мини шар-сюрприз</li><li>Сладкая дискотека</li><li>Элементы квеста</li>
-                        <li>Шоу "Нащупай"</li><li>Мгновенные фото</li><li>Песня про именинника</li>
-                        <li>БЬЮТИ-СТАНЦИЯ</li><li>Видео от аниматоров</li>
-                    </ul>
-                    <button class="btn btn-secondary" style="width:100%" onclick="openExtendedModal('Премиум')">Выбрать</button>
-                </div>
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>ВИП</h3><div class="pricing-price">21 900 ₽</div>
-                        <div style="color:#718096;font-size:14px">за программу</div>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>3 часа программы</li><li>2 аниматора</li><li>Игры с реквизитом</li>
-                        <li>Вынос торта</li><li>Игротанцы</li><li>Фото с героем</li>
-                        <li>Фокусы</li><li>Шоу пузырей</li><li>Переводные тату</li>
-                        <li>Мини шар-сюрприз</li><li>Сладкая дискотека</li><li>Элементы квеста</li>
-                        <li>Шоу "Нащупай"</li><li>Мгновенные фото</li><li>Песня про именинника</li>
-                        <li>БЬЮТИ-СТАНЦИЯ</li><li>Видео от аниматоров</li><li>Мастер-класс</li><li>ШОУ на выбор</li>
-                    </ul>
-                    <button class="btn btn-secondary" style="width:100%" onclick="openExtendedModal('ВИП')">Выбрать</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- About Section -->
     <section class="about" id="about">
         <div class="container">
@@ -1342,7 +1342,7 @@
         </div>
     </section>
 
-    <!-- Reviews Section (Сразу после About) -->
+    <!-- Reviews Section -->
     <section class="reviews" id="reviews">
         <div class="container">
             <h2 class="section-title">Отзывы наших клиентов</h2>
@@ -1483,8 +1483,8 @@
                     <div><div style="font-size:20px;font-weight:800">АнимЭль</div><div style="color:#a0aec0;font-size:14px">Агентство детских праздников</div></div>
                 </div>
                 <div class="footer-links">
-                    <a href="#programs">Программы вечеринок</a>
                     <a href="#pricing">Программы анимации</a>
+                    <a href="#programs">Тематические вечеринки</a>
                     <a href="#about">О нас</a>
                     <a href="#contacts">Контакты</a>
                 </div>
