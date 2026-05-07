@@ -369,76 +369,6 @@
         .rating-link { color: inherit; text-decoration: none; cursor: pointer; transition: all 0.3s; font-weight: 800; color: #d4145a; }
         .rating-link:hover { text-decoration: underline; }
 
-        /* Pricing Section */
-        .pricing { 
-            padding: 25px 0 20px; 
-            background: linear-gradient(180deg, var(--tg-theme-bg-color, #fef6fb) 0%, var(--tg-theme-bg-color, #fff5f9) 100%); 
-            position: relative; 
-            overflow: visible !important;
-        }
-        .pricing .container { max-width: 1600px; margin: 0 auto; padding: 0 20px; }
-        .pricing .section-title { font-size: 46px; font-weight: 900; text-align: center; margin-bottom: 10px; color: var(--tg-theme-text-color, #1a202c); }
-        .pricing .section-subtitle { text-align: center; color: var(--tg-theme-hint-color, #4a5568); font-size: 20px; margin-bottom: 25px; max-width: 750px; margin-left: auto; margin-right: auto; }
-        .pricing-wrapper { 
-            overflow-x: auto; 
-            overflow-y: visible !important; 
-            -webkit-overflow-scrolling: touch; 
-            scrollbar-width: thin; 
-            scrollbar-color: #d4145a rgba(0,0,0,0.1); 
-            padding: 35px 0 10px;
-        }
-        .pricing-wrapper::-webkit-scrollbar { height: 8px; }
-        .pricing-wrapper::-webkit-scrollbar-track { background: rgba(0,0,0,0.08); border-radius: 10px; margin: 0 35px; }
-        .pricing-wrapper::-webkit-scrollbar-thumb { background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%); border-radius: 10px; }
-        .pricing-grid { display: flex; flex-direction: row; gap: 22px; padding: 0 35px 18px; min-width: max-content; width: fit-content; margin: 0 auto; }
-        .pricing-card { 
-            flex: 0 0 265px; 
-            width: 265px; 
-            background: var(--tg-theme-secondary-bg-color, white); 
-            border-radius: 18px; 
-            padding: 26px 18px; 
-            box-shadow: 0 10px 28px rgba(0,0,0,0.07); 
-            position: relative; 
-            transition: all 0.3s ease; 
-            display: flex; 
-            flex-direction: column; 
-            overflow: visible !important;
-        }
-        .pricing-card:hover { transform: translateY(-6px); box-shadow: 0 18px 35px rgba(0,0,0,0.1); }
-        .pricing-card.popular { 
-            border: 3px solid #d4145a; 
-            transform: scale(1.04); 
-            padding-top: 35px;
-        }
-        .pricing-card.popular:hover { transform: scale(1.04) translateY(-6px); }
-        .popular-badge { 
-            position: absolute; 
-            top: -14px; 
-            left: 50%; 
-            transform: translateX(-50%); 
-            background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%); 
-            color: white; 
-            padding: 6px 22px; 
-            border-radius: 18px; 
-            font-weight: 800; 
-            font-size: 12px; 
-            text-transform: uppercase; 
-            letter-spacing: 0.6px; 
-            box-shadow: 0 4px 15px rgba(212, 20, 90, 0.4); 
-            white-space: nowrap; 
-            z-index: 10; 
-        }
-        .pricing-header { text-align: center; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 2px solid var(--tg-theme-bg-color, #f7fafc); }
-        .pricing-header h3 { font-size: 22px; font-weight: 800; color: var(--tg-theme-text-color, #1a202c); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .pricing-price { font-size: 38px; font-weight: 900; background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 5px; line-height: 1; }
-        .pricing-header .price-note { color: var(--tg-theme-hint-color, #718096); font-size: 14px; font-weight: 500; }
-        .pricing-features { margin: 0 0 18px 0; padding: 0; flex: 1; }
-        .pricing-card .btn { width: 100%; padding: 14px 22px; border: none; border-radius: 24px; font-weight: 800; font-size: 15px; cursor: pointer; transition: all 0.3s ease; text-align: center; text-decoration: none; display: inline-block; }
-        .pricing-card .btn-primary { background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%); color: white; box-shadow: 0 4px 15px rgba(212, 20, 90, 0.3); }
-        .pricing-card .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(212, 20, 90, 0.45); }
-        .pricing-card .btn-secondary { background: var(--tg-theme-secondary-bg-color, white); color: #d4145a; border: 2.5px solid #d4145a; }
-        .pricing-card .btn-secondary:hover { background: #d4145a; color: white; transform: translateY(-2px); }
-
         /* Programs Section - Cards Grid */
         .programs { padding: 35px 0 45px; background: var(--tg-theme-bg-color, #fff5f9); }
         .section-title { font-size: 46px; font-weight: 900; text-align: center; margin-bottom: 16px; color: var(--tg-theme-text-color, #1a202c); }
@@ -560,7 +490,7 @@
         .program-modal-content {
             background: var(--tg-theme-secondary-bg-color, white);
             border-radius: 24px;
-            max-width: 900px;
+            max-width: 1200px;
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
@@ -621,53 +551,310 @@
         .program-modal-body {
             padding: 30px;
         }
-        
-        .programs-grid-inside {
+
+        /* Animation tariffs grid inside modal */
+        .animation-tariffs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+            gap: 22px;
             margin-top: 20px;
         }
         
-        .mini-program-card {
-            background: var(--tg-theme-bg-color, #f8f9fa);
-            border-radius: 16px;
-            padding: 20px;
-            border: 2px solid transparent;
+        .animation-tariff-card {
+            background: var(--tg-theme-secondary-bg-color, white);
+            border-radius: 18px;
+            padding: 26px 18px;
+            box-shadow: 0 10px 28px rgba(0,0,0,0.07);
+            position: relative;
             transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
         
-        .mini-program-card:hover {
-            border-color: #d4145a;
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(212, 20, 90, 0.15);
+        .animation-tariff-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 35px rgba(0,0,0,0.1);
         }
         
-        .mini-program-card h4 {
+        .animation-tariff-card.popular {
+            border: 3px solid #d4145a;
+            transform: scale(1.04);
+            padding-top: 35px;
+        }
+        
+        .animation-tariff-card.popular:hover {
+            transform: scale(1.04) translateY(-6px);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%);
+            color: white;
+            padding: 6px 22px;
+            border-radius: 18px;
+            font-weight: 800;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            box-shadow: 0 4px 15px rgba(212, 20, 90, 0.4);
+            white-space: nowrap;
+            z-index: 10;
+        }
+        
+        .tariff-header {
+            text-align: center;
+            margin-bottom: 18px;
+            padding-bottom: 14px;
+            border-bottom: 2px solid var(--tg-theme-bg-color, #f7fafc);
+        }
+        
+        .tariff-header h3 {
+            font-size: 22px;
+            font-weight: 800;
             color: var(--tg-theme-text-color, #1a202c);
-            font-size: 18px;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .tariff-price {
+            font-size: 38px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 5px;
+            line-height: 1;
+        }
+        
+        .price-note {
+            color: var(--tg-theme-hint-color, #718096);
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .tariff-features {
+            list-style: none;
+            margin: 0 0 18px 0;
+            padding: 0;
+            flex: 1;
+        }
+        
+        .tariff-features li {
+            padding: 6px 0;
+            border-bottom: 1px solid var(--tg-theme-bg-color, #f0f4f8);
+            line-height: 1.35;
+            color: var(--tg-theme-hint-color, #4a5568);
+            font-size: 14px;
+            display: flex;
+            align-items: flex-start;
+            font-weight: 600;
+        }
+        
+        .tariff-features li::before {
+            content: '✓ ';
+            color: #38a169;
+            font-weight: 800;
+            margin-right: 5px;
+            flex-shrink: 0;
+        }
+        
+        .tariff-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .tariff-btn {
+            width: 100%;
+            padding: 14px 22px;
+            border: none;
+            border-radius: 24px;
+            font-weight: 800;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .tariff-btn-primary {
+            background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(212, 20, 90, 0.3);
+        }
+        
+        .tariff-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(212, 20, 90, 0.45);
+        }
+        
+        .tariff-btn-secondary {
+            background: var(--tg-theme-secondary-bg-color, white);
+            color: #d4145a;
+            border: 2.5px solid #d4145a;
+        }
+        
+        .tariff-btn-secondary:hover {
+            background: #d4145a;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Themed parties grid */
+        .themed-parties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+            gap: 24px;
+            margin-top: 20px;
+        }
+        
+        .themed-party-card {
+            background: var(--tg-theme-secondary-bg-color, white);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+        
+        .themed-party-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+        }
+        
+        .party-image {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 70px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .party-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .party-image:hover img {
+            transform: scale(1.04);
+        }
+        
+        .party-gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            z-index: 2;
+        }
+        
+        .party-gallery-nav:hover {
+            background: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+        }
+        
+        .party-gallery-nav.prev { left: 8px; }
+        .party-gallery-nav.next { right: 8px; }
+        
+        .party-gallery-counter {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .party-video-btn {
+            position: absolute;
+            bottom: 8px;
+            left: 8px;
+            background: rgba(212, 20, 90, 0.95);
+            color: white;
+            border: none;
+            padding: 7px 14px;
+            border-radius: 18px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s;
+            z-index: 2;
+        }
+        
+        .party-video-btn:hover {
+            background: #d4145a;
+            transform: scale(1.05);
+        }
+        
+        .party-content {
+            padding: 18px;
+        }
+        
+        .party-content h3 {
+            font-size: 22px;
+            margin-bottom: 8px;
+            color: var(--tg-theme-text-color, #1a202c);
             font-weight: 800;
         }
         
-        .mini-program-card p {
+        .party-content p {
             color: var(--tg-theme-hint-color, #4a5568);
-            font-size: 14px;
             margin-bottom: 12px;
+            font-size: 14px;
             line-height: 1.5;
         }
         
-        .mini-program-card .price {
-            color: #d4145a;
-            font-weight: 800;
-            font-size: 18px;
-            margin-bottom: 12px;
+        .party-features {
+            list-style: none;
+            margin-bottom: 14px;
         }
         
-        .mini-program-card .btn {
-            width: 100%;
-            padding: 10px;
+        .party-features li {
+            padding: 4px 0;
+            color: var(--tg-theme-hint-color, #4a5568);
             font-size: 14px;
+            display: flex;
+            align-items: flex-start;
+            font-weight: 600;
+        }
+        
+        .party-features li::before {
+            content: '✓ ';
+            color: #38a169;
+            font-weight: 800;
+            margin-right: 5px;
+            flex-shrink: 0;
+        }
+        
+        .party-price {
+            font-size: 26px;
+            font-weight: 900;
+            color: #d4145a;
+            margin-bottom: 12px;
         }
 
         /* Gradient backgrounds */
@@ -974,10 +1161,6 @@
             .program-modal-body {
                 padding: 20px;
             }
-            .programs-grid-inside {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
             .program-modal-close {
                 top: 15px;
                 right: 15px;
@@ -985,26 +1168,22 @@
                 height: 35px;
             }
             
-            .pricing { padding: 20px 0 15px; overflow: visible !important; }
-            .pricing .section-title { font-size: 22px; margin-bottom: 5px; }
-            .pricing .section-subtitle { font-size: 12px; padding: 0 10px; margin-bottom: 15px; }
-            .pricing-wrapper {
-                overflow-x: scroll; overflow-y: visible !important;
-                -webkit-overflow-scrolling: touch; scrollbar-width: none;
-                padding: 30px 0 5px;
+            .animation-tariffs-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
             }
-            .pricing-wrapper::-webkit-scrollbar { display: none; }
-            .pricing-grid { display: flex; flex-direction: row; gap: 10px; padding: 0 6px; width: max-content; }
-            .pricing-card { flex: 0 0 145px; width: 145px; padding: 10px 7px; border-radius: 12px; overflow: visible !important; }
-            .pricing-card.popular { transform: scale(1); border: 2px solid #d4145a; padding-top: 30px; }
-            .popular-badge { padding: 4px 12px; font-size: 9px; top: -12px; }
-            .pricing-header { margin-bottom: 7px; padding-bottom: 5px; }
-            .pricing-header h3 { font-size: 11px; margin-bottom: 4px; }
-            .pricing-price { font-size: 18px; }
-            .pricing-header .price-note { font-size: 8px; }
-            .pricing-features { margin-bottom: 7px; }
-            .pricing-features li { font-size: 8px; padding: 2px 0; }
-            .pricing-card .btn { padding: 6px 8px; font-size: 10px; border-radius: 14px; }
+            .animation-tariff-card.popular {
+                transform: scale(1);
+            }
+            .animation-tariff-card.popular:hover {
+                transform: translateY(-6px);
+            }
+            
+            .themed-parties-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
             .reviews { padding: 20px 0; }
             .reviews .section-title { font-size: 22px; }
             .reviews .section-subtitle { font-size: 12px; padding: 0 10px; }
@@ -1077,8 +1256,6 @@
             .program-card-large {
                 height: 180px;
             }
-            .pricing-card { flex: 0 0 135px; width: 135px; }
-            .pricing-price { font-size: 16px; }
             .footer { padding: 20px 0 10px; }
             .logo-icon { width: 32px; height: 32px; font-size: 17px; }
             .logo-title { font-size: 14px; }
@@ -1237,88 +1414,6 @@
                     <div class="feature"><span class="feature-icon">🎭</span><span>50+ программ</span></div>
                     <div class="feature"><span class="feature-icon">⭐</span><a href="https://www.avito.ru/brands/i322493885/all?ysclid=mnbhzgi2mi180410002&sellerId=795ea9ffbc132d84af751c9fc4f32757" target="_blank" class="rating-link">5.0 рейтинг Авито</a></div>
                     <div class="feature"><span class="feature-icon">🎉</span><span>5000+ праздников</span></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section class="pricing" id="pricing">
-        <div class="container">
-            <h2 class="section-title">Программы анимации</h2>
-            <p class="section-subtitle">Обновлённый формат с дополнениями для весёлого праздника</p>
-        </div>
-        <div class="pricing-wrapper">
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>МИНИ</h3><div class="pricing-price">3 900 ₽</div>
-                        <div style="color:#718096;font-size:14px">за программу</div>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>1 час программы</li><li>1 аниматор</li><li>Игры с реквизитом</li>
-                        <li>Вынос торта</li><li>Игротанцы</li><li>Фото с героем</li>
-                        <li>Фокусы</li><li>Шоу пузырей</li><li>Переводные тату</li>
-                    </ul>
-                    <button class="btn btn-secondary" style="width:100%" onclick="openExtendedModal('Мини')">Выбрать</button>
-                </div>
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>СТАНДАРТ</h3><div class="pricing-price">5 600 ₽</div>
-                        <div style="color:#718096;font-size:14px">за программу</div>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>1.5 часа программы</li><li>1 аниматор</li><li>Игры с реквизитом</li>
-                        <li>Вынос торта</li><li>Игротанцы</li><li>Фото с героем</li>
-                        <li>Фокусы</li><li>Шоу пузырей</li><li>Переводные тату</li>
-                        <li>Мини шар-сюрприз</li><li>Сладкая дискотека</li><li>Элементы квеста</li>
-                    </ul>
-                    <button class="btn btn-secondary" style="width:100%" onclick="openExtendedModal('Стандарт')">Выбрать</button>
-                </div>
-                <div class="pricing-card popular">
-                    <div class="popular-badge">ПОПУЛЯРНЫЙ</div>
-                    <div class="pricing-header">
-                        <h3>ХИТ</h3><div class="pricing-price">7 600 ₽</div>
-                        <div style="color:#718096;font-size:14px">за программу</div>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>2 часа программы</li><li>1 аниматор</li><li>Игры с реквизитом</li>
-                        <li>Вынос торта</li><li>Игротанцы</li><li>Фото с героем</li>
-                        <li>Фокусы</li><li>Шоу пузырей</li><li>Переводные тату</li>
-                        <li>Мини шар-сюрприз</li><li>Сладкая дискотека</li><li>Элементы квеста</li>
-                        <li>Шоу "Нащупай"</li><li>Мгновенные фото</li><li>Песня про именинника</li>
-                    </ul>
-                    <button class="btn btn-primary" style="width:100%" onclick="openExtendedModal('Хит')">Выбрать</button>
-                </div>
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>ПРЕМИУМ</h3><div class="pricing-price">14 900 ₽</div>
-                        <div style="color:#718096;font-size:14px">за программу</div>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>2 часа программы</li><li>2 аниматора</li><li>Игры с реквизитом</li>
-                        <li>Вынос торта</li><li>Игротанцы</li><li>Фото с героем</li>
-                        <li>Фокусы</li><li>Шоу пузырей</li><li>Переводные тату</li>
-                        <li>Мини шар-сюрприз</li><li>Сладкая дискотека</li><li>Элементы квеста</li>
-                        <li>Шоу "Нащупай"</li><li>Мгновенные фото</li><li>Песня про именинника</li>
-                        <li>БЬЮТИ-СТАНЦИЯ</li><li>Видео от аниматоров</li>
-                    </ul>
-                    <button class="btn btn-secondary" style="width:100%" onclick="openExtendedModal('Премиум')">Выбрать</button>
-                </div>
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>ВИП</h3><div class="pricing-price">21 900 ₽</div>
-                        <div style="color:#718096;font-size:14px">за программу</div>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>3 часа программы</li><li>2 аниматора</li><li>Игры с реквизитом</li>
-                        <li>Вынос торта</li><li>Игротанцы</li><li>Фото с героем</li>
-                        <li>Фокусы</li><li>Шоу пузырей</li><li>Переводные тату</li>
-                        <li>Мини шар-сюрприз</li><li>Сладкая дискотека</li><li>Элементы квеста</li>
-                        <li>Шоу "Нащупай"</li><li>Мгновенные фото</li><li>Песня про именинника</li>
-                        <li>БЬЮТИ-СТАНЦИЯ</li><li>Видео от аниматоров</li><li>Мастер-класс</li><li>ШОУ на выбор</li>
-                    </ul>
-                    <button class="btn btn-secondary" style="width:100%" onclick="openExtendedModal('ВИП')">Выбрать</button>
                 </div>
             </div>
         </div>
@@ -1857,25 +1952,130 @@
                 'animation': {
                     title: 'Анимация',
                     html: `
-                        <p style="margin-bottom: 20px; font-size: 16px; line-height: 1.6;">Классические анимационные программы для детей всех возрастов. Наши профессиональные аниматоры проведут незабываемый праздник с играми, конкурсами и шоу-элементами.</p>
-                        <div class="programs-grid-inside">
-                            <div class="mini-program-card">
-                                <h4>Мини</h4>
-                                <p>1 час программы с одним аниматором</p>
-                                <div class="price">3 900 ₽</div>
-                                <button class="btn btn-secondary" onclick="closeProgramModal(); openExtendedModal('Мини')">Выбрать</button>
+                        <p style="margin-bottom: 30px; font-size: 16px; line-height: 1.6; color: #4a5568;">Классические анимационные программы для детей всех возрастов. Наши профессиональные аниматоры проведут незабываемый праздник с играми, конкурсами и шоу-элементами.</p>
+                        <div class="animation-tariffs-grid">
+                            <div class="animation-tariff-card">
+                                <div class="tariff-header">
+                                    <h3>МИНИ</h3>
+                                    <div class="tariff-price">3 900 ₽</div>
+                                    <div class="price-note">за программу</div>
+                                </div>
+                                <ul class="tariff-features">
+                                    <li>1 час программы</li>
+                                    <li>1 аниматор</li>
+                                    <li>Игры с реквизитом</li>
+                                    <li>Вынос торта</li>
+                                    <li>Игротанцы</li>
+                                    <li>Фото с героем</li>
+                                    <li>Фокусы</li>
+                                    <li>Шоу пузырей</li>
+                                    <li>Переводные тату</li>
+                                </ul>
+                                <button class="tariff-btn tariff-btn-secondary" onclick="closeProgramModal(); openExtendedModal('Мини')">Выбрать</button>
                             </div>
-                            <div class="mini-program-card">
-                                <h4>Стандарт</h4>
-                                <p>1.5 часа программы с дополнительными элементами</p>
-                                <div class="price">5 600 ₽</div>
-                                <button class="btn btn-secondary" onclick="closeProgramModal(); openExtendedModal('Стандарт')">Выбрать</button>
+                            <div class="animation-tariff-card">
+                                <div class="tariff-header">
+                                    <h3>СТАНДАРТ</h3>
+                                    <div class="tariff-price">5 600 ₽</div>
+                                    <div class="price-note">за программу</div>
+                                </div>
+                                <ul class="tariff-features">
+                                    <li>1.5 часа программы</li>
+                                    <li>1 аниматор</li>
+                                    <li>Игры с реквизитом</li>
+                                    <li>Вынос торта</li>
+                                    <li>Игротанцы</li>
+                                    <li>Фото с героем</li>
+                                    <li>Фокусы</li>
+                                    <li>Шоу пузырей</li>
+                                    <li>Переводные тату</li>
+                                    <li>Мини шар-сюрприз</li>
+                                    <li>Сладкая дискотека</li>
+                                    <li>Элементы квеста</li>
+                                </ul>
+                                <button class="tariff-btn tariff-btn-secondary" onclick="closeProgramModal(); openExtendedModal('Стандарт')">Выбрать</button>
                             </div>
-                            <div class="mini-program-card">
-                                <h4>Хит</h4>
-                                <p>2 часа программы с шоу-элементами</p>
-                                <div class="price">7 600 ₽</div>
-                                <button class="btn btn-primary" onclick="closeProgramModal(); openExtendedModal('Хит')">Выбрать</button>
+                            <div class="animation-tariff-card popular">
+                                <div class="popular-badge">ПОПУЛЯРНЫЙ</div>
+                                <div class="tariff-header">
+                                    <h3>ХИТ</h3>
+                                    <div class="tariff-price">7 600 ₽</div>
+                                    <div class="price-note">за программу</div>
+                                </div>
+                                <ul class="tariff-features">
+                                    <li>2 часа программы</li>
+                                    <li>1 аниматор</li>
+                                    <li>Игры с реквизитом</li>
+                                    <li>Вынос торта</li>
+                                    <li>Игротанцы</li>
+                                    <li>Фото с героем</li>
+                                    <li>Фокусы</li>
+                                    <li>Шоу пузырей</li>
+                                    <li>Переводные тату</li>
+                                    <li>Мини шар-сюрприз</li>
+                                    <li>Сладкая дискотека</li>
+                                    <li>Элементы квеста</li>
+                                    <li>Шоу "Нащупай"</li>
+                                    <li>Мгновенные фото</li>
+                                    <li>Песня про именинника</li>
+                                </ul>
+                                <button class="tariff-btn tariff-btn-primary" onclick="closeProgramModal(); openExtendedModal('Хит')">Выбрать</button>
+                            </div>
+                            <div class="animation-tariff-card">
+                                <div class="tariff-header">
+                                    <h3>ПРЕМИУМ</h3>
+                                    <div class="tariff-price">14 900 ₽</div>
+                                    <div class="price-note">за программу</div>
+                                </div>
+                                <ul class="tariff-features">
+                                    <li>2 часа программы</li>
+                                    <li>2 аниматора</li>
+                                    <li>Игры с реквизитом</li>
+                                    <li>Вынос торта</li>
+                                    <li>Игротанцы</li>
+                                    <li>Фото с героем</li>
+                                    <li>Фокусы</li>
+                                    <li>Шоу пузырей</li>
+                                    <li>Переводные тату</li>
+                                    <li>Мини шар-сюрприз</li>
+                                    <li>Сладкая дискотека</li>
+                                    <li>Элементы квеста</li>
+                                    <li>Шоу "Нащупай"</li>
+                                    <li>Мгновенные фото</li>
+                                    <li>Песня про именинника</li>
+                                    <li>БЬЮТИ-СТАНЦИЯ</li>
+                                    <li>Видео от аниматоров</li>
+                                </ul>
+                                <button class="tariff-btn tariff-btn-secondary" onclick="closeProgramModal(); openExtendedModal('Премиум')">Выбрать</button>
+                            </div>
+                            <div class="animation-tariff-card">
+                                <div class="tariff-header">
+                                    <h3>ВИП</h3>
+                                    <div class="tariff-price">21 900 ₽</div>
+                                    <div class="price-note">за программу</div>
+                                </div>
+                                <ul class="tariff-features">
+                                    <li>3 часа программы</li>
+                                    <li>2 аниматора</li>
+                                    <li>Игры с реквизитом</li>
+                                    <li>Вынос торта</li>
+                                    <li>Игротанцы</li>
+                                    <li>Фото с героем</li>
+                                    <li>Фокусы</li>
+                                    <li>Шоу пузырей</li>
+                                    <li>Переводные тату</li>
+                                    <li>Мини шар-сюрприз</li>
+                                    <li>Сладкая дискотека</li>
+                                    <li>Элементы квеста</li>
+                                    <li>Шоу "Нащупай"</li>
+                                    <li>Мгновенные фото</li>
+                                    <li>Песня про именинника</li>
+                                    <li>БЬЮТИ-СТАНЦИЯ</li>
+                                    <li>Видео от аниматоров</li>
+                                    <li>Мастер-класс</li>
+                                    <li>ШОУ на выбор</li>
+                                </ul>
+                                <button class="tariff-btn tariff-btn-secondary" onclick="closeProgramModal(); openExtendedModal('ВИП')">Выбрать</button>
                             </div>
                         </div>
                     `
@@ -1883,31 +2083,249 @@
                 'themed': {
                     title: 'Тематические вечеринки',
                     html: `
-                        <p style="margin-bottom: 20px; font-size: 16px; line-height: 1.6;">Погрузитесь в мир любимых героев! У нас более 50 тематических программ: от принцесс и супергероев до динозавров и космических приключений.</p>
-                        <div class="programs-grid-inside">
-                            <div class="mini-program-card">
-                                <h4>Дино Парк</h4>
-                                <p>Интерактивная программа с ростовым динозавром</p>
-                                <div class="price">от 8 000 ₽</div>
-                                <button class="btn btn-primary" onclick="closeProgramModal(); openExtendedModal('Дино Парк')">Выбрать</button>
+                        <p style="margin-bottom: 30px; font-size: 16px; line-height: 1.6; color: #4a5568;">Погрузитесь в мир любимых героев! У нас более 50 тематических программ: от принцесс и супергероев до динозавров и космических приключений.</p>
+                        <div class="themed-parties-grid">
+                            <!-- 1. Дино Парк -->
+                            <div class="themed-party-card">
+                                <div class="party-image gradient-1" onclick="openThemedLightbox('dino', 0)" data-program="dino">
+                                    <img src="photos/dino_park_photo.jpg" alt="Дино Парк" loading="lazy" onerror="this.style.display='none'; this.parentElement.innerHTML='🦕'">
+                                    <button class="party-video-btn" onclick="event.stopPropagation(); openThemedVideo('dino')">🎥 Видео</button>
+                                    <button class="party-gallery-nav prev" onclick="event.stopPropagation(); changeThemedImage('dino', -1)">❮</button>
+                                    <button class="party-gallery-nav next" onclick="event.stopPropagation(); changeThemedImage('dino', 1)">❯</button>
+                                    <span class="party-gallery-counter">1/2</span>
+                                </div>
+                                <div class="party-content">
+                                    <h3>Дино Парк</h3>
+                                    <p>Интерактивная программа для детей 5-7 лет</p>
+                                    <ul class="party-features">
+                                        <li>Два артиста</li>
+                                        <li>Сюжетная линия</li>
+                                        <li>Ростовой динозавр</li>
+                                        <li>От 1.5 часов</li>
+                                    </ul>
+                                    <div class="party-price">от 8 000 ₽</div>
+                                    <button class="btn btn-primary" onclick="closeProgramModal(); openExtendedModal('Дино Парк')">Выбрать</button>
+                                </div>
                             </div>
-                            <div class="mini-program-card">
-                                <h4>Страна Единорогов</h4>
-                                <p>Волшебное путешествие с аквагримом</p>
-                                <div class="price">от 5 500 ₽</div>
-                                <button class="btn btn-secondary" onclick="closeProgramModal(); openExtendedModal('Страна Единорогов')">Выбрать</button>
+                            <!-- 2. Страна Единорогов -->
+                            <div class="themed-party-card">
+                                <div class="party-image gradient-2" onclick="openThemedLightbox('unicorn', 0)" data-program="unicorn">
+                                    <img src="photos/edinorog_state_photo.jpg" alt="Страна Единорогов" loading="lazy" onerror="this.style.display='none'; this.parentElement.innerHTML='🦄'">
+                                    <button class="party-video-btn" onclick="event.stopPropagation(); openThemedVideo('unicorn')">🎥 Видео</button>
+                                    <button class="party-gallery-nav prev" onclick="event.stopPropagation(); changeThemedImage('unicorn', -1)">❮</button>
+                                    <button class="party-gallery-nav next" onclick="event.stopPropagation(); changeThemedImage('unicorn', 1)">❯</button>
+                                    <span class="party-gallery-counter">1/2</span>
+                                </div>
+                                <div class="party-content">
+                                    <h3>Страна Единорогов</h3>
+                                    <p>Волшебное путешествие в сказочную страну</p>
+                                    <ul class="party-features">
+                                        <li>Магическое шоу</li>
+                                        <li>Аквагрим</li>
+                                        <li>Игры и танцы</li>
+                                        <li>От 1 часа</li>
+                                    </ul>
+                                    <div class="party-price">от 5 500 ₽</div>
+                                    <button class="btn btn-primary" onclick="closeProgramModal(); openExtendedModal('Страна Единорогов')">Выбрать</button>
+                                </div>
                             </div>
-                            <div class="mini-program-card">
-                                <h4>Майнкрафт</h4>
-                                <p>Приключение в мире Minecraft с квестом</p>
-                                <div class="price">от 7 000 ₽</div>
-                                <button class="btn btn-secondary" onclick="closeProgramModal(); openExtendedModal('Майнкрафт')">Выбрать</button>
+                            <!-- 3. Подарок Эльзы -->
+                            <div class="themed-party-card">
+                                <div class="party-image gradient-3" onclick="openThemedLightbox('elza', 0)" data-program="elza">
+                                    <img src="photos/Elza_gift_photo.jpg" alt="Подарок Эльзы" loading="lazy" onerror="this.style.display='none'; this.parentElement.innerHTML='❄️'">
+                                    <button class="party-video-btn" onclick="event.stopPropagation(); openThemedVideo('elza')">🎥 Видео</button>
+                                    <button class="party-gallery-nav prev" onclick="event.stopPropagation(); changeThemedImage('elza', -1)">❮</button>
+                                    <button class="party-gallery-nav next" onclick="event.stopPropagation(); changeThemedImage('elza', 1)">❯</button>
+                                    <span class="party-gallery-counter">1/2</span>
+                                </div>
+                                <div class="party-content">
+                                    <h3>Подарок Эльзы</h3>
+                                    <p>Зимняя сказка с Эльзой и Олафом</p>
+                                    <ul class="party-features">
+                                        <li>Ледяные фокусы</li>
+                                        <li>Снежное шоу</li>
+                                        <li>Песни из мультфильма</li>
+                                        <li>От 1 часа</li>
+                                    </ul>
+                                    <div class="party-price">от 6 000 ₽</div>
+                                    <button class="btn btn-primary" onclick="closeProgramModal(); openExtendedModal('Подарок Эльзы')">Выбрать</button>
+                                </div>
                             </div>
-                            <div class="mini-program-card">
-                                <h4>Супергеройская Вечеринка</h4>
-                                <p>Человек-паук, Бэтмен и другие герои</p>
-                                <div class="price">от 5 000 ₽</div>
-                                <button class="btn btn-secondary" onclick="closeProgramModal(); openExtendedModal('Супергеройская Вечеринка')">Выбрать</button>
+                            <!-- 4. Майнкрафт -->
+                            <div class="themed-party-card">
+                                <div class="party-image gradient-4" onclick="openThemedLightbox('minecraft', 0)" data-program="minecraft">
+                                    <img src="photos/minecraft_photo.jpg" alt="Майнкрафт" loading="lazy" onerror="this.style.display='none'; this.parentElement.innerHTML='⛏️'">
+                                    <button class="party-video-btn" onclick="event.stopPropagation(); openThemedVideo('minecraft')">🎥 Видео</button>
+                                    <button class="party-gallery-nav prev" onclick="event.stopPropagation(); changeThemedImage('minecraft', -1)">❮</button>
+                                    <button class="party-gallery-nav next" onclick="event.stopPropagation(); changeThemedImage('minecraft', 1)">❯</button>
+                                    <span class="party-gallery-counter">1/2</span>
+                                </div>
+                                <div class="party-content">
+                                    <h3>Майнкрафт</h3>
+                                    <p>Приключение в мире Minecraft</p>
+                                    <ul class="party-features">
+                                        <li>Квест-игра</li>
+                                        <li>Строительство</li>
+                                        <li>Битвы с монстрами</li>
+                                        <li>От 1.5 часов</li>
+                                    </ul>
+                                    <div class="party-price">от 7 000 ₽</div>
+                                    <button class="btn btn-primary" onclick="closeProgramModal(); openExtendedModal('Майнкрафт')">Выбрать</button>
+                                </div>
+                            </div>
+                            <!-- 5. Сокровища пиратов -->
+                            <div class="themed-party-card">
+                                <div class="party-image gradient-5" onclick="openThemedLightbox('pirates', 0)" data-program="pirates">
+                                    <img src="photos/socrovisha_piratov_photo.jpg" alt="Сокровища пиратов" loading="lazy" onerror="this.style.display='none'; this.parentElement.innerHTML='🏴☠️'">
+                                    <button class="party-video-btn" onclick="event.stopPropagation(); openThemedVideo('pirates')">🎥 Видео</button>
+                                    <button class="party-gallery-nav prev" onclick="event.stopPropagation(); changeThemedImage('pirates', -1)">❮</button>
+                                    <button class="party-gallery-nav next" onclick="event.stopPropagation(); changeThemedImage('pirates', 1)">❯</button>
+                                    <span class="party-gallery-counter">1/2</span>
+                                </div>
+                                <div class="party-content">
+                                    <h3>Сокровища пиратов</h3>
+                                    <p>Морское приключение с поиском клада</p>
+                                    <ul class="party-features">
+                                        <li>Пиратский квест</li>
+                                        <li>Морские игры</li>
+                                        <li>Поиск клада</li>
+                                        <li>От 1.5 часов</li>
+                                    </ul>
+                                    <div class="party-price">от 7 000 ₽</div>
+                                    <button class="btn btn-primary" onclick="closeProgramModal(); openExtendedModal('Сокровища пиратов')">Выбрать</button>
+                                </div>
+                            </div>
+                            <!-- 6. Супергеройская Вечеринка -->
+                            <div class="themed-party-card">
+                                <div class="party-image gradient-6" onclick="openThemedLightbox('superhero', 0)" data-program="superhero">
+                                    <img src="photos/superhero_party_photo.jpg" alt="Супергеройская Вечеринка" loading="lazy" onerror="this.style.display='none'; this.parentElement.innerHTML='🦸'">
+                                    <button class="party-video-btn" onclick="event.stopPropagation(); openThemedVideo('superhero')">🎥 Видео</button>
+                                    <button class="party-gallery-nav prev" onclick="event.stopPropagation(); changeThemedImage('superhero', -1)">❮</button>
+                                    <button class="party-gallery-nav next" onclick="event.stopPropagation(); changeThemedImage('superhero', 1)">❯</button>
+                                    <span class="party-gallery-counter">1/2</span>
+                                </div>
+                                <div class="party-content">
+                                    <h3>Супергеройская Вечеринка</h3>
+                                    <p>Человек-паук, Бэтмен и другие герои</p>
+                                    <ul class="party-features">
+                                        <li>Интерактивные игры</li>
+                                        <li>Суперспособности</li>
+                                        <li>Битва со злом</li>
+                                        <li>От 1 часа</li>
+                                    </ul>
+                                    <div class="party-price">от 5 000 ₽</div>
+                                    <button class="btn btn-primary" onclick="closeProgramModal(); openExtendedModal('Супергеройская Вечеринка')">Выбрать</button>
+                                </div>
+                            </div>
+                            <!-- 7. Футбольная вечеринка -->
+                            <div class="themed-party-card">
+                                <div class="party-image gradient-7" onclick="openThemedLightbox('football', 0)" data-program="football">
+                                    <img src="photos/football_party_photo.jpg" alt="Футбольная вечеринка" loading="lazy" onerror="this.style.display='none'; this.parentElement.innerHTML='⚽'">
+                                    <button class="party-video-btn" onclick="event.stopPropagation(); openThemedVideo('football')">🎥 Видео</button>
+                                    <button class="party-gallery-nav prev" onclick="event.stopPropagation(); changeThemedImage('football', -1)">❮</button>
+                                    <button class="party-gallery-nav next" onclick="event.stopPropagation(); changeThemedImage('football', 1)">❯</button>
+                                    <span class="party-gallery-counter">1/2</span>
+                                </div>
+                                <div class="party-content">
+                                    <h3>Футбольная вечеринка</h3>
+                                    <p>Спортивный праздник для чемпионов</p>
+                                    <ul class="party-features">
+                                        <li>Футбольные эстафеты</li>
+                                        <li>Тренировка с тренером</li>
+                                        <li>Награждение кубком</li>
+                                        <li>От 1.5 часов</li>
+                                    </ul>
+                                    <div class="party-price">от 7 500 ₽</div>
+                                    <button class="btn btn-primary" onclick="closeProgramModal(); openExtendedModal('Футбольная вечеринка')">Выбрать</button>
+                                </div>
+                            </div>
+                            <!-- 8. Game Party -->
+                            <div class="themed-party-card">
+                                <div class="party-image gradient-8" onclick="openThemedLightbox('game', 0)" data-program="game">
+                                    <img src="photos/game_party_photo.jpg" alt="Game Party" loading="lazy" onerror="this.style.display='none'; this.parentElement.innerHTML='🎮'">
+                                    <button class="party-video-btn" onclick="event.stopPropagation(); openThemedVideo('game')">🎥 Видео</button>
+                                    <button class="party-gallery-nav prev" onclick="event.stopPropagation(); changeThemedImage('game', -1)">❮</button>
+                                    <button class="party-gallery-nav next" onclick="event.stopPropagation(); changeThemedImage('game', 1)">❯</button>
+                                    <span class="party-gallery-counter">1/2</span>
+                                </div>
+                                <div class="party-content">
+                                    <h3>Game Party</h3>
+                                    <p>Игровая вечеринка с приставками</p>
+                                    <ul class="party-features">
+                                        <li>Игровые приставки</li>
+                                        <li>Настольные игры</li>
+                                        <li>Киберспортивные турниры</li>
+                                        <li>От 2 часов</li>
+                                    </ul>
+                                    <div class="party-price">от 8 500 ₽</div>
+                                    <button class="btn btn-primary" onclick="closeProgramModal(); openExtendedModal('Game Party')">Выбрать</button>
+                                </div>
+                            </div>
+                            <!-- 9. неДЕТское время -->
+                            <div class="themed-party-card">
+                                <div class="party-image gradient-9" onclick="openThemedLightbox('nokids', 0)" data-program="nokids">
+                                    <img src="photos/no_kids_time_photo.jpg" alt="неДЕТское время" loading="lazy" onerror="this.style.display='none'; this.parentElement.innerHTML='🎉'">
+                                    <button class="party-video-btn" onclick="event.stopPropagation(); openThemedVideo('nokids')">🎥 Видео</button>
+                                    <button class="party-gallery-nav prev" onclick="event.stopPropagation(); changeThemedImage('nokids', -1)">❮</button>
+                                    <button class="party-gallery-nav next" onclick="event.stopPropagation(); changeThemedImage('nokids', 1)">❯</button>
+                                    <span class="party-gallery-counter">1/2</span>
+                                </div>
+                                <div class="party-content">
+                                    <h3>неДЕТское время</h3>
+                                    <p>Вечеринка для подростков</p>
+                                    <ul class="party-features">
+                                        <li>Современная музыка</li>
+                                        <li>Челленджи и флешмобы</li>
+                                        <li>Фотозона</li>
+                                        <li>От 2 часов</li>
+                                    </ul>
+                                    <div class="party-price">от 9 000 ₽</div>
+                                    <button class="btn btn-primary" onclick="closeProgramModal(); openExtendedModal('неДЕТское время')">Выбрать</button>
+                                </div>
+                            </div>
+                            <!-- 10. Пижамная вечеринка -->
+                            <div class="themed-party-card">
+                                <div class="party-image gradient-10" onclick="openThemedLightbox('pajamas', 0)" data-program="pajamas">
+                                    <img src="photos/pajamas_party_photo.jpg" alt="Пижамная вечеринка" loading="lazy" onerror="this.style.display='none'; this.parentElement.innerHTML='🌙'">
+                                    <button class="party-video-btn" onclick="event.stopPropagation(); openThemedVideo('pajamas')">🎥 Видео</button>
+                                    <button class="party-gallery-nav prev" onclick="event.stopPropagation(); changeThemedImage('pajamas', -1)">❮</button>
+                                    <button class="party-gallery-nav next" onclick="event.stopPropagation(); changeThemedImage('pajamas', 1)">❯</button>
+                                    <span class="party-gallery-counter">1/2</span>
+                                </div>
+                                <div class="party-content">
+                                    <h3>Пижамная вечеринка</h3>
+                                    <p>Ночная вечеринка в пижамах</p>
+                                    <ul class="party-features">
+                                        <li>Ночные игры</li>
+                                        <li>Просмотр фильмов</li>
+                                        <li>Пицца-пати</li>
+                                        <li>От 3 часов</li>
+                                    </ul>
+                                    <div class="party-price">от 10 000 ₽</div>
+                                    <button class="btn btn-primary" onclick="closeProgramModal(); openExtendedModal('Пижамная вечеринка')">Выбрать</button>
+                                </div>
+                            </div>
+                            <!-- 11. Доставка с сюрпризом -->
+                            <div class="themed-party-card">
+                                <div class="party-image gradient-11" onclick="openThemedLightbox('surprise', 0)" data-program="surprise">
+                                    <img src="photos/surprise_delivery_photo.jpg" alt="Доставка с сюрпризом" loading="lazy" onerror="this.style.display='none'; this.parentElement.innerHTML='🎁'">
+                                    <button class="party-video-btn" onclick="event.stopPropagation(); openThemedVideo('surprise')">🎥 Видео</button>
+                                    <button class="party-gallery-nav prev" onclick="event.stopPropagation(); changeThemedImage('surprise', -1)">❮</button>
+                                    <button class="party-gallery-nav next" onclick="event.stopPropagation(); changeThemedImage('surprise', 1)">❯</button>
+                                    <span class="party-gallery-counter">1/2</span>
+                                </div>
+                                <div class="party-content">
+                                    <h3>Доставка с сюрпризом</h3>
+                                    <p>Неожиданный подарок от персонажа</p>
+                                    <ul class="party-features">
+                                        <li>Яркий персонаж</li>
+                                        <li>Поздравление</li>
+                                        <li>Небольшое шоу</li>
+                                        <li>От 15 минут</li>
+                                    </ul>
+                                    <div class="party-price">от 3 900 ₽</div>
+                                    <button class="btn btn-primary" onclick="closeProgramModal(); openExtendedModal('Доставка с сюрпризом')">Выбрать</button>
+                                </div>
                             </div>
                         </div>
                     `
@@ -1956,6 +2374,66 @@
         document.getElementById('programModal').addEventListener('click', e => {
             if(e.target === e.currentTarget) closeProgramModal();
         });
+        
+        // Themed parties gallery and video functions
+        const themedImages = {
+            dino: ['photos/dino_park_photo.jpg', 'photos/dino_park_main.jpg'],
+            unicorn: ['photos/edinorog_state_photo.jpg', 'photos/edinorog_state_main.jpg'],
+            elza: ['photos/Elza_gift_photo.jpg', 'photos/Elza_gift_main.jpg'],
+            minecraft: ['photos/minecraft_photo.jpg', 'photos/minecraft_main.jpg'],
+            pirates: ['photos/socrovisha_piratov_photo.jpg', 'photos/socrovisha_piratov_main.jpg'],
+            superhero: ['photos/superhero_party_photo.jpg', 'photos/superhero_party_main.jpg'],
+            football: ['photos/football_party_photo.jpg', 'photos/football_party_main.jpg'],
+            game: ['photos/game_party_photo.jpg', 'photos/game_party_main.jpg'],
+            nokids: ['photos/no_kids_time_photo.jpg', 'photos/no_kids_time_main.jpg'],
+            pajamas: ['photos/pajamas_party_photo.jpg', 'photos/pajamas_party_main.jpg'],
+            surprise: ['photos/surprise_delivery_photo.jpg', 'photos/surprise_delivery_main.jpg']
+        };
+        
+        const themedVideos = {
+            dino: 'party_videos/dino_park_video.mp4',
+            unicorn: 'party_videos/edinorog_state_video.mp4',
+            elza: 'party_videos/Elza_gift_video.mp4',
+            minecraft: 'party_videos/minecraft_video.mp4',
+            pirates: 'party_videos/socrovisha_piratov_video.mp4',
+            superhero: 'party_videos/superhero_party_video.mp4',
+            football: 'party_videos/football_party_video.mp4',
+            game: 'party_videos/game_party_video.mp4',
+            nokids: 'party_videos/no_kids_time_video.mp4',
+            pajamas: 'party_videos/pajamas_party_video.mp4',
+            surprise: 'party_videos/surprise_delivery_video.mp4'
+        };
+        
+        let currentThemedProgram = '', currentThemedImageIndex = 0;
+        
+        function openThemedLightbox(p, i) {
+            currentThemedProgram = p;
+            currentThemedImageIndex = i;
+            document.getElementById('lightbox-img').src = themedImages[p][i];
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            if (tg) tg.HapticFeedback?.impactOccurred('light');
+        }
+        
+        function changeThemedImage(p, d) {
+            const im = themedImages[p];
+            currentThemedImageIndex = (currentThemedImageIndex + d + im.length) % im.length;
+            const el = document.querySelector(`.party-image[data-program="${p}"]`);
+            el.querySelector('img').src = im[currentThemedImageIndex];
+            el.querySelector('.party-gallery-counter').textContent = `${currentThemedImageIndex + 1}/${im.length}`;
+            if (tg) tg.HapticFeedback?.impactOccurred('light');
+        }
+        
+        function openThemedVideo(p) {
+            currentThemedProgram = p;
+            const vm = document.getElementById('videoModal');
+            const vp = document.getElementById('videoPlayer');
+            vp.src = themedVideos[p];
+            vm.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            vp.play();
+            if (tg) tg.HapticFeedback?.impactOccurred('medium');
+        }
         
         // Existing functions remain the same
         function scrollPrograms(d) {
