@@ -439,39 +439,236 @@
         .pricing-card .btn-secondary { background: var(--tg-theme-secondary-bg-color, white); color: #d4145a; border: 2.5px solid #d4145a; }
         .pricing-card .btn-secondary:hover { background: #d4145a; color: white; transform: translateY(-2px); }
 
-        /* Programs Section */
+        /* Programs Section - Cards Grid */
         .programs { padding: 35px 0 45px; background: var(--tg-theme-bg-color, #fff5f9); }
         .section-title { font-size: 46px; font-weight: 900; text-align: center; margin-bottom: 16px; color: var(--tg-theme-text-color, #1a202c); }
         .section-subtitle { text-align: center; color: var(--tg-theme-hint-color, #4a5568); font-size: 20px; margin-bottom: 45px; font-weight: 500; max-width: 700px; margin-left: auto; margin-right: auto; }
-        .programs-container { position: relative; max-width: 1800px; margin: 0 auto; padding: 0 70px; }
-        .programs-wrapper { overflow-x: auto; overflow-y: hidden; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; }
-        .programs-wrapper::-webkit-scrollbar { display: none; }
-        .programs-grid { display: flex; gap: 24px; width: max-content; }
-        .program-card { flex: 0 0 310px; background: var(--tg-theme-secondary-bg-color, white); border-radius: 18px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: all 0.3s; }
-        .program-card:hover { transform: translateY(-8px); box-shadow: 0 18px 40px rgba(0,0,0,0.12); }
-        .program-image { height: 180px; display: flex; align-items: center; justify-content: center; font-size: 70px; position: relative; overflow: hidden; cursor: pointer; }
-        .program-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
-        .program-image:hover img { transform: scale(1.04); }
-        .gallery-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.95); border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; transition: all 0.3s; box-shadow: 0 2px 8px rgba(0,0,0,0.15); z-index: 2; }
-        .gallery-nav:hover { background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.25); }
-        .gallery-nav.prev { left: 8px; }
-        .gallery-nav.next { right: 8px; }
-        .gallery-counter { position: absolute; bottom: 8px; right: 8px; background: rgba(0, 0, 0, 0.7); color: white; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
-        .video-btn { position: absolute; bottom: 8px; left: 8px; background: rgba(212, 20, 90, 0.95); color: white; border: none; padding: 7px 14px; border-radius: 18px; cursor: pointer; font-weight: 700; font-size: 13px; display: flex; align-items: center; gap: 5px; transition: all 0.3s; z-index: 2; }
-        .video-btn:hover { background: #d4145a; transform: scale(1.05); }
-        .scroll-btn { position: absolute; top: 50%; transform: translateY(-50%); background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; font-size: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(212, 20, 90, 0.4); z-index: 10; transition: all 0.3s; }
-        .scroll-btn:hover { transform: translateY(-50%) scale(1.1); box-shadow: 0 6px 20px rgba(212, 20, 90, 0.6); }
-        .scroll-btn.prev { left: 0; }
-        .scroll-btn.next { right: 0; }
-        .program-content { padding: 18px; }
-        .program-content h3 { font-size: 22px; margin-bottom: 8px; color: var(--tg-theme-text-color, #1a202c); font-weight: 800; }
-        .program-content p { color: var(--tg-theme-hint-color, #4a5568); margin-bottom: 12px; font-size: 14px; line-height: 1.5; }
-        .program-features, .pricing-features { list-style: none; margin-bottom: 14px; }
-        .program-features li, .pricing-features li { padding: 4px 0; color: var(--tg-theme-hint-color, #4a5568); font-size: 14px; display: flex; align-items: flex-start; font-weight: 600; }
-        .program-features li::before, .pricing-features li::before { content: '✓ '; color: #38a169; font-weight: 800; margin-right: 5px; flex-shrink: 0; }
-        .pricing-features li { padding: 6px 0; border-bottom: 1px solid var(--tg-theme-bg-color, #f0f4f8); line-height: 1.35; }
-        .pricing-features li:last-child { border-bottom: none; }
-        .program-price { font-size: 26px; font-weight: 900; color: #d4145a; margin-bottom: 12px; }
+        
+        .programs-grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .program-card-large {
+            background: var(--tg-theme-secondary-bg-color, white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            height: 320px;
+        }
+        
+        .program-card-large:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .program-card-image {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .program-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .program-card-large:hover .program-card-image img {
+            transform: scale(1.1);
+        }
+        
+        .program-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 24px;
+            transition: background 0.3s ease;
+        }
+        
+        .program-card-large:hover .program-card-overlay {
+            background: linear-gradient(to bottom, rgba(212, 20, 90, 0.2) 0%, rgba(212, 20, 90, 0.7) 100%);
+        }
+        
+        .program-card-title {
+            color: white;
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .program-card-subtitle {
+            color: rgba(255,255,255,0.9);
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .program-card-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .program-card-large:hover .program-card-icon {
+            background: rgba(255,255,255,0.9);
+            transform: rotate(360deg);
+        }
+
+        /* Modal for Program Cards */
+        .program-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.8);
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .program-modal.active {
+            display: flex;
+        }
+        
+        .program-modal-content {
+            background: var(--tg-theme-secondary-bg-color, white);
+            border-radius: 24px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: modalSlideIn 0.4s ease;
+        }
+        
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .program-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--tg-theme-bg-color, #f7fafc);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            color: var(--tg-theme-text-color, #4a5568);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .program-modal-close:hover {
+            background: #d4145a;
+            color: white;
+            transform: rotate(90deg);
+        }
+        
+        .program-modal-header {
+            background: linear-gradient(135deg, #d4145a 0%, #f5576c 100%);
+            color: white;
+            padding: 40px 30px 30px;
+            text-align: center;
+        }
+        
+        .program-modal-title {
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+        
+        .program-modal-body {
+            padding: 30px;
+        }
+        
+        .programs-grid-inside {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .mini-program-card {
+            background: var(--tg-theme-bg-color, #f8f9fa);
+            border-radius: 16px;
+            padding: 20px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .mini-program-card:hover {
+            border-color: #d4145a;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(212, 20, 90, 0.15);
+        }
+        
+        .mini-program-card h4 {
+            color: var(--tg-theme-text-color, #1a202c);
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+        
+        .mini-program-card p {
+            color: var(--tg-theme-hint-color, #4a5568);
+            font-size: 14px;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+        
+        .mini-program-card .price {
+            color: #d4145a;
+            font-weight: 800;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+        
+        .mini-program-card .btn {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+        }
 
         /* Gradient backgrounds */
         .gradient-1 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
@@ -736,33 +933,58 @@
             .hero-features { flex-direction: row; justify-content: center; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
             .feature { font-size: 11px; gap: 5px; }
             .feature-icon { font-size: 18px; }
+            
+            /* Programs Grid Mobile */
+            .programs-grid-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+                padding: 0 10px;
+            }
+            .program-card-large {
+                height: 200px;
+            }
+            .program-card-title {
+                font-size: 16px;
+            }
+            .program-card-subtitle {
+                font-size: 11px;
+            }
+            .program-card-icon {
+                width: 30px;
+                height: 30px;
+                font-size: 16px;
+                top: 10px;
+                right: 10px;
+            }
+            
             .programs { padding: 20px 0; }
             .section-title { font-size: 22px; margin-bottom: 6px; }
             .section-subtitle { font-size: 12px; margin-bottom: 14px; padding: 0 10px; }
-            .programs-container { padding: 0 6px; }
-            .programs-wrapper {
-                overflow-x: scroll; overflow-y: hidden; -webkit-overflow-scrolling: touch;
-                scrollbar-width: none; -ms-overflow-style: none; padding: 6px 0;
+            
+            .program-modal-content {
+                margin: 10px;
+                max-height: 95vh;
             }
-            .programs-wrapper::-webkit-scrollbar { display: none; }
-            .programs-grid { display: flex; flex-direction: row; gap: 8px; width: max-content; padding: 0 6px; }
-            .program-card { flex: 0 0 145px; width: 145px; border-radius: 12px; }
-            .program-image { height: 90px; font-size: 40px; }
-            .program-content { padding: 7px; }
-            .program-content h3 { font-size: 12px; margin-bottom: 3px; }
-            .program-content p {
-                font-size: 9px; margin-bottom: 5px;
-                display: -webkit-box; -webkit-line-clamp: 2;
-                -webkit-box-orient: vertical; overflow: hidden;
+            .program-modal-header {
+                padding: 30px 20px 20px;
             }
-            .program-features { margin-bottom: 5px; }
-            .program-features li { font-size: 8px; padding: 1px 0; }
-            .program-price { font-size: 14px; margin-bottom: 5px; }
-            .program-card .btn { padding: 6px 8px; font-size: 10px; border-radius: 14px; }
-            .scroll-btn { display: none; }
-            .gallery-nav { width: 22px; height: 22px; font-size: 11px; }
-            .gallery-counter { font-size: 8px; padding: 2px 5px; }
-            .video-btn { padding: 3px 7px; font-size: 9px; }
+            .program-modal-title {
+                font-size: 24px;
+            }
+            .program-modal-body {
+                padding: 20px;
+            }
+            .programs-grid-inside {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            .program-modal-close {
+                top: 15px;
+                right: 15px;
+                width: 35px;
+                height: 35px;
+            }
+            
             .pricing { padding: 20px 0 15px; overflow: visible !important; }
             .pricing .section-title { font-size: 22px; margin-bottom: 5px; }
             .pricing .section-subtitle { font-size: 12px; padding: 0 10px; margin-bottom: 15px; }
@@ -849,10 +1071,12 @@
             .hero-subtitle { font-size: 12px; }
             .section-title { font-size: 19px; }
             .section-subtitle { font-size: 11px; }
-            .program-card { flex: 0 0 135px; width: 135px; }
-            .program-image { height: 80px; }
-            .program-content h3 { font-size: 11px; }
-            .program-price { font-size: 13px; }
+            .programs-grid-container {
+                grid-template-columns: 1fr;
+            }
+            .program-card-large {
+                height: 180px;
+            }
             .pricing-card { flex: 0 0 135px; width: 135px; }
             .pricing-price { font-size: 16px; }
             .footer { padding: 20px 0 10px; }
@@ -900,8 +1124,7 @@
                 <!-- Мобильная навигация -->
                 <nav class="mobile-nav">
                     <div class="mobile-nav-row top">
-                        <a href="#pricing" class="mobile-nav-btn primary">Программы анимации</a>
-                        <a href="#programs" class="mobile-nav-btn primary">Тематические вечеринки</a>
+                        <a href="#programs" class="mobile-nav-btn primary">Наши программы</a>
                     </div>
                     <div class="mobile-nav-row bottom">
                         <a href="#about" class="mobile-nav-btn secondary">О нас</a>
@@ -914,8 +1137,7 @@
                 
                 <!-- Десктопная навигация -->
                 <nav class="nav">
-                    <a href="#pricing">Программы анимации</a>
-                    <a href="#programs">Тематические вечеринки</a>
+                    <a href="#programs">Наши программы</a>
                     <a href="#about">О нас</a>
                     <a href="#contacts">Контакты</a>
                 </nav>
@@ -1007,7 +1229,7 @@
                 </div>
 
                 <div class="hero-buttons">
-                    <a href="#programs" class="btn btn-primary">Популярные программы</a>
+                    <a href="#programs" class="btn btn-primary">Наши программы</a>
                     <button class="btn btn-secondary" onclick="openExtendedModal()">Заказать праздник</button>
                 </div>
                 
@@ -1020,7 +1242,7 @@
         </div>
     </section>
 
-    <!-- Pricing Section (Теперь идет первой) -->
+    <!-- Pricing Section -->
     <section class="pricing" id="pricing">
         <div class="container">
             <h2 class="section-title">Программы анимации</h2>
@@ -1102,230 +1324,124 @@
         </div>
     </section>
 
-    <!-- Programs Section (Теперь идет второй, название изменено) -->
+    <!-- Programs Section - 8 Cards Grid -->
     <section class="programs" id="programs">
         <div class="container">
-            <h2 class="section-title">Тематические вечеринки</h2>
-            <p class="section-subtitle">Выберите идеальную программу для вашего праздника</p>
+            <h2 class="section-title">Наши программы</h2>
+            <p class="section-subtitle">Выберите идеальный формат праздника для вашего ребёнка</p>
         </div>
-        <div class="programs-container">
-            <button class="scroll-btn prev" onclick="scrollPrograms(-1)">❮</button>
-            <div class="programs-wrapper" id="programsWrapper">
-                <div class="programs-grid">
-                    <!-- 1. Дино Парк -->
-                    <div class="program-card">
-                        <div class="program-image gradient-1" onclick="openLightbox('dino', 0)" data-program="dino">
-                            <img src="photos/dino_park_photo.jpg" alt="Аниматор в костюме динозавра на детском празднике в Москве" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.innerHTML='🦕'">
-                            <button class="video-btn" onclick="event.stopPropagation(); openVideo('dino')">🎥 Видео</button>
-                            <button class="gallery-nav prev" onclick="event.stopPropagation(); changeImage('dino', -1)">❮</button>
-                            <button class="gallery-nav next" onclick="event.stopPropagation(); changeImage('dino', 1)">❯</button>
-                            <span class="gallery-counter">1/2</span>
-                        </div>
-                        <div class="program-content">
-                            <h3>Дино Парк</h3>
-                            <p>Интерактивная программа для детей 5-7 лет</p>
-                            <ul class="program-features">
-                                <li>Два артиста</li><li>Сюжетная линия</li><li>Ростовой динозавр</li><li>От 1.5 часов</li>
-                            </ul>
-                            <div class="program-price">от 8 000 ₽</div>
-                            <button class="btn btn-primary" onclick="openExtendedModal('Дино Парк')">Выбрать</button>
-                        </div>
-                    </div>
-                    <!-- 2. Страна Единорогов -->
-                    <div class="program-card">
-                        <div class="program-image gradient-2" onclick="openLightbox('unicorn', 0)" data-program="unicorn">
-                            <img src="photos/edinorog_state_photo.jpg" alt="Праздник со единорогом для девочки в Щёлково" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.innerHTML='🦄'">
-                            <button class="video-btn" onclick="event.stopPropagation(); openVideo('unicorn')">🎥 Видео</button>
-                            <button class="gallery-nav prev" onclick="event.stopPropagation(); changeImage('unicorn', -1)">❮</button>
-                            <button class="gallery-nav next" onclick="event.stopPropagation(); changeImage('unicorn', 1)">❯</button>
-                            <span class="gallery-counter">1/2</span>
-                        </div>
-                        <div class="program-content">
-                            <h3>Страна Единорогов</h3>
-                            <p>Волшебное путешествие в сказочную страну</p>
-                            <ul class="program-features">
-                                <li>Магическое шоу</li><li>Аквагрим</li><li>Игры и танцы</li><li>От 1 часа</li>
-                            </ul>
-                            <div class="program-price">от 5 500 ₽</div>
-                            <button class="btn btn-primary" onclick="openExtendedModal('Страна Единорогов')">Выбрать</button>
-                        </div>
-                    </div>
-                    <!-- 3. Подарок Эльзы -->
-                    <div class="program-card">
-                        <div class="program-image gradient-3" onclick="openLightbox('elza', 0)" data-program="elza">
-                            <img src="photos/Elza_gift_photo.jpg" alt="Зимний праздник с Эльзой в Балашихе" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.innerHTML='❄️'">
-                            <button class="video-btn" onclick="event.stopPropagation(); openVideo('elza')">🎥 Видео</button>
-                            <button class="gallery-nav prev" onclick="event.stopPropagation(); changeImage('elza', -1)">❮</button>
-                            <button class="gallery-nav next" onclick="event.stopPropagation(); changeImage('elza', 1)">❯</button>
-                            <span class="gallery-counter">1/2</span>
-                        </div>
-                        <div class="program-content">
-                            <h3>Подарок Эльзы</h3>
-                            <p>Зимняя сказка с Эльзой и Олафом</p>
-                            <ul class="program-features">
-                                <li>Ледяные фокусы</li><li>Снежное шоу</li><li>Песни из мультфильма</li><li>От 1 часа</li>
-                            </ul>
-                            <div class="program-price">от 6 000 ₽</div>
-                            <button class="btn btn-primary" onclick="openExtendedModal('Подарок Эльзы')">Выбрать</button>
-                        </div>
-                    </div>
-                    <!-- 4. Майнкрафт -->
-                    <div class="program-card">
-                        <div class="program-image gradient-4" onclick="openLightbox('minecraft', 0)" data-program="minecraft">
-                            <img src="photos/minecraft_photo.jpg" alt="Тематическая вечеринка Майнкрафт для мальчика" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.innerHTML='⛏️'">
-                            <button class="video-btn" onclick="event.stopPropagation(); openVideo('minecraft')">🎥 Видео</button>
-                            <button class="gallery-nav prev" onclick="event.stopPropagation(); changeImage('minecraft', -1)">❮</button>
-                            <button class="gallery-nav next" onclick="event.stopPropagation(); changeImage('minecraft', 1)">❯</button>
-                            <span class="gallery-counter">1/2</span>
-                        </div>
-                        <div class="program-content">
-                            <h3>Майнкрафт</h3>
-                            <p>Приключение в мире Minecraft</p>
-                            <ul class="program-features">
-                                <li>Квест-игра</li><li>Строительство</li><li>Битвы с монстрами</li><li>От 1.5 часов</li>
-                            </ul>
-                            <div class="program-price">от 7 000 ₽</div>
-                            <button class="btn btn-primary" onclick="openExtendedModal('Майнкрафт')">Выбрать</button>
-                        </div>
-                    </div>
-                    <!-- 5. Сокровища пиратов -->
-                    <div class="program-card">
-                        <div class="program-image gradient-5" onclick="openLightbox('pirates', 0)" data-program="pirates">
-                            <img src="photos/socrovisha_piratov_photo.jpg" alt="Пиратская вечеринка с поиском клада в Электростали" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.innerHTML='🏴☠️'">
-                            <button class="video-btn" onclick="event.stopPropagation(); openVideo('pirates')">🎥 Видео</button>
-                            <button class="gallery-nav prev" onclick="event.stopPropagation(); changeImage('pirates', -1)">❮</button>
-                            <button class="gallery-nav next" onclick="event.stopPropagation(); changeImage('pirates', 1)">❯</button>
-                            <span class="gallery-counter">1/2</span>
-                        </div>
-                        <div class="program-content">
-                            <h3>Сокровища пиратов</h3>
-                            <p>Морское приключение с поиском клада</p>
-                            <ul class="program-features">
-                                <li>Пиратский квест</li><li>Морские игры</li><li>Поиск клада</li><li>От 1.5 часов</li>
-                            </ul>
-                            <div class="program-price">от 7 000 ₽</div>
-                            <button class="btn btn-primary" onclick="openExtendedModal('Сокровища пиратов')">Выбрать</button>
-                        </div>
-                    </div>
-                    <!-- 6. Супергеройская Вечеринка -->
-                    <div class="program-card">
-                        <div class="program-image gradient-6" onclick="openLightbox('superhero', 0)" data-program="superhero">
-                            <img src="photos/superhero_party_photo.jpg" alt="Супергеройский праздник с Человеком-пауком" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.innerHTML='🦸'">
-                            <button class="video-btn" onclick="event.stopPropagation(); openVideo('superhero')">🎥 Видео</button>
-                            <button class="gallery-nav prev" onclick="event.stopPropagation(); changeImage('superhero', -1)">❮</button>
-                            <button class="gallery-nav next" onclick="event.stopPropagation(); changeImage('superhero', 1)">❯</button>
-                            <span class="gallery-counter">1/2</span>
-                        </div>
-                        <div class="program-content">
-                            <h3>Супергеройская Вечеринка</h3>
-                            <p>Человек-паук, Бэтмен и другие герои</p>
-                            <ul class="program-features">
-                                <li>Интерактивные игры</li><li>Суперспособности</li><li>Битва со злом</li><li>От 1 часа</li>
-                            </ul>
-                            <div class="program-price">от 5 000 ₽</div>
-                            <button class="btn btn-primary" onclick="openExtendedModal('Супергеройская Вечеринка')">Выбрать</button>
-                        </div>
-                    </div>
-                    <!-- 7. Футбольная вечеринка -->
-                    <div class="program-card">
-                        <div class="program-image gradient-7" onclick="openLightbox('football', 0)" data-program="football">
-                            <img src="photos/football_party_photo.jpg" alt="Спортивный футбольный праздник для детей" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.innerHTML='⚽'">
-                            <button class="video-btn" onclick="event.stopPropagation(); openVideo('football')">🎥 Видео</button>
-                            <button class="gallery-nav prev" onclick="event.stopPropagation(); changeImage('football', -1)">❮</button>
-                            <button class="gallery-nav next" onclick="event.stopPropagation(); changeImage('football', 1)">❯</button>
-                            <span class="gallery-counter">1/2</span>
-                        </div>
-                        <div class="program-content">
-                            <h3>Футбольная вечеринка</h3>
-                            <p>Спортивный праздник для чемпионов</p>
-                            <ul class="program-features">
-                                <li>Футбольные эстафеты</li><li>Тренировка с тренером</li><li>Награждение кубком</li><li>От 1.5 часов</li>
-                            </ul>
-                            <div class="program-price">от 7 500 ₽</div>
-                            <button class="btn btn-primary" onclick="openExtendedModal('Футбольная вечеринка')">Выбрать</button>
-                        </div>
-                    </div>
-                    <!-- 8. Game Party -->
-                    <div class="program-card">
-                        <div class="program-image gradient-8" onclick="openLightbox('game', 0)" data-program="game">
-                            <img src="photos/game_party_photo.jpg" alt="Игровая вечеринка с приставками для подростков" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.innerHTML='🎮'">
-                            <button class="video-btn" onclick="event.stopPropagation(); openVideo('game')">🎥 Видео</button>
-                            <button class="gallery-nav prev" onclick="event.stopPropagation(); changeImage('game', -1)">❮</button>
-                            <button class="gallery-nav next" onclick="event.stopPropagation(); changeImage('game', 1)">❯</button>
-                            <span class="gallery-counter">1/2</span>
-                        </div>
-                        <div class="program-content">
-                            <h3>Game Party</h3>
-                            <p>Игровая вечеринка с приставками</p>
-                            <ul class="program-features">
-                                <li>Игровые приставки</li><li>Настольные игры</li><li>Киберспортивные турниры</li><li>От 2 часов</li>
-                            </ul>
-                            <div class="program-price">от 8 500 ₽</div>
-                            <button class="btn btn-primary" onclick="openExtendedModal('Game Party')">Выбрать</button>
-                        </div>
-                    </div>
-                    <!-- 9. неДЕТское время -->
-                    <div class="program-card">
-                        <div class="program-image gradient-9" onclick="openLightbox('nokids', 0)" data-program="nokids">
-                            <img src="photos/no_kids_time_photo.jpg" alt="Вечеринка для подростков в Ногинске" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.innerHTML='🎉'">
-                            <button class="video-btn" onclick="event.stopPropagation(); openVideo('nokids')">🎥 Видео</button>
-                            <button class="gallery-nav prev" onclick="event.stopPropagation(); changeImage('nokids', -1)">❮</button>
-                            <button class="gallery-nav next" onclick="event.stopPropagation(); changeImage('nokids', 1)">❯</button>
-                            <span class="gallery-counter">1/2</span>
-                        </div>
-                        <div class="program-content">
-                            <h3>неДЕТское время</h3>
-                            <p>Вечеринка для подростков</p>
-                            <ul class="program-features">
-                                <li>Современная музыка</li><li>Челленджи и флешмобы</li><li>Фотозона</li><li>От 2 часов</li>
-                            </ul>
-                            <div class="program-price">от 9 000 ₽</div>
-                            <button class="btn btn-primary" onclick="openExtendedModal('неДЕТское время')">Выбрать</button>
-                        </div>
-                    </div>
-                    <!-- 10. Пижамная вечеринка -->
-                    <div class="program-card">
-                        <div class="program-image gradient-10" onclick="openLightbox('pajamas', 0)" data-program="pajamas">
-                            <img src="photos/pajamas_party_photo.jpg" alt="Ночная пижамная вечеринка для детей" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.innerHTML='🌙'">
-                            <button class="video-btn" onclick="event.stopPropagation(); openVideo('pajamas')">🎥 Видео</button>
-                            <button class="gallery-nav prev" onclick="event.stopPropagation(); changeImage('pajamas', -1)">❮</button>
-                            <button class="gallery-nav next" onclick="event.stopPropagation(); changeImage('pajamas', 1)">❯</button>
-                            <span class="gallery-counter">1/2</span>
-                        </div>
-                        <div class="program-content">
-                            <h3>Пижамная вечеринка</h3>
-                            <p>Ночная вечеринка в пижамах</p>
-                            <ul class="program-features">
-                                <li>Ночные игры</li><li>Просмотр фильмов</li><li>Пицца-пати</li><li>От 3 часов</li>
-                            </ul>
-                            <div class="program-price">от 10 000 ₽</div>
-                            <button class="btn btn-primary" onclick="openExtendedModal('Пижамная вечеринка')">Выбрать</button>
-                        </div>
-                    </div>
-                    <!-- 11. Доставка с сюрпризом -->
-                    <div class="program-card">
-                        <div class="program-image gradient-11" onclick="openLightbox('surprise', 0)" data-program="surprise">
-                            <img src="photos/surprise_delivery_photo.jpg" alt="Доставка аниматора с сюрпризом в Реутов" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.innerHTML='🎁'">
-                            <button class="video-btn" onclick="event.stopPropagation(); openVideo('surprise')">🎥 Видео</button>
-                            <button class="gallery-nav prev" onclick="event.stopPropagation(); changeImage('surprise', -1)">❮</button>
-                            <button class="gallery-nav next" onclick="event.stopPropagation(); changeImage('surprise', 1)">❯</button>
-                            <span class="gallery-counter">1/2</span>
-                        </div>
-                        <div class="program-content">
-                            <h3>Доставка с сюрпризом</h3>
-                            <p>Неожиданный подарок от персонажа</p>
-                            <ul class="program-features">
-                                <li>Яркий персонаж</li><li>Поздравление</li><li>Небольшое шоу</li><li>От 15 минут</li>
-                            </ul>
-                            <div class="program-price">от 3 900 ₽</div>
-                            <button class="btn btn-primary" onclick="openExtendedModal('Доставка с сюрпризом')">Выбрать</button>
-                        </div>
+        
+        <div class="programs-grid-container">
+            <!-- 1. Анимация -->
+            <div class="program-card-large" onclick="openProgramModal('animation')">
+                <div class="program-card-image">
+                    <img src="cards_photo/card_A.jpg" alt="Анимация" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22%3E%3Crect fill=%22%23d4145a%22 width=%22400%22 height=%22300%22/%3E%3Ctext fill=%22white%22 font-size=%2280%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22%3E🎭%3C/text%3E%3C/svg%3E'">
+                    <div class="program-card-overlay">
+                        <div class="program-card-icon">→</div>
+                        <h3 class="program-card-title">Анимация</h3>
+                        <p class="program-card-subtitle">Классические программы с аниматорами</p>
                     </div>
                 </div>
             </div>
-            <button class="scroll-btn next" onclick="scrollPrograms(1)">❯</button>
+            
+            <!-- 2. Тематические вечеринки -->
+            <div class="program-card-large" onclick="openProgramModal('themed')">
+                <div class="program-card-image">
+                    <img src="cards_photo/card_TP.jpg" alt="Тематические вечеринки" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22%3E%3Crect fill=%22%23f5576c%22 width=%22400%22 height=%22300%22/%3E%3Ctext fill=%22white%22 font-size=%2280%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22%3E🎉%3C/text%3E%3C/svg%3E'">
+                    <div class="program-card-overlay">
+                        <div class="program-card-icon">→</div>
+                        <h3 class="program-card-title">Тематические вечеринки</h3>
+                        <p class="program-card-subtitle">Праздники в любимых образах</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 3. Малышники -->
+            <div class="program-card-large" onclick="openProgramModal('baby')">
+                <div class="program-card-image">
+                    <img src="cards_photo/card_M.jpg" alt="Малышники" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22%3E%3Crect fill=%22%234facfe%22 width=%22400%22 height=%22300%22/%3E%3Ctext fill=%22white%22 font-size=%2280%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22%3E👶%3C/text%3E%3C/svg%3E'">
+                    <div class="program-card-overlay">
+                        <div class="program-card-icon">→</div>
+                        <h3 class="program-card-title">Малышники</h3>
+                        <p class="program-card-subtitle">Специальные программы для малышей</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 4. Шоу -->
+            <div class="program-card-large" onclick="openProgramModal('show')">
+                <div class="program-card-image">
+                    <img src="cards_photo/card_S.jpg" alt="Шоу" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22%3E%3Crect fill=%22%23fa709a%22 width=%22400%22 height=%22300%22/%3E%3Ctext fill=%22white%22 font-size=%2280%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22%3E🎪%3C/text%3E%3C/svg%3E'">
+                    <div class="program-card-overlay">
+                        <div class="program-card-icon">→</div>
+                        <h3 class="program-card-title">Шоу</h3>
+                        <p class="program-card-subtitle">Яркие шоу-программы</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 5. Мастер-классы -->
+            <div class="program-card-large" onclick="openProgramModal('masterclass')">
+                <div class="program-card-image">
+                    <img src="cards_photo/card_MC.jpg" alt="Мастер-классы" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22%3E%3Crect fill=%22%23a8edea%22 width=%22400%22 height=%22300%22/%3E%3Ctext fill=%22%23333%22 font-size=%2280%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22%3E🎨%3C/text%3E%3C/svg%3E'">
+                    <div class="program-card-overlay">
+                        <div class="program-card-icon">→</div>
+                        <h3 class="program-card-title">Мастер-классы</h3>
+                        <p class="program-card-subtitle">Творческие занятия для детей</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 6. Супер-Игры -->
+            <div class="program-card-large" onclick="openProgramModal('supergames')">
+                <div class="program-card-image">
+                    <img src="cards_photo/card_SS.jpg" alt="Супер-Игры" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22%3E%3Crect fill=%22%23ff9a9e%22 width=%22400%22 height=%22300%22/%3E%3Ctext fill=%22white%22 font-size=%2280%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22%3E🎮%3C/text%3E%3C/svg%3E'">
+                    <div class="program-card-overlay">
+                        <div class="program-card-icon">→</div>
+                        <h3 class="program-card-title">Супер-Игры</h3>
+                        <p class="program-card-subtitle">Активные игры и конкурсы</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 7. Квесты -->
+            <div class="program-card-large" onclick="openProgramModal('quests')">
+                <div class="program-card-image">
+                    <img src="cards_photo/card_С.jpg" alt="Квесты" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22%3E%3Crect fill=%22%2330cfd0%22 width=%22400%22 height=%22300%22/%3E%3Ctext fill=%22white%22 font-size=%2280%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22%3E🗝️%3C/text%3E%3C/svg%3E'">
+                    <div class="program-card-overlay">
+                        <div class="program-card-icon">→</div>
+                        <h3 class="program-card-title">Квесты</h3>
+                        <p class="program-card-subtitle">Увлекательные приключения</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 8. Календарные праздники -->
+            <div class="program-card-large" onclick="openProgramModal('calendar')">
+                <div class="program-card-image">
+                    <img src="cards_photo/card_N.jpg" alt="Календарные праздники" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22%3E%3Crect fill=%22%23a8c0ff%22 width=%22400%22 height=%22300%22/%3E%3Ctext fill=%22white%22 font-size=%2280%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22%3E🎄%3C/text%3E%3C/svg%3E'">
+                    <div class="program-card-overlay">
+                        <div class="program-card-icon">→</div>
+                        <h3 class="program-card-title">Календарные праздники</h3>
+                        <p class="program-card-subtitle">Новый год, 8 марта и другие</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
+
+    <!-- Program Modal -->
+    <div class="program-modal" id="programModal">
+        <div class="program-modal-content">
+            <button class="program-modal-close" onclick="closeProgramModal()">&times;</button>
+            <div class="program-modal-header">
+                <h2 class="program-modal-title" id="modalTitle">Название программы</h2>
+            </div>
+            <div class="program-modal-body" id="modalBody">
+                <!-- Content will be inserted here -->
+            </div>
+        </div>
+    </div>
 
     <!-- About Section -->
     <section class="about" id="about">
@@ -1504,8 +1620,7 @@
                     <div><div style="font-size:20px;font-weight:800">АнимЭль</div><div style="color:#a0aec0;font-size:14px">Агентство детских праздников</div></div>
                 </div>
                 <div class="footer-links">
-                    <a href="#pricing">Программы анимации</a>
-                    <a href="#programs">Тематические вечеринки</a>
+                    <a href="#programs">Наши программы</a>
                     <a href="#about">О нас</a>
                     <a href="#contacts">Контакты</a>
                 </div>
@@ -1731,6 +1846,118 @@
             if(e.target === e.currentTarget) closeExtendedModal();
         });
         
+        // Program Modal Functions
+        function openProgramModal(type) {
+            const modal = document.getElementById('programModal');
+            const title = document.getElementById('modalTitle');
+            const body = document.getElementById('modalBody');
+            
+            // Content for different program types
+            const content = {
+                'animation': {
+                    title: 'Анимация',
+                    html: `
+                        <p style="margin-bottom: 20px; font-size: 16px; line-height: 1.6;">Классические анимационные программы для детей всех возрастов. Наши профессиональные аниматоры проведут незабываемый праздник с играми, конкурсами и шоу-элементами.</p>
+                        <div class="programs-grid-inside">
+                            <div class="mini-program-card">
+                                <h4>Мини</h4>
+                                <p>1 час программы с одним аниматором</p>
+                                <div class="price">3 900 ₽</div>
+                                <button class="btn btn-secondary" onclick="closeProgramModal(); openExtendedModal('Мини')">Выбрать</button>
+                            </div>
+                            <div class="mini-program-card">
+                                <h4>Стандарт</h4>
+                                <p>1.5 часа программы с дополнительными элементами</p>
+                                <div class="price">5 600 ₽</div>
+                                <button class="btn btn-secondary" onclick="closeProgramModal(); openExtendedModal('Стандарт')">Выбрать</button>
+                            </div>
+                            <div class="mini-program-card">
+                                <h4>Хит</h4>
+                                <p>2 часа программы с шоу-элементами</p>
+                                <div class="price">7 600 ₽</div>
+                                <button class="btn btn-primary" onclick="closeProgramModal(); openExtendedModal('Хит')">Выбрать</button>
+                            </div>
+                        </div>
+                    `
+                },
+                'themed': {
+                    title: 'Тематические вечеринки',
+                    html: `
+                        <p style="margin-bottom: 20px; font-size: 16px; line-height: 1.6;">Погрузитесь в мир любимых героев! У нас более 50 тематических программ: от принцесс и супергероев до динозавров и космических приключений.</p>
+                        <div class="programs-grid-inside">
+                            <div class="mini-program-card">
+                                <h4>Дино Парк</h4>
+                                <p>Интерактивная программа с ростовым динозавром</p>
+                                <div class="price">от 8 000 ₽</div>
+                                <button class="btn btn-primary" onclick="closeProgramModal(); openExtendedModal('Дино Парк')">Выбрать</button>
+                            </div>
+                            <div class="mini-program-card">
+                                <h4>Страна Единорогов</h4>
+                                <p>Волшебное путешествие с аквагримом</p>
+                                <div class="price">от 5 500 ₽</div>
+                                <button class="btn btn-secondary" onclick="closeProgramModal(); openExtendedModal('Страна Единорогов')">Выбрать</button>
+                            </div>
+                            <div class="mini-program-card">
+                                <h4>Майнкрафт</h4>
+                                <p>Приключение в мире Minecraft с квестом</p>
+                                <div class="price">от 7 000 ₽</div>
+                                <button class="btn btn-secondary" onclick="closeProgramModal(); openExtendedModal('Майнкрафт')">Выбрать</button>
+                            </div>
+                            <div class="mini-program-card">
+                                <h4>Супергеройская Вечеринка</h4>
+                                <p>Человек-паук, Бэтмен и другие герои</p>
+                                <div class="price">от 5 000 ₽</div>
+                                <button class="btn btn-secondary" onclick="closeProgramModal(); openExtendedModal('Супергеройская Вечеринка')">Выбрать</button>
+                            </div>
+                        </div>
+                    `
+                },
+                'baby': {
+                    title: 'Малышники',
+                    html: '<p style="text-align: center; color: #718096; padding: 40px;">Раздел в разработке. Скоро здесь появятся специальные программы для самых маленьких!</p>'
+                },
+                'show': {
+                    title: 'Шоу',
+                    html: '<p style="text-align: center; color: #718096; padding: 40px;">Раздел в разработке. Скоро здесь появятся яркие шоу-программы!</p>'
+                },
+                'masterclass': {
+                    title: 'Мастер-классы',
+                    html: '<p style="text-align: center; color: #718096; padding: 40px;">Раздел в разработке. Скоро здесь появятся творческие занятия!</p>'
+                },
+                'supergames': {
+                    title: 'Супер-Игры',
+                    html: '<p style="text-align: center; color: #718096; padding: 40px;">Раздел в разработке. Скоро здесь появятся активные игры!</p>'
+                },
+                'quests': {
+                    title: 'Квесты',
+                    html: '<p style="text-align: center; color: #718096; padding: 40px;">Раздел в разработке. Скоро здесь появятся увлекательные квесты!</p>'
+                },
+                'calendar': {
+                    title: 'Календарные праздники',
+                    html: '<p style="text-align: center; color: #718096; padding: 40px;">Раздел в разработке. Скоро здесь появятся программы к праздникам!</p>'
+                }
+            };
+            
+            if (content[type]) {
+                title.textContent = content[type].title;
+                body.innerHTML = content[type].html;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                if (tg) tg.HapticFeedback?.impactOccurred('light');
+            }
+        }
+        
+        function closeProgramModal() {
+            const modal = document.getElementById('programModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        document.getElementById('programModal').addEventListener('click', e => {
+            if(e.target === e.currentTarget) closeProgramModal();
+        });
+        
+        // Existing functions remain the same
         function scrollPrograms(d) {
             document.getElementById('programsWrapper').scrollBy({left: d * 330, behavior: 'smooth'});
         }
@@ -1829,6 +2056,7 @@
                 closeExtendedModal();
                 closeLightbox();
                 closeVideo();
+                closeProgramModal();
             }
             if(e.key === 'ArrowLeft' && document.getElementById('lightbox').classList.contains('active')) 
                 changeLightboxImage(-1);
