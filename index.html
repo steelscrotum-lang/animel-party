@@ -3254,10 +3254,11 @@
         }
         
         function generateThemedPartyCard(id, gradient, emoji, title, description, features, price) {
+            const photoFile = getPhotoFileName(id);
             return `
                 <div class="themed-party-card">
                     <div class="party-image ${gradient}" onclick="openThemedLightbox('${id}', 0)" data-program="${id}">
-                        <img src="photos/${id}_photo.jpg" alt="${title}" loading="lazy" onerror="this.style.display='none'; this.parentElement.innerHTML='${emoji}'">
+                        <img src="photos/${photoFile}_photo.jpg" alt="${title}" loading="lazy" onerror="this.style.display='none'; this.parentElement.innerHTML='${emoji}'">
                         <button class="party-video-btn" onclick="event.stopPropagation(); openThemedVideo('${id}')">🎥 Видео</button>
                         <button class="party-gallery-nav prev" onclick="event.stopPropagation(); changeThemedImage('${id}', -1)">❮</button>
                         <button class="party-gallery-nav next" onclick="event.stopPropagation(); changeThemedImage('${id}', 1)">❯</button>
@@ -3274,6 +3275,23 @@
                     </div>
                 </div>
             `;
+        }
+        
+        function getPhotoFileName(id) {
+            const fileMap = {
+                'dino': 'dino_park',
+                'unicorn': 'edinorog_state',
+                'elza': 'Elza_gift',
+                'minecraft': 'minecraft',
+                'pirates': 'socrovisha_piratov',
+                'superhero': 'superhero_party',
+                'football': 'football_party',
+                'game': 'game_party',
+                'nokids': 'no_kids_time',
+                'pajamas': 'pajamas_party',
+                'surprise': 'surprise_delivery'
+            };
+            return fileMap[id] || id;
         }
         
         function closeProgramModal() {
@@ -3320,36 +3338,34 @@
         function openThemedLightbox(p, i) {
             currentThemedProgram = p;
             currentThemedImageIndex = i;
-            document.getElementById('lightbox-img').src = themedImages[p][i];
-            document.getElementById('lightbox').classList.add('active');
-            document.body.style.overflow = 'hidden';
-            if (tg) tg.HapticFeedback?.impactOccurred('light');
+            const images = themedImages[p];
+            if (images && images[i]) {
+                document.getElementById('lightbox-img').src = images[i];
+                document.getElementById('lightbox').classList.add('active');
+                document.body.style.overflow = 'hidden';
+                if (tg) tg.HapticFeedback?.impactOccurred('light');
+            }
         }
         
         function changeThemedImage(p, d) {
             const im = themedImages[p];
+            if (!im) return;
+            
             currentThemedImageIndex = (currentThemedImageIndex + d + im.length) % im.length;
-            const el = document.querySelector(`.party-image[data-program="${p}"]`);
-            if (el) {
-                const img = el.querySelector('img');
-                if (img) {
-                    img.style.display = 'block';
-                    img.src = im[currentThemedImageIndex];
-                } else {
-                    el.innerHTML = im[currentThemedImageIndex] === 'photos/' + p + '_photo.jpg' ? 
-                        el.querySelector('.party-gallery-nav.prev').outerHTML + 
-                        el.querySelector('.party-gallery-nav.next').outerHTML + 
-                        el.querySelector('.party-gallery-counter').outerHTML + 
-                        el.querySelector('.party-video-btn').outerHTML : 
-                        el.innerHTML.replace(/🦕|🦄|❄️|⛏️|🏴☠️|🦸|⚽|🎮|🎉|🌙|🎁/, '');
-                    const newImg = document.createElement('img');
-                    newImg.src = im[currentThemedImageIndex];
-                    newImg.alt = p;
-                    newImg.style.display = 'block';
-                    el.insertBefore(newImg, el.firstChild);
-                }
-                el.querySelector('.party-gallery-counter').textContent = `${currentThemedImageIndex + 1}/${im.length}`;
+            const imgElement = document.getElementById('lightbox-img');
+            if (imgElement && im[currentThemedImageIndex]) {
+                imgElement.src = im[currentThemedImageIndex];
             }
+            
+            // Update counter in card
+            const card = document.querySelector(`.party-image[data-program="${p}"]`);
+            if (card) {
+                const counter = card.querySelector('.party-gallery-counter');
+                if (counter) {
+                    counter.textContent = `${currentThemedImageIndex + 1}/${im.length}`;
+                }
+            }
+            
             if (tg) tg.HapticFeedback?.impactOccurred('light');
         }
         
@@ -3357,11 +3373,14 @@
             currentThemedProgram = p;
             const vm = document.getElementById('videoModal');
             const vp = document.getElementById('videoPlayer');
-            vp.src = themedVideos[p];
-            vm.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            vp.play();
-            if (tg) tg.HapticFeedback?.impactOccurred('medium');
+            const videoSrc = themedVideos[p];
+            if (videoSrc) {
+                vp.src = videoSrc;
+                vm.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                vp.play();
+                if (tg) tg.HapticFeedback?.impactOccurred('medium');
+            }
         }
         
         const programImages = {
@@ -3397,10 +3416,13 @@
         function openLightbox(p, i) {
             currentProgram = p;
             currentImageIndex = i;
-            document.getElementById('lightbox-img').src = programImages[p][i];
-            document.getElementById('lightbox').classList.add('active');
-            document.body.style.overflow = 'hidden';
-            if (tg) tg.HapticFeedback?.impactOccurred('light');
+            const images = programImages[p];
+            if (images && images[i]) {
+                document.getElementById('lightbox-img').src = images[i];
+                document.getElementById('lightbox').classList.add('active');
+                document.body.style.overflow = 'hidden';
+                if (tg) tg.HapticFeedback?.impactOccurred('light');
+            }
         }
         
         function closeLightbox() {
@@ -3410,18 +3432,28 @@
         
         function changeImage(p, d) {
             const im = programImages[p];
+            if (!im) return;
+            
             currentImageIndex = (currentImageIndex + d + im.length) % im.length;
-            const el = document.querySelector(`.program-image[data-program="${p}"]`);
-            el.querySelector('img').src = im[currentImageIndex];
-            el.querySelector('.gallery-counter').textContent = `${currentImageIndex + 1}/${im.length}`;
+            const imgElement = document.getElementById('lightbox-img');
+            if (imgElement && im[currentImageIndex]) {
+                imgElement.src = im[currentImageIndex];
+            }
+            
             if (tg) tg.HapticFeedback?.impactOccurred('light');
         }
         
         function changeLightboxImage(d) {
             event.stopPropagation();
-            const im = programImages[currentProgram];
+            const im = programImages[currentProgram] || themedImages[currentProgram];
+            if (!im) return;
+            
             currentImageIndex = (currentImageIndex + d + im.length) % im.length;
-            document.getElementById('lightbox-img').src = im[currentImageIndex];
+            const imgElement = document.getElementById('lightbox-img');
+            if (imgElement && im[currentImageIndex]) {
+                imgElement.src = im[currentImageIndex];
+            }
+            
             if (tg) tg.HapticFeedback?.impactOccurred('light');
         }
         
@@ -3429,11 +3461,14 @@
             currentProgram = p;
             const vm = document.getElementById('videoModal');
             const vp = document.getElementById('videoPlayer');
-            vp.src = programVideos[p];
-            vm.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            vp.play();
-            if (tg) tg.HapticFeedback?.impactOccurred('medium');
+            const videoSrc = programVideos[p];
+            if (videoSrc) {
+                vp.src = videoSrc;
+                vm.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                vp.play();
+                if (tg) tg.HapticFeedback?.impactOccurred('medium');
+            }
         }
         
         function closeVideo() {
